@@ -1,12 +1,15 @@
+// utils/connectMongoDB.js
 import mongoose from "mongoose";
 
 const connectMongoDB = async () => {
-  try {
-    await mongoose.connect(process.env.DATABASE);
-    console.log("Database Connected Successfully!");
-  } catch (err) {
-    console.log("Database Error!");
+  if (mongoose.connections[0].readyState) {
+    return;
   }
+  await mongoose.connect(process.env.DATABASE, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+  console.log("Database Connected Successfully!");
 };
 
 export default connectMongoDB;
