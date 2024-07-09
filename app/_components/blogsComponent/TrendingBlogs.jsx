@@ -25,7 +25,7 @@ const TrendingBlogs = async () => {
       </div>
       <div className="grid grid-cols-4 gap-4">
         {blogs.map((blog) => (
-          <BlogComponent blog={blog} />
+          <BlogComponent blog={blog} key={blog._id} />
         ))}
       </div>
     </div>
