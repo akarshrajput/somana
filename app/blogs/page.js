@@ -1,10 +1,14 @@
 import React from "react";
-import BlogsHome from "../_components/blogsComponent/BlogsHome";
+import BlogsNavigation from "../_components/blogsComponent/BlogsNavigation";
+import TrendingBlogs from "../_components/blogsComponent/TrendingBlogs";
 
 const page = () => {
   return (
     <div className="px-20 mt-6">
-      <BlogsHome />
+      <div className="mb-6">
+        <BlogsNavigation />
+      </div>
+      <TrendingBlogs />
     </div>
   );
 };

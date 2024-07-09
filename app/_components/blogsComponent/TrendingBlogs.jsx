@@ -7,15 +7,19 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 const hostname = process.env.HOSTNAME;
-
 const TrendingBlogs = async () => {
-  const res = await fetch(`${hostname}/api/v1/blogs?limit=5`, {
-    cache: "no-store",
-  });
-  const data = await res.json();
-  // console.log(data);
-  const blogs = data.data.blogs;
-  // console.log(blogs);
+  let blogs;
+  try {
+    const res = await fetch(`${hostname}/api/v1/blogs?limit=5`, {
+      cache: "no-store",
+    });
+    const data = await res.json();
+    // console.log(data);
+    blogs = data.data.blogs;
+    // console.log(blogs);
+  } catch (err) {
+    console.log("Error");
+  }
   return (
     <div>
       <div>
