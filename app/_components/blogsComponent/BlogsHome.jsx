@@ -8,7 +8,7 @@ const BlogsHome = () => {
       <div className="mb-6">
         <BlogsNavigation />
       </div>
-      {/* <TrendingBlogs /> */}
+      <TrendingBlogs />
     </div>
   );
 };
