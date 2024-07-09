@@ -10,6 +10,7 @@ const Hero = () => {
   return (
     <div className="px-4">
       <h1>Welcome to Somana space</h1>
+      <p>Deployment 4 : in development</p>
     </div>
   );
 };
