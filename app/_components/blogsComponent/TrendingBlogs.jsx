@@ -1,27 +1,21 @@
-"use client";
-import { CheckCircle, TrendUp, UserCircleCheck } from "@phosphor-icons/react";
+import {
+  CheckCircle,
+  TrendUp,
+  UserCircleCheck,
+} from "@phosphor-icons/react/dist/ssr";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React from "react";
+const hostname = process.env.HOSTNAME;
 
-const TrendingBlogs = () => {
-  const [blogs, setBlogs] = useState([]);
-
-  useEffect(() => {
-    const getTrendingBlogs = async () => {
-      try {
-        const res = await fetch(`/api/v1/blogs?limit=5`);
-        const data = await res.json();
-        setBlogs(data.data.blogs);
-        console.log(data.data.blogs);
-      } catch (err) {
-        console.log("Error", err);
-      }
-    };
-
-    getTrendingBlogs();
-  }, []);
-
+const TrendingBlogs = async () => {
+  const res = await fetch(`${hostname}/api/v1/blogs?limit=5`, {
+    cache: "no-store",
+  });
+  const data = await res.json();
+  // console.log(data);
+  const blogs = data.data.blogs;
+  // console.log(blogs);
   return (
     <div>
       <div>
