@@ -22,9 +22,10 @@ export async function createUser(data) {
       data: newUser,
     };
   } catch (err) {
+    console.error("Error creating user:", err);
     return {
       statusText: "error",
-      message: "Error creating User",
+      message: "Error creating user",
       error: err.message,
     };
   }

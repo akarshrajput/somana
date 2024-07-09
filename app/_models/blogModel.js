@@ -1,4 +1,6 @@
+// models/Blog.js
 import mongoose from "mongoose";
+import User from "./userModel"; // Ensure the User model is imported
 
 const blogSchema = new mongoose.Schema(
   {
