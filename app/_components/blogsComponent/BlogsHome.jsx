@@ -5,10 +5,10 @@ import BlogsNavigation from "./BlogsNavigation";
 const BlogsHome = () => {
   return (
     <div>
-      <TrendingBlogs />
-      <div className="my-4">
+      <div className="mb-6">
         <BlogsNavigation />
       </div>
+      <TrendingBlogs />
     </div>
   );
 };

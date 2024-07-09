@@ -26,7 +26,7 @@ const page = async ({ params }) => {
   return (
     <div className="px-40 py-2">
       <div className="">
-        <p className="text-stone-500 text-lg font-bold">HORROR</p>
+        <p className="text-stone-500 text-lg font-bold">{blog.genre}</p>
         <div className="my-8 border-l-8 border-stone-600 pl-2 font-medium">
           <p className="text-7xl leading-tight text-stone-600">
             {blog.heading}
@@ -40,7 +40,11 @@ const page = async ({ params }) => {
           />
           <p>{blog.author.name}</p>
           <p>
-            {blog.author.verified ? <UserCircleCheck className="size-4" /> : ""}
+            {blog.author.verified ? (
+              <UserCircleCheck weight="fill" className="size-5" />
+            ) : (
+              ""
+            )}
           </p>
           <p className="bg-stone-50 border py-0.5 px-2 rounded-md">
             {blog.readTime} min read
@@ -58,7 +62,7 @@ const page = async ({ params }) => {
           </p>
         </div>
         <div
-          className={`pl-60 antialiased text-xl mb-10 ${robotoSlab.className}`}
+          className={`px-36 tracking-wide text-stone-700 antialiased text-xl mb-10 ${robotoSlab.className}`}
           dangerouslySetInnerHTML={{ __html: contentWithLineBreaks }}
         ></div>
       </div>

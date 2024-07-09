@@ -1,10 +1,13 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 const Logo = () => {
   return (
     <div>
-      <Link href="/">Somana</Link>
+      <Link className="animate-pulse" href="/">
+        <img src="/somana.png" className="h-12" />
+      </Link>
     </div>
   );
 };

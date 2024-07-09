@@ -13,6 +13,7 @@ const WriteBlog = ({ supabaseURL, session, hostname }) => {
   const [description, setDescription] = useState("");
   const [content, setContent] = useState("");
   const [tags, setTags] = useState("");
+  const [genre, setGenre] = useState("");
   const [featuredImage, setFeaturedImage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -21,7 +22,14 @@ const WriteBlog = ({ supabaseURL, session, hostname }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!heading || !content || !description || !featuredImage || !tags) {
+    if (
+      !heading ||
+      !content ||
+      !description ||
+      !featuredImage ||
+      !tags ||
+      !genre
+    ) {
       toast.error("Please fill all fields");
       return;
     }
@@ -40,6 +48,7 @@ const WriteBlog = ({ supabaseURL, session, hostname }) => {
         description: description,
         content: content,
         tags: tags,
+        genre: genre,
         author: session.user.userId,
         featuredImage: imagePath,
       };
@@ -95,6 +104,12 @@ const WriteBlog = ({ supabaseURL, session, hostname }) => {
     }
   };
 
+  const handleGenreChange = (e) => {
+    if (e.target.value.length <= 15) {
+      setGenre(e.target.value);
+    }
+  };
+
   return (
     <div>
       {isLoading ? (
@@ -108,26 +123,6 @@ const WriteBlog = ({ supabaseURL, session, hostname }) => {
         className="rounded-md overflow-hidden border-2 border-black"
         onSubmit={handleSubmit}
       >
-        <p className="py-0.5 px-2">Write Blog content:</p>
-        <QuillEditor value={content} onChange={handleContentChange} />
-        <div className="flex items-center px-2 py-1">
-          <div className="flex items-center gap-2">
-            <label>Description photo: </label>
-            <input
-              onChange={(e) => setFeaturedImage(e.target.files[0])}
-              type="file"
-            />
-          </div>
-          <div className="flex items-center gap-2">
-            <label>Tags: </label>
-            <input
-              value={tags}
-              onChange={handleTagsChange}
-              placeholder="Write heading"
-              className="border py-0.5 px-2 outline-none rounded-md"
-            />
-          </div>
-        </div>
         <div className="flex items-center gap-2 px-2 py-1">
           <label>Heading:</label>
           <input
@@ -146,6 +141,36 @@ const WriteBlog = ({ supabaseURL, session, hostname }) => {
             className="border py-0.5 px-2 outline-none resize-none rounded-md w-full"
           />
         </div>
+        <div className="flex items-center gap-4 px-2 py-1">
+          <div className="flex items-center gap-2">
+            <label>Description photo: </label>
+            <input
+              onChange={(e) => setFeaturedImage(e.target.files[0])}
+              type="file"
+            />
+          </div>
+          <div className="flex items-center gap-2">
+            <label>Tags: </label>
+            <input
+              value={tags}
+              onChange={handleTagsChange}
+              placeholder="Write heading"
+              className="border py-0.5 px-2 outline-none rounded-md"
+            />
+          </div>
+          <div className="flex items-center gap-2">
+            <label>Genre: </label>
+            <input
+              value={genre}
+              onChange={handleGenreChange}
+              placeholder="Write heading"
+              className="border py-0.5 px-2 outline-none rounded-md"
+            />
+          </div>
+        </div>
+        <p className="py-0.5 px-2">Write Blog content:</p>
+        <QuillEditor value={content} onChange={handleContentChange} />
+
         <div className="p-1 px-2">
           <button
             disabled={isLoading}

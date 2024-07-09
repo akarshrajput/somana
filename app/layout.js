@@ -23,7 +23,8 @@ export default async function RootLayout({ children }) {
       <body className={inter.className}>
         <Toaster position="bottom-right" reverseOrder={false} />
         <div className={`${rubik.className}`}>
-          <div className="sticky top-0 z-10 bg-white/90">
+          {/* <div className="sticky top-0 z-10"> */}
+          <div>
             <Header />
           </div>
           {children}

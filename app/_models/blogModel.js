@@ -17,6 +17,11 @@ const blogSchema = new mongoose.Schema(
       minlength: [10, "Heading must have more than 10 characters."],
       maxlength: [100, "Heading must have less than 100 characters."],
     },
+    genre: {
+      type: String,
+      trim: true,
+      maxlength: [20, "Genre must have less than 20 characters."],
+    },
     description: {
       type: String,
       trim: true,
