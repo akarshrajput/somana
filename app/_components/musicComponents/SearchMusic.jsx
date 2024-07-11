@@ -74,7 +74,7 @@ const SearchMusic = ({ hostname }) => {
   );
 };
 
-// SearchBlogs.displayName = "Search";
+SearchBlogs.displayName = "Search";
 
 const SearchContent = React.forwardRef(
   ({ minders, loading, setShowSearchContent }, ref) => {
@@ -144,6 +144,6 @@ const SearchItem = ({ minder }) => {
   );
 };
 
-// SearchContent.displayName = "SearchContent";
+SearchContent.displayName = "SearchContent";
 
 export default SearchMusic;
