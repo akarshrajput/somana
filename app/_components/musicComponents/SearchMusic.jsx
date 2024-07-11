@@ -74,7 +74,7 @@ const SearchMusic = ({ hostname }) => {
   );
 };
 
-SearchBlogs.displayName = "Search";
+SearchMusic.displayName = "Search";
 
 const SearchContent = React.forwardRef(
   ({ minders, loading, setShowSearchContent }, ref) => {
