@@ -2,7 +2,7 @@ import React from "react";
 import BaseButton from "../buttons/BaseButton";
 import { Star, Upload } from "@phosphor-icons/react/dist/ssr";
 import SpecialButton from "../buttons/SpecialButton";
-import SearchBlogs from "../blogsComponent/SearchBlogs";
+import SearchMusic from "./SearchMusic";
 
 const MusicNavigation = ({ hostname }) => {
   return (
@@ -21,7 +21,7 @@ const MusicNavigation = ({ hostname }) => {
         </SpecialButton>
       </div>
       <div className="flex flex-col items-center">
-        <SearchBlogs hostname={hostname} />
+        <SearchMusic hostname={hostname} />
       </div>
       <div></div>
     </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import MusicNavigation from "../_components/musicComponents/MusicNavigation";
 import TrendingSongs from "../_components/musicComponents/TrendingSongs";
+import FunkSongs from "../_components/musicComponents/FunkSongs";
 const hostname = process.env.HOSTNAME;
 const page = () => {
   return (
@@ -10,6 +11,7 @@ const page = () => {
           <MusicNavigation hostname={hostname} />
         </div>
         <TrendingSongs hostname={hostname} />
+        <FunkSongs hostname={hostname} />
       </div>
     </div>
   );

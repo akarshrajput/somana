@@ -4,7 +4,7 @@ import Link from "next/link";
 import LoaderSmall from "../main/LoaderSmall";
 import { MagnifyingGlass, Sparkle } from "@phosphor-icons/react/dist/ssr";
 
-const SearchBlogs = ({ hostname }) => {
+const SearchMusic = ({ hostname }) => {
   const [input, setInput] = useState("");
   const [showSearchContent, setShowSearchContent] = useState(false);
   const searchContentRef = useRef(null);
@@ -32,9 +32,12 @@ const SearchBlogs = ({ hostname }) => {
       if (input.trim()) {
         setLoading(true);
         try {
-          const res = await fetch(`${hostname}/api/v1/blogs?heading=${input}`);
+          const res = await fetch(
+            `${hostname}/api/v1/music?musicName=${input}`
+          );
           const data = await res.json();
-          setMinders(data?.data?.blogs || []);
+          setMinders(data?.data?.tracks || []);
+          //   console.log(data);
         } catch (error) {
           console.error("Error fetching minders:");
         } finally {
@@ -71,7 +74,7 @@ const SearchBlogs = ({ hostname }) => {
   );
 };
 
-SearchBlogs.displayName = "Search";
+// SearchBlogs.displayName = "Search";
 
 const SearchContent = React.forwardRef(
   ({ minders, loading, setShowSearchContent }, ref) => {
@@ -97,11 +100,11 @@ const SearchContent = React.forwardRef(
               ""
             )}
             {/* <Link
-              className="flex gap-1 items-center bg-indigo-400 py-1 px-2 rounded-md text-white"
+              className="flex gap-1  items-center bg-indigo-400 py-1 px-2 rounded-md text-white"
               href="/subscription"
             >
               <Sparkle weight="fill" />
-              <li>Explore more on Somana.</li>
+              <li className="font-normal">Explore more on Somana.</li>
             </Link> */}
 
             {Array.isArray(minders) &&
@@ -116,20 +119,31 @@ const SearchContent = React.forwardRef(
 );
 
 const SearchItem = ({ minder }) => {
-  const heading = minder.heading.substring(0, 50);
+  //   const heading = minder.heading.substring(0, 50);
   return (
     <Link
-      className="gap-1 items-center bg-gray-100 dark:bg-stone-700 dark:hover:bg-stone-600  hover:bg-gray-200 py-1 px-2 rounded-md"
-      href={`/blogs/${minder.slug}`}
+      className="flex gap-2 items-center bg-gray-100 dark:bg-stone-700 dark:hover:bg-stone-600  hover:bg-gray-200 py-1 px-2 rounded-md"
+      href={`/music/${minder._id}`}
     >
-      <mark className="bg-transparent">{heading} .. </mark>{" "}
-      <mark className="bg-stone-200 text-sm border border-stone-300 py-0.5 px-2 rounded-md">
-        {minder.author.name}
-      </mark>
+      <div className="w-10 h-10">
+        <img
+          src={minder.featuredImage}
+          className="w-full h-full aspect-square object-cover rounded-md"
+        />
+      </div>
+      <div>
+        <mark className="bg-transparent font-semibold ">
+          {minder.musicName}
+        </mark>
+        {" - "}
+        <mark className="bg-transparent font-semibold ">
+          {minder.musicType}
+        </mark>
+      </div>
     </Link>
   );
 };
 
-SearchContent.displayName = "SearchContent";
+// SearchContent.displayName = "SearchContent";
 
-export default SearchBlogs;
+export default SearchMusic;
