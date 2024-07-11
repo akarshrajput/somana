@@ -1,5 +1,6 @@
 import { Roboto_Slab } from "next/font/google";
 import React from "react";
+import HomePageNavigation from "../homePageComponents/HomePageNavigation";
 
 const robotoSlab = Roboto_Slab({
   subsets: ["latin"],
@@ -9,8 +10,7 @@ const robotoSlab = Roboto_Slab({
 const Hero = () => {
   return (
     <div className="px-4">
-      <h1>Welcome to Somana space</h1>
-      <p>Deployment 4 : in development</p>
+      <HomePageNavigation />
     </div>
   );
 };

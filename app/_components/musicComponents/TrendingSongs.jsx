@@ -13,7 +13,7 @@ const TrendingSongs = async ({ hostname }) => {
     <div>
       <div>
         <p className="text-sm p-2 font-medium flex items-center gap-2">
-          <TrendUp weight="bold" className="size-4" /> Trending
+          <TrendUp weight="bold" className="size-4" /> Trending music
         </p>
       </div>
       <div className="grid grid-cols-8 gap-2">
