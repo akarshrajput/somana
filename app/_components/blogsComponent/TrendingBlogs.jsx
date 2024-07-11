@@ -9,7 +9,7 @@ import React from "react";
 const hostname = process.env.HOSTNAME;
 
 const TrendingBlogs = async () => {
-  const res = await fetch(`${hostname}/api/v1/blogs?limit=5`, {
+  const res = await fetch(`${hostname}/api/v1/blogs?limit=8`, {
     cache: "no-store",
   });
   const data = await res.json();

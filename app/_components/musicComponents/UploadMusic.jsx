@@ -62,12 +62,6 @@ const UploadMusic = ({ supabaseURL, session, hostname }) => {
         author: session.user.userId,
       };
 
-      const response = await axios.post(`/api/v1/music`, musicData, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
       const avatarImage = featuredImage;
       await supabase.storage
         .from("audio-track-images")
@@ -77,6 +71,12 @@ const UploadMusic = ({ supabaseURL, session, hostname }) => {
       await supabase.storage
         .from("audio-tracks")
         .upload(audioName, avatarAudio);
+
+      const response = await axios.post(`/api/v1/music`, musicData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       // const slug = response?.data?.data?.newBlog?.slug;
       toast.success("Music Uploaded Success!");

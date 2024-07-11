@@ -2,7 +2,7 @@ import React from "react";
 
 const CurrentUserProfile = ({ session }) => {
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col">
       <div className="flex flex-col items-center text-sm gap-2 bg-stone-50 border rounded-md p-10">
         <img
           src={session.user.image}
