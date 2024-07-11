@@ -21,10 +21,13 @@ const musicSchema = new mongoose.Schema(
     releaseDate: {
       type: Date,
     },
-    artist: {
+    author: {
       type: mongoose.Schema.ObjectId,
       ref: "User",
-      required: [true, "Blog must have an author"],
+      required: [true, "Music must have an author"],
+    },
+    album: {
+      type: String,
     },
     credits: {
       type: String,

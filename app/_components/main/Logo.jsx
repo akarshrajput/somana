@@ -5,7 +5,7 @@ import React from "react";
 const Logo = () => {
   return (
     <div>
-      <Link className="animate-pulse" href="/">
+      <Link href="/">
         <img src="/somana.png" className="h-12" />
       </Link>
     </div>

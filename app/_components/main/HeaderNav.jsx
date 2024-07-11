@@ -1,4 +1,5 @@
 import { auth } from "@/app/_lib/auth";
+import { Lock } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import React from "react";
 
@@ -26,11 +27,9 @@ const HeaderNav = async () => {
         </div>
       )}
       {session ? (
-        <Link href="/me">
-          <img
-            src={session?.user?.image}
-            className="size-8 rounded-full border border-stone-800"
-          />
+        <Link href="/me" className="flex items-center gap-2">
+          <Lock weight="bold" className="size-5" />
+          <img src={session?.user?.image} className="size-9 rounded-full" />
         </Link>
       ) : (
         ""

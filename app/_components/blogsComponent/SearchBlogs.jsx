@@ -52,8 +52,8 @@ const SearchBlogs = ({ hostname }) => {
       <div className="flex items-center gap-1 rounded-lg dark:bg-stone-800 px-1 dark:border-stone-600 bg-stone-100 w-96  border  pl-2">
         <MagnifyingGlass weight="bold" className="size-5 text-stone-500" />
         <input
-          className="py-2 px-2 placeholder-stone-500 w-full dark:bg-stone-800 bg-stone-100  outline-none"
-          placeholder="Search here for blogs..."
+          className="py-2 px-2   placeholder-stone-500 w-full dark:bg-stone-800 bg-stone-100  outline-none"
+          placeholder="Search"
           onFocus={() => setShowSearchContent(true)}
           value={input}
           onChange={(e) => setInput(e.target.value)}
@@ -83,7 +83,7 @@ const SearchContent = React.forwardRef(
       <div
         onClick={handleClick}
         ref={ref}
-        className="absolute overflow-scroll max-h-80 top-full left-0 w-96 dark:bg-stone-800 bg-stone-50 p-1 mt-1 border dark:border-stone-600 border-gray-300 rounded-md shadow-md"
+        className="absolute text-stone-600 overflow-scroll max-h-80 top-full left-0 w-96 dark:bg-stone-800 bg-stone-50 p-1 mt-1 border dark:border-stone-600 border-gray-300 rounded-md shadow-md"
       >
         {loading ? (
           <LoaderSmall />

@@ -2,22 +2,31 @@ import React from "react";
 import BaseButton from "../buttons/BaseButton";
 import { Pen, Star } from "@phosphor-icons/react/dist/ssr";
 import SearchBlogs from "./SearchBlogs";
+import SpecialButton from "../buttons/SpecialButton";
 const hostname = process.env.HOSTNAME;
 
 const BlogsNavigation = () => {
   return (
-    <div className="flex items-center gap-2">
-      <SearchBlogs hostname={hostname} />
-      <div className="ml-auto flex items-center gap-2">
-        <BaseButton href="/blogs/write">
-          <Pen />
-          Write Blog
-        </BaseButton>
-        <BaseButton>
-          <Star weight="fill" className="text-violet-500" />
-          Use Minder AI
-        </BaseButton>
+    <div className="grid grid-cols-3 gap-2 items-center">
+      <div>
+        <div className="ml-auto flex items-center gap-2">
+          <SpecialButton
+            className="bg-stone-800 text-stone-50"
+            href="/blogs/write"
+          >
+            <Pen weight="bold" />
+            Write Blog
+          </SpecialButton>
+          <SpecialButton className="bg-violet-700 text-stone-50">
+            <Star weight="fill" />
+            Use Minder AI
+          </SpecialButton>
+        </div>
       </div>
+      <div className="flex flex-col items-center">
+        <SearchBlogs hostname={hostname} />
+      </div>
+      <div></div>
     </div>
   );
 };

@@ -120,7 +120,7 @@ const WriteBlog = ({ supabaseURL, session, hostname }) => {
         ""
       )}
       <form
-        className="rounded-md overflow-hidden border-2 border-black"
+        className="rounded-md p-4 overflow-hidden border-2 bg-stone-100 border-stone-300 flex flex-col gap-4"
         onSubmit={handleSubmit}
       >
         <div className="flex items-center gap-2 px-2 py-1">
@@ -129,7 +129,7 @@ const WriteBlog = ({ supabaseURL, session, hostname }) => {
             value={heading}
             onChange={handleHeadingChange}
             placeholder="Write heading"
-            className="border py-0.5 px-2 outline-none rounded-md w-full"
+            className="border border-stone-300  bg-stone-200 placeholder-stone-600 py-1 px-2 outline-none rounded-md w-full"
           />
         </div>
         <div className="flex items-center gap-2 px-2 py-1">
@@ -138,7 +138,7 @@ const WriteBlog = ({ supabaseURL, session, hostname }) => {
             value={description}
             onChange={handleDescriptionChange}
             placeholder="Write description"
-            className="border py-0.5 px-2 outline-none resize-none rounded-md w-full"
+            className="border border-stone-300  bg-stone-200 placeholder-stone-600 py-1 px-2 outline-none rounded-md w-full"
           />
         </div>
         <div className="flex items-center gap-4 px-2 py-1">
@@ -155,7 +155,7 @@ const WriteBlog = ({ supabaseURL, session, hostname }) => {
               value={tags}
               onChange={handleTagsChange}
               placeholder="Write heading"
-              className="border py-0.5 px-2 outline-none rounded-md"
+              className="border border-stone-300  bg-stone-200 placeholder-stone-600  py-1 px-2 outline-none rounded-md"
             />
           </div>
           <div className="flex items-center gap-2">
@@ -164,14 +164,14 @@ const WriteBlog = ({ supabaseURL, session, hostname }) => {
               value={genre}
               onChange={handleGenreChange}
               placeholder="Write heading"
-              className="border py-0.5 px-2 outline-none rounded-md"
+              className="border border-stone-300  bg-stone-200 placeholder-stone-600  py-1 px-2 outline-none rounded-md"
             />
           </div>
         </div>
         <p className="py-0.5 px-2">Write Blog content:</p>
         <QuillEditor value={content} onChange={handleContentChange} />
 
-        <div className="p-1 px-2">
+        <div className="py-1">
           <button
             disabled={isLoading}
             className="bg-emerald-600 text-stone-50 flex items-center gap-1 py-1 px-2 rounded-md"
