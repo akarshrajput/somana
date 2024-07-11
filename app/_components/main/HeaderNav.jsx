@@ -28,7 +28,7 @@ const HeaderNav = async () => {
       )}
       {session ? (
         <Link href="/me" className="flex items-center gap-2">
-          <Lock weight="bold" className="size-5" />
+          {/* <Lock weight="bold" className="size-5" /> */}
           <img src={session?.user?.image} className="size-9 rounded-full" />
         </Link>
       ) : (
