@@ -11,7 +11,7 @@ const TrendingSongs = async ({ hostname }) => {
   return (
     <div className="grid grid-cols-8 gap-2">
       {tracks.map((track) => (
-        <Music track={track} />
+        <Music track={track} key={track._id} />
       ))}
     </div>
   );
