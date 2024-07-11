@@ -48,7 +48,7 @@ const SearchBlogs = ({ hostname }) => {
   }, [input]);
 
   return (
-    <div className="flex z-50 flex-col relative">
+    <div className="flex z-5 flex-col relative">
       <div className="flex items-center gap-1 rounded-lg dark:bg-stone-800 px-1 dark:border-stone-600 bg-stone-100 w-96  border  pl-2">
         <MagnifyingGlass weight="bold" className="size-5 text-stone-500" />
         <input
@@ -83,7 +83,7 @@ const SearchContent = React.forwardRef(
       <div
         onClick={handleClick}
         ref={ref}
-        className="absolute text-stone-600 overflow-scroll max-h-80 top-full left-0 w-96 dark:bg-stone-800 bg-stone-50 p-1 mt-1 border dark:border-stone-600 border-gray-300 rounded-md shadow-md"
+        className="absolute text-sm text-stone-600 overflow-scroll max-h-80 top-full left-0 w-96 dark:bg-stone-800 bg-stone-50 p-1 mt-1 border dark:border-stone-600 border-gray-300 rounded-md shadow-md"
       >
         {loading ? (
           <LoaderSmall />

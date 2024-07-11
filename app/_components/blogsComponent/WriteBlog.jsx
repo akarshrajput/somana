@@ -13,7 +13,7 @@ const WriteBlog = ({ supabaseURL, session, hostname }) => {
   const [description, setDescription] = useState("");
   const [content, setContent] = useState("");
   const [tags, setTags] = useState("");
-  const [genre, setGenre] = useState("");
+  const [genre, setGenre] = useState("Blog");
   const [featuredImage, setFeaturedImage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -160,12 +160,66 @@ const WriteBlog = ({ supabaseURL, session, hostname }) => {
           </div>
           <div className="flex items-center gap-2">
             <label>Genre: </label>
-            <input
+            <select
+              className="border border-stone-300 bg-stone-200 placeholder-stone-600 outline-none py-1 px-2 w-64 rounded-md"
               value={genre}
-              onChange={handleGenreChange}
-              placeholder="Write heading"
-              className="border border-stone-300  bg-stone-200 placeholder-stone-600  py-1 px-2 outline-none rounded-md"
-            />
+              onChange={(e) => setGenre(e.target.value)}
+            >
+              <option value="Blog">Blog</option>
+              <option value="Art & Design">Art & Design</option>
+              <option value="Automotive">Automotive</option>
+              <option value="Beauty">Beauty</option>
+              <option value="Books & Literature">Books & Literature</option>
+              <option value="Business">Business</option>
+              <option value="Career">Career</option>
+              <option value="Cryptocurrency">Cryptocurrency</option>
+              <option value="Culture">Culture</option>
+              <option value="DIY & Crafts">DIY & Crafts</option>
+              <option value="Education">Education</option>
+              <option value="Entertainment">Entertainment</option>
+              <option value="Environmental">Environmental</option>
+              <option value="Fashion">Fashion</option>
+              <option value="Finance">Finance</option>
+              <option value="Fitness">Fitness</option>
+              <option value="Food">Food</option>
+              <option value="Gaming">Gaming</option>
+              <option value="Gardening">Gardening</option>
+              <option value="Health">Health</option>
+              <option value="History">History</option>
+              <option value="Hobbies & Interests">Hobbies & Interests</option>
+              <option value="Home Improvement">Home Improvement</option>
+              <option value="Humor">Humor</option>
+              <option value="Investing">Investing</option>
+              <option value="Legal">Legal</option>
+              <option value="Lifestyle">Lifestyle</option>
+              <option value="Luxury">Luxury</option>
+              <option value="Marketing">Marketing</option>
+              <option value="Mental Health">Mental Health</option>
+              <option value="Movies">Movies</option>
+              <option value="Music">Music</option>
+              <option value="News & Current Events">
+                News & Current Events
+              </option>
+              <option value="Nonprofit">Nonprofit</option>
+              <option value="Parenting">Parenting</option>
+              <option value="Personal Development">Personal Development</option>
+              <option value="Pets">Pets</option>
+              <option value="Photography">Photography</option>
+              <option value="Politics">Politics</option>
+              <option value="Real Estate">Real Estate</option>
+              <option value="Relationships">Relationships</option>
+              <option value="Science">Science</option>
+              <option value="Shopping">Shopping</option>
+              <option value="Social Media">Social Media</option>
+              <option value="Spirituality">Spirituality</option>
+              <option value="Sports">Sports</option>
+              <option value="Startups">Startups</option>
+              <option value="Story">Story</option>
+              <option value="Technology">Technology</option>
+              <option value="Travel">Travel</option>
+              <option value="Volunteer">Volunteer</option>
+              <option value="Writing">Writing</option>
+            </select>
           </div>
         </div>
         <p className="py-0.5 px-2">Write Blog content:</p>
