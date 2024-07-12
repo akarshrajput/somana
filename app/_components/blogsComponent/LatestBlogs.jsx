@@ -24,41 +24,42 @@ const LatestBlogs = async () => {
       </div>
 
       <div className="grid grid-cols-3  gap-2">
-        {blogs.map((blog) => (
-          <BlogComponent blog={blog} key={blog._id} />
+        {blogs.map((blog, index) => (
+          <BlogComponent index={index + 1} blog={blog} key={blog._id} />
         ))}
       </div>
     </div>
   );
 };
 
-const BlogComponent = ({ blog }) => {
+const BlogComponent = ({ blog, index }) => {
   const heading = blog.heading.substring(0, 100);
-  const description = blog.description.substring(0, 150);
+  const description = blog.description.substring(0, 100);
   return (
-    <Link href={`/blogs/${blog.slug}`} className="p-2">
-      <div className="flex items-center gap-1 text-sm">
-        <img
-          src={blog.author.photo}
-          alt={`${blog.author.name} profile photo`}
-          className="rounded-full size-4"
-        />
-        <p>{blog.author.name}</p>
-        <UserCircleCheck className="text-rose-600" weight="fill" />
-        {/* <div className="ml-auto flex items-center gap-1">
-          <p className="bg-stone-100 text-sm border  py-0.5 px-1 rounded-md">
-            {blog.readTime} min
-          </p>
-          <p className="bg-stone-100 border text-sm  py-0.5 px-1 rounded-md">
-            June 26
-          </p>
-        </div> */}
-        <div className="ml-2">
-          <p className="font-medium text-sm text-emerald-600">{blog.genre}</p>
-        </div>
+    <Link href={`/blogs/${blog.slug}`} className="p-2 flex gap-4 items-center">
+      <div>
+        <p className="text-4xl font-bold text-stone-300">{index}</p>
       </div>
-      <div className="font-medium">{heading}.</div>
-      <div className="text-sm">{description} ...</div>
+      <div>
+        <div className="flex items-center gap-1 text-sm">
+          <img
+            src={blog.author.photo}
+            alt={`${blog.author.name} profile photo`}
+            className="rounded-full size-4"
+          />
+          <p>{blog.author.name}</p>
+          {blog.author.verified ? (
+            <UserCircleCheck className="text-rose-600" weight="fill" />
+          ) : (
+            ""
+          )}
+          <div className="ml-2">
+            <p className="font-medium text-sm text-emerald-600">{blog.genre}</p>
+          </div>
+        </div>
+        <div className="font-medium">{heading}.</div>
+        <div className="text-sm">{description} ...</div>
+      </div>
     </Link>
   );
 };

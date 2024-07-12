@@ -13,9 +13,7 @@ const TrendingBlogs = async () => {
     cache: "no-store",
   });
   const data = await res.json();
-  // console.log(data);
   const blogs = data.data.blogs;
-  // console.log(blogs);
   return (
     <div>
       <div>
@@ -33,7 +31,7 @@ const TrendingBlogs = async () => {
 };
 
 const BlogComponent = ({ blog }) => {
-  const heading = blog.heading.substring(0, 60);
+  const heading = blog.heading.substring(0, 70);
   const description = blog.description.substring(0, 100);
   return (
     <Link href={`/blogs/${blog.slug}`} className="flex flex-col gap-1 pl-2 p-1">
@@ -41,23 +39,32 @@ const BlogComponent = ({ blog }) => {
         <img
           src={blog.author.photo}
           alt={`${blog.author.name} profile photo`}
-          className="rounded-full size-4"
+          className="rounded-full aspect-square w-5"
         />
         <p>{blog.author.name}</p>
-        <UserCircleCheck className="text-rose-600" weight="fill" />
+        {blog.author.verified ? (
+          <UserCircleCheck className="text-rose-600" weight="fill" />
+        ) : (
+          ""
+        )}
+        <p className="text-sm font-medium text-emerald-700 mx-1">
+          {blog.genre}
+        </p>
         <div className="ml-auto flex items-center gap-1">
-          <p className="bg-stone-100 text-sm border  py-0.5 px-1 rounded-md">
+          <p className="bg-stone-100 text-sm border py-0.5 px-1 rounded-md">
             {blog.readTime} min
           </p>
-          <p className="bg-stone-100 border text-sm  py-0.5 px-1 rounded-md">
+          <p className="bg-stone-100 border text-sm py-0.5 px-1 rounded-md">
             June 26
           </p>
         </div>
       </div>
-      <p className="text-sm font-medium text-emerald-700">{blog.genre}</p>
 
       <div className="leading-5 antialiased">
-        <p className="font-medium">{heading} ...</p>
+        <p className="font-medium h-10 overflow-hidden text-ellipsis">
+          {heading}
+          {heading.length < blog.heading.length ? "..." : ""}
+        </p>
       </div>
 
       <div className="flex justify-center w-full overflow-hidden h-48">
