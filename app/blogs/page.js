@@ -3,6 +3,8 @@ import BlogsNavigation from "../_components/blogsComponent/BlogsNavigation";
 import TrendingBlogs from "../_components/blogsComponent/TrendingBlogs";
 import BlogOfTheWeek from "../_components/blogsComponent/BlogOfTheWeek";
 import LatestBlogs from "../_components/blogsComponent/LatestBlogs";
+import CommonBlogs from "../_components/blogsComponent/CommonBlogs";
+import { Heartbeat, TrendUp } from "@phosphor-icons/react/dist/ssr";
 
 const page = () => {
   return (
@@ -16,7 +18,12 @@ const page = () => {
           <LatestBlogs />
         </div>
       </div>
-      <TrendingBlogs />
+      <div className="flex flex-col gap-2">
+        <TrendingBlogs />
+        <CommonBlogs genre="Health">
+          <Heartbeat weight="bold" />
+        </CommonBlogs>
+      </div>
     </div>
   );
 };

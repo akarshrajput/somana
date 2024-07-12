@@ -1,6 +1,6 @@
 "use client";
 import supabase from "@/app/_lib/supabase";
-import { Upload } from "@phosphor-icons/react/dist/ssr";
+import { Info, Upload } from "@phosphor-icons/react/dist/ssr";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import LoaderSmall from "../main/LoaderSmall";
@@ -102,7 +102,7 @@ const UploadMusic = ({ supabaseURL, session, hostname }) => {
     <div>
       <form
         onSubmit={handleSubmit}
-        className="rounded-md flex flex-col gap-2 p-4 overflow-hidden border-2 bg-stone-100 border-stone-300"
+        className="rounded-md flex flex-col gap-4 p-4 overflow-hidden border-2 bg-stone-100 border-stone-300"
       >
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-1">
@@ -187,6 +187,14 @@ const UploadMusic = ({ supabaseURL, session, hostname }) => {
             />
           </div>
         </div>
+        {isLoading ? (
+          <p className="flex text-sm my-2 items-center gap-1 text-yellow-600">
+            <Info /> Please do not close window while posting
+          </p>
+        ) : (
+          ""
+        )}
+
         <button
           disabled={isLoading}
           className="bg-emerald-600 w-fit text-stone-50 flex items-center gap-1 py-1 px-2 rounded-md"

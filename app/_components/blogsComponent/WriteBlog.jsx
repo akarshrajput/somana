@@ -112,13 +112,6 @@ const WriteBlog = ({ supabaseURL, session, hostname }) => {
 
   return (
     <div>
-      {isLoading ? (
-        <p className="flex text-sm my-2 items-center gap-1 text-yellow-600">
-          <Info /> Please do not close window while posting
-        </p>
-      ) : (
-        ""
-      )}
       <form
         className="rounded-md p-4 overflow-hidden border-2 bg-stone-100 border-stone-300 flex flex-col gap-4"
         onSubmit={handleSubmit}
@@ -226,6 +219,14 @@ const WriteBlog = ({ supabaseURL, session, hostname }) => {
         <QuillEditor value={content} onChange={handleContentChange} />
 
         <div className="py-1">
+          {isLoading ? (
+            <p className="flex text-sm my-2 items-center gap-1 text-yellow-600">
+              <Info /> Please do not close window while posting
+            </p>
+          ) : (
+            ""
+          )}
+
           <button
             disabled={isLoading}
             className="bg-emerald-600 text-stone-50 flex items-center gap-1 py-1 px-2 rounded-md"
@@ -241,13 +242,6 @@ const WriteBlog = ({ supabaseURL, session, hostname }) => {
           </button>
         </div>
       </form>
-      {isLoading ? (
-        <p className="flex text-sm my-2 items-center gap-1 text-yellow-600">
-          <Info /> Please do not close window while posting
-        </p>
-      ) : (
-        ""
-      )}
     </div>
   );
 };

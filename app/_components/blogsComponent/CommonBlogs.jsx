@@ -7,9 +7,8 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 const hostname = process.env.HOSTNAME;
-
-const TrendingBlogs = async () => {
-  const res = await fetch(`${hostname}/api/v1/blogs?limit=4`, {
+const CommonBlogs = async ({ children, genre }) => {
+  const res = await fetch(`${hostname}/api/v1/blogs?genre=${genre}&limit=4`, {
     cache: "no-store",
   });
   const data = await res.json();
@@ -18,7 +17,7 @@ const TrendingBlogs = async () => {
     <div>
       <div>
         <p className="text-sm font-medium mb-2 flex items-center gap-2">
-          <TrendUp weight="bold" /> Trending
+          {children} {genre}
         </p>
       </div>
       <div className="grid grid-cols-4 gap-4">
@@ -81,4 +80,4 @@ const BlogComponent = ({ blog }) => {
   );
 };
 
-export default TrendingBlogs;
+export default CommonBlogs;
