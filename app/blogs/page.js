@@ -8,6 +8,7 @@ import {
   Crown,
   FlagBannerFold,
   Heartbeat,
+  Robot,
   TrendUp,
 } from "@phosphor-icons/react/dist/ssr";
 import CommonSpecialBlogs from "../_components/blogsComponent/CommonSpecialBlogs";
@@ -29,17 +30,32 @@ const page = () => {
       </div>
       <div className="flex flex-col gap-2">
         <TrendingBlogs />
+      </div>
+      <div className="grid grid-cols-3 gap-2 gap-x-4 my-4">
+        <div className="col-span-2">
+          <CommonSpecialBlogs genre="Space" />
+        </div>
+        <CommonTrendBlog genre="Space">
+          <FlagBannerFold className="text-red-600" weight="fill" />
+        </CommonTrendBlog>
+      </div>
+      <div className="flex flex-col gap-2">
         <CommonBlogs genre="Health">
           <Heartbeat weight="bold" />
         </CommonBlogs>
       </div>
       <div className="grid grid-cols-3 gap-2 gap-x-4 my-4">
-        <div className="col-span-2">
-          <CommonSpecialBlogs genre="History" />
-        </div>
         <CommonTrendBlog genre="History">
           <FlagBannerFold className="text-red-600" weight="fill" />
         </CommonTrendBlog>
+        <div className="col-span-2">
+          <CommonSpecialBlogs genre="History" />
+        </div>
+      </div>
+      <div className="flex flex-col gap-2">
+        <CommonBlogs genre="Technology">
+          <Robot weight="bold" />
+        </CommonBlogs>
       </div>
     </div>
   );

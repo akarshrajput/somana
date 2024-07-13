@@ -19,7 +19,7 @@ const TrendingBlogs = async () => {
     <div>
       <div>
         <p className="text-sm font-medium mb-2 flex items-center gap-2">
-          <TrendUp weight="bold" /> Trending
+          <TrendUp weight="bold" /> Latest
         </p>
       </div>
       <div className="grid grid-cols-4 gap-4">

@@ -6,11 +6,11 @@ import {
 import Link from "next/link";
 import React from "react";
 
-const CommonTrendBlog = async ({ children }) => {
+const CommonTrendBlog = async ({ children, genre }) => {
   const hostname = process.env.HOSTNAME;
-  const genre = "History";
+
   const res = await fetch(
-    `${hostname}/api/v1/blogs?sort=-views&sort=-createdAt&limit=1&genre=${genre}`,
+    `${hostname}/api/v1/blogs?sort=-views&limit=1&genre=${genre}`,
     {
       cache: "no-store",
     }
