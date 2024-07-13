@@ -58,6 +58,7 @@ const WriteBlog = ({ supabaseURL, session, hostname }) => {
           "Content-Type": "application/json",
         },
       });
+      // console.log(response);
 
       const avatarFile = featuredImage;
       await supabase.storage
@@ -190,9 +191,7 @@ const WriteBlog = ({ supabaseURL, session, hostname }) => {
               <option value="Mental Health">Mental Health</option>
               <option value="Movies">Movies</option>
               <option value="Music">Music</option>
-              <option value="News & Current Events">
-                News & Current Events
-              </option>
+              <option value="News">News & Current Events</option>
               <option value="Nonprofit">Nonprofit</option>
               <option value="Parenting">Parenting</option>
               <option value="Personal Development">Personal Development</option>
@@ -204,6 +203,7 @@ const WriteBlog = ({ supabaseURL, session, hostname }) => {
               <option value="Science">Science</option>
               <option value="Shopping">Shopping</option>
               <option value="Social Media">Social Media</option>
+              <option value="Space">Space</option>
               <option value="Spirituality">Spirituality</option>
               <option value="Sports">Sports</option>
               <option value="Startups">Startups</option>

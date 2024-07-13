@@ -54,6 +54,12 @@ const blogSchema = new mongoose.Schema(
       minlength: [3, "Source must have more than 3 characters."],
       maxlength: [100, "Source must have less than 100 characters."],
     },
+    views: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: "User",
+      },
+    ],
     author: {
       type: mongoose.Schema.ObjectId,
       ref: "User",
@@ -89,6 +95,10 @@ blogSchema.virtual("readTime").get(function () {
   const words = this.content ? this.content.split(/\s+/).length : 0;
   const readTimeMinutes = Math.ceil(words / wordsPerMinute);
   return readTimeMinutes;
+});
+
+blogSchema.virtual("numberOfViews").get(function () {
+  return this.views.length;
 });
 
 const Blog = mongoose.models.Blog || mongoose.model("Blog", blogSchema);

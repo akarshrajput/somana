@@ -1,25 +1,20 @@
-import {
-  AirplaneTaxiing,
-  City,
-  ShieldChevron,
-  UserCircleCheck,
-} from "@phosphor-icons/react/dist/ssr";
+import { BookOpen, UserCircleCheck } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import React from "react";
 const hostname = process.env.HOSTNAME;
 
-const LatestBlogs = async () => {
-  const res = await fetch(`${hostname}/api/v1/blogs?limit=6`, {
+const CommonSpecialBlogs = async ({ genre }) => {
+  const res = await fetch(`${hostname}/api/v1/blogs?limit=6&genre=${genre}`, {
     cache: "no-store",
   });
   const data = await res.json();
   const blogs = data.data.blogs;
+  // console.log(blogs);
   return (
     <div>
       <div>
         <p className="text-sm mb-2 px-2 font-medium flex items-center gap-2">
-          <City weight="fill" className="text-orange-600 size-4" /> Latest on
-          earth
+          <BookOpen weight="fill" className="size-4" /> Latest on {genre}
         </p>
       </div>
 
@@ -64,4 +59,4 @@ const BlogComponent = ({ blog, index }) => {
   );
 };
 
-export default LatestBlogs;
+export default CommonSpecialBlogs;

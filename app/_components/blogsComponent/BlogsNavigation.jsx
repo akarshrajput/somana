@@ -11,16 +11,16 @@ const BlogsNavigation = () => {
       <div>
         <div className="ml-auto flex items-center gap-2">
           <SpecialButton
-            className="bg-stone-800 text-stone-50"
+            className="bg-green-700 text-stone-50"
             href="/blogs/write"
           >
             <Pen weight="bold" />
             Write Blog
           </SpecialButton>
-          <SpecialButton className="bg-violet-700 text-stone-50">
+          {/* <SpecialButton className="bg-indigo-600 text-stone-50">
             <Star weight="fill" />
             Use Minder AI
-          </SpecialButton>
+          </SpecialButton> */}
         </div>
       </div>
       <div className="flex flex-col items-center">

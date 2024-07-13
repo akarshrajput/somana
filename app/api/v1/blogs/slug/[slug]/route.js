@@ -5,10 +5,20 @@ import { NextResponse } from "next/server";
 export async function GET(request) {
   try {
     await connectMongoDB();
-    const slug = request.url.split("blogs/slug/")[1];
+    const url = new URL(request.url);
+    const slug = url.pathname.split("blogs/slug/")[1];
+    const userId = url.searchParams.get("userId");
 
     const blog = await Blog.findOne({ slug: slug });
     if (blog) {
+      // Check if the user ID is already in the views array
+      if (userId) {
+        if (!blog.views.includes(userId)) {
+          blog.views.push(userId);
+          await blog.save();
+        }
+      }
+
       return NextResponse.json(
         {
           status: "success",
@@ -28,7 +38,7 @@ export async function GET(request) {
     }
   } catch (err) {
     return NextResponse.json(
-      { statusText: "error", message: "Internal Server Error" },
+      { status: "error", message: "Internal Server Error" },
       { status: 500 }
     );
   }

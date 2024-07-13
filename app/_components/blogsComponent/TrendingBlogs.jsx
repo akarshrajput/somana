@@ -14,6 +14,7 @@ const TrendingBlogs = async () => {
   });
   const data = await res.json();
   const blogs = data.data.blogs;
+  // console.log(blogs);
   return (
     <div>
       <div>
@@ -52,8 +53,11 @@ const BlogComponent = ({ blog }) => {
         </p>
         <div className="ml-auto flex items-center gap-1">
           <p className="bg-stone-100 text-sm border py-0.5 px-1 rounded-md">
-            {blog.readTime} min
+            {blog.numberOfViews} views
           </p>
+          {/* <p className="bg-stone-100 text-sm border py-0.5 px-1 rounded-md">
+            {blog.readTime} min
+          </p> */}
           <p className="bg-stone-100 border text-sm py-0.5 px-1 rounded-md">
             June 26
           </p>

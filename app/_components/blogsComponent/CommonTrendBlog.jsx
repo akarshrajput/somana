@@ -6,10 +6,11 @@ import {
 import Link from "next/link";
 import React from "react";
 
-const BlogOfTheWeek = async () => {
+const CommonTrendBlog = async ({ children }) => {
   const hostname = process.env.HOSTNAME;
+  const genre = "History";
   const res = await fetch(
-    `${hostname}/api/v1/blogs?sort=-views&sort=-createdAt&limit=1`,
+    `${hostname}/api/v1/blogs?sort=-views&sort=-createdAt&limit=1&genre=${genre}`,
     {
       cache: "no-store",
     }
@@ -19,8 +20,8 @@ const BlogOfTheWeek = async () => {
   return (
     <Link href={`/blogs/${blog.slug}`} className="flex flex-col gap-1">
       <div className="flex items-center gap-2">
-        <Crown className="text-yellow-600" weight="fill" />
-        <p className="text-sm font-medium">Blog of the week</p>
+        <div> {children}</div>
+        <p className="text-sm font-medium">On {genre}</p>
       </div>
       <div className="flex items-center gap-2">
         <img className="size-5 rounded-full" src={blog.author.photo} />
@@ -59,4 +60,4 @@ const BlogOfTheWeek = async () => {
   );
 };
 
-export default BlogOfTheWeek;
+export default CommonTrendBlog;

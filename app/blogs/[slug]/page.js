@@ -1,3 +1,4 @@
+import { auth } from "@/app/_lib/auth";
 import { UserCircleCheck } from "@phosphor-icons/react/dist/ssr";
 import { Roboto_Slab } from "next/font/google";
 
@@ -11,7 +12,17 @@ const robotoSlab = Roboto_Slab({
 });
 
 const page = async ({ params }) => {
-  const res = await fetch(`${hostname}/api/v1/blogs/slug/${params.slug}`);
+  let session = await auth();
+  let userId;
+  if (session == null) {
+    userId = "";
+  } else {
+    userId = session.user.userId;
+  }
+  // const userId = session.user.userId;
+  const res = await fetch(
+    `${hostname}/api/v1/blogs/slug/${params.slug}?userId=${userId}`
+  );
   const data = await res.json();
   const blog = await data.data;
   //   console.log(blog);
