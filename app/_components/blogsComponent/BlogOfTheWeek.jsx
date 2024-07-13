@@ -9,7 +9,7 @@ import React from "react";
 const BlogOfTheWeek = async () => {
   const hostname = process.env.HOSTNAME;
   const res = await fetch(
-    `${hostname}/api/v1/blogs?sort=-views&sort=-createdAt&limit=1`,
+    `${hostname}/api/v1/blogs?sort=views&sort=-createdAt&limit=1`,
     {
       cache: "no-store",
     }
