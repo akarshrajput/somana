@@ -52,10 +52,10 @@ const SearchMusic = ({ hostname }) => {
 
   return (
     <div className="flex z-5 flex-col relative">
-      <div className="flex items-center gap-1 rounded-lg dark:bg-stone-800 px-1 dark:border-stone-600 bg-stone-100 w-96  border  pl-2">
+      <div className="flex items-center gap-1 rounded-lg  bg-stone-100 w-80  border  pl-2">
         <MagnifyingGlass weight="bold" className="size-5 text-stone-500" />
         <input
-          className="py-2 px-2   placeholder-stone-500 w-full dark:bg-stone-800 bg-stone-100  outline-none"
+          className="py-2 px-2   placeholder-stone-500 w-full  bg-stone-100  outline-none"
           placeholder="Search"
           onFocus={() => setShowSearchContent(true)}
           value={input}
@@ -86,7 +86,7 @@ const SearchContent = React.forwardRef(
       <div
         onClick={handleClick}
         ref={ref}
-        className="absolute text-sm text-stone-600 overflow-scroll max-h-80 top-full left-0 w-96 dark:bg-stone-800 bg-stone-50 p-1 mt-1 border dark:border-stone-600 border-gray-300 rounded-md shadow-md"
+        className="absolute text-sm text-stone-600 overflow-scroll max-h-80 top-full left-0 w-80  bg-stone-50 p-1 mt-1 border  border-gray-300 rounded-md shadow-md"
       >
         {loading ? (
           <LoaderSmall />
@@ -122,7 +122,7 @@ const SearchItem = ({ minder }) => {
   //   const heading = minder.heading.substring(0, 50);
   return (
     <Link
-      className="flex gap-2 items-center bg-gray-100 dark:bg-stone-700 dark:hover:bg-stone-600  hover:bg-gray-200 py-1 px-2 rounded-md"
+      className="flex gap-2 items-center bg-gray-100   hover:bg-gray-200 py-1 px-2 rounded-md"
       href={`/music/${minder._id}`}
     >
       <div className="w-10 h-10">

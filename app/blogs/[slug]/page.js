@@ -1,3 +1,4 @@
+import Footer from "@/app/_components/main/Footer";
 import { auth } from "@/app/_lib/auth";
 import { UserCircleCheck } from "@phosphor-icons/react/dist/ssr";
 import { Roboto_Slab } from "next/font/google";
@@ -35,49 +36,57 @@ const page = async ({ params }) => {
   const year = String(dateObj.getFullYear());
 
   return (
-    <div className="px-40 py-2">
-      <div className="">
-        <p className="text-stone-500 text-lg font-bold">{blog.genre}</p>
-        <div className="my-8 border-l-8 border-stone-600 pl-2 font-medium">
-          <p className="text-7xl leading-tight text-stone-600">
-            {blog.heading}
-          </p>
+    <>
+      <div className="px-40 py-2">
+        <div className="">
+          <p className="text-stone-500 text-lg font-bold">{blog.genre}</p>
+          <div className="my-8 border-l-8 border-stone-600 pl-2 font-medium">
+            <p className="text-7xl leading-tight text-stone-600">
+              {blog.heading}
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <img
+              className="size-7 rounded-full"
+              src={blog?.author?.photo}
+              alt={`${blog.author.name} profile image of Somana`}
+            />
+            <p>{blog.author.name}</p>
+            <p>
+              {blog.author.verified ? (
+                <UserCircleCheck weight="fill" className="size-5" />
+              ) : (
+                ""
+              )}
+            </p>
+            <p className="bg-stone-50 border py-0.5 px-2 rounded-md">
+              {blog.numberOfViews} views
+            </p>
+            <p className="bg-stone-50 border py-0.5 px-2 rounded-md">
+              {blog.readTime} min read
+            </p>
+            <p className="bg-stone-50 border py-0.5 px-2 rounded-md">
+              {day}-{month}-{year}
+            </p>
+          </div>
+          <div className="mt-4">
+            <img src={blog.featuredImage} className="w-full rounded-lg" />
+          </div>
+          <div>
+            <p className="my-4 border-l-4 border-stone-600 pl-2">
+              {blog.description}
+            </p>
+          </div>
+          <div
+            className={`content-custom-class px-60 leading-relaxed mt-10 tracking-wide text-stone-700 antialiased text-xl mb-10 ${robotoSlab.className}`}
+            dangerouslySetInnerHTML={{ __html: contentWithLineBreaks }}
+          ></div>
         </div>
-        <div className="flex items-center gap-2">
-          <img
-            className="size-7 rounded-full"
-            src={blog?.author?.photo}
-            alt={`${blog.author.name} profile image of Somana`}
-          />
-          <p>{blog.author.name}</p>
-          <p>
-            {blog.author.verified ? (
-              <UserCircleCheck weight="fill" className="size-5" />
-            ) : (
-              ""
-            )}
-          </p>
-          <p className="bg-stone-50 border py-0.5 px-2 rounded-md">
-            {blog.readTime} min read
-          </p>
-          <p className="bg-stone-50 border py-0.5 px-2 rounded-md">
-            {day}-{month}-{year}
-          </p>
-        </div>
-        <div className="mt-4">
-          <img src={blog.featuredImage} className="w-full rounded-lg" />
-        </div>
-        <div>
-          <p className="my-4 border-l-4 border-stone-600 pl-2">
-            {blog.description}
-          </p>
-        </div>
-        <div
-          className={`px-36 tracking-wide text-stone-700 antialiased text-xl mb-10 ${robotoSlab.className}`}
-          dangerouslySetInnerHTML={{ __html: contentWithLineBreaks }}
-        ></div>
       </div>
-    </div>
+      <div>
+        <Footer />
+      </div>
+    </>
   );
 };
 
