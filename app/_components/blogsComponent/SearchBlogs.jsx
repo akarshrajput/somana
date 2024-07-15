@@ -32,7 +32,9 @@ const SearchBlogs = ({ hostname }) => {
       if (input.trim()) {
         setLoading(true);
         try {
-          const res = await fetch(`${hostname}/api/v1/blogs?heading=${input}`);
+          const res = await fetch(
+            `${hostname}/api/v1/blogs?heading=${input}&limit=10`
+          );
           const data = await res.json();
           setMinders(data?.data?.blogs || []);
         } catch (error) {
@@ -50,7 +52,7 @@ const SearchBlogs = ({ hostname }) => {
   return (
     <div className="flex z-5 flex-col relative">
       <div className="flex text-stone-50 items-center gap-1 rounded-lg  px-1  bg-stone-800 w-80  border border-stone-700 pl-2">
-        <MagnifyingGlass weight="bold" className="size-5 text-stone-50" />
+        {/* <MagnifyingGlass weight="bold" className="size-5 text-stone-50" /> */}
         <input
           className="py-2 px-2   placeholder-stone-500 w-full  bg-stone-800  outline-none"
           placeholder="Search"

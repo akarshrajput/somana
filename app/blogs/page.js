@@ -19,45 +19,47 @@ import Footer from "../_components/main/Footer";
 const page = () => {
   return (
     <>
-      <div className="px-4 mt-2">
-        <div className="mb-6">
+      <div className="px-4 mt-4">
+        <div className="mb-2">
           <BlogsNavigation />
         </div>
-        <div className="grid text-stone-50 grid-cols-3 gap-2 gap-x-4 my-4">
-          <BlogOfTheWeek />
+        <div className="flex flex-col gap-6">
+          <div className="grid text-stone-50 grid-cols-3 gap-2 gap-x-4 my-4">
+            <BlogOfTheWeek />
 
-          <div className="col-span-2">
-            <CommonSpecialBlogs genre="Story" />
+            <div className="col-span-2">
+              <CommonSpecialBlogs genre="Story" />
+            </div>
           </div>
-        </div>
-        <div className="flex text-stone-50 flex-col gap-2">
-          <TrendingBlogs />
-        </div>
-        <div className="grid text-stone-50 grid-cols-3 gap-2 gap-x-4 my-4">
-          <div className="col-span-2">
-            <CommonSpecialBlogs genre="Space" />
+          <div className="flex text-stone-50 flex-col gap-2">
+            <TrendingBlogs />
           </div>
-          <CommonTrendBlog genre="Space">
-            <FlagBannerFold className="text-red-600" weight="fill" />
-          </CommonTrendBlog>
-        </div>
-        <div className="flex flex-col gap-2 text-stone-50">
-          <CommonBlogs genre="Health">
-            <Heartbeat weight="bold" />
-          </CommonBlogs>
-        </div>
-        <div className="grid grid-cols-3 gap-2 text-stone-50 gap-x-4 my-4">
-          <CommonTrendBlog genre="History">
-            <FlagBannerFold className="text-red-600" weight="fill" />
-          </CommonTrendBlog>
-          <div className="col-span-2">
-            <CommonSpecialBlogs genre="History" />
+          <div className="grid text-stone-50 grid-cols-3 gap-2 gap-x-4 my-4">
+            <div className="col-span-2">
+              <CommonSpecialBlogs genre="Space" />
+            </div>
+            <CommonTrendBlog genre="Space">
+              <FlagBannerFold className="text-red-600" weight="fill" />
+            </CommonTrendBlog>
           </div>
-        </div>
-        <div className="flex text-stone-50 flex-col gap-2">
-          <CommonBlogs genre="Technology">
-            <Robot weight="bold" />
-          </CommonBlogs>
+          <div className="flex flex-col gap-2 text-stone-50">
+            <CommonBlogs genre="Health">
+              <Heartbeat weight="bold" />
+            </CommonBlogs>
+          </div>
+          <div className="grid grid-cols-3 gap-2 text-stone-50 gap-x-4 my-4">
+            <CommonTrendBlog genre="History">
+              <FlagBannerFold className="text-red-600" weight="fill" />
+            </CommonTrendBlog>
+            <div className="col-span-2">
+              <CommonSpecialBlogs genre="History" />
+            </div>
+          </div>
+          <div className="flex text-stone-50 flex-col gap-2">
+            <CommonBlogs genre="Technology">
+              <Robot weight="bold" />
+            </CommonBlogs>
+          </div>
         </div>
       </div>
       <Footer />

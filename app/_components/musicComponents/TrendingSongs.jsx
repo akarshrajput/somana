@@ -12,8 +12,8 @@ const TrendingSongs = async ({ hostname }) => {
   return (
     <div>
       <div>
-        <p className="text-sm p-2 font-medium flex items-center gap-2">
-          <TrendUp weight="bold" className="size-4" /> Trending music
+        <p className="p-2 font-medium flex items-center gap-2">
+          <TrendUp weight="bold" /> Trending music
         </p>
       </div>
       <div className="grid grid-cols-8 gap-2">
@@ -29,7 +29,7 @@ const Music = ({ track }) => {
   const name = track.musicName.substring(0, 34);
   return (
     <Link href={`/music/${track._id}`}>
-      <div className="border flex flex-col gap-1 p-2 rounded-lg overflow-hidden">
+      <div className="border border-stone-700 bg-stone-800 flex flex-col gap-1 p-2 rounded-lg overflow-hidden">
         <div className="overflow-hidden">
           <img
             className="aspect-square rounded-md object-cover"
@@ -37,13 +37,15 @@ const Music = ({ track }) => {
           />
         </div>
         <div className="px-1">
-          <p className="font-bold">
+          <p className="font-semibold">
             {name} {name.length < track.musicName.length ? "..." : ""}
           </p>
 
           <div className="flex items-center gap-1">
             <p className="font-medium text-sm">{track.musicType} | </p>
-            <p className="font-bold text-sm text-stone-500">{track.credits}</p>
+            <p className="font-semibold text-sm text-stone-400">
+              {track.credits}
+            </p>
           </div>
         </div>
       </div>

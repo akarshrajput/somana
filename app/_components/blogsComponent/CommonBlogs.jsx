@@ -16,7 +16,7 @@ const CommonBlogs = async ({ children, genre }) => {
   return (
     <div>
       <div>
-        <p className="text-sm font-medium mb-2 flex items-center gap-2">
+        <p className="font-medium mb-2 flex items-center gap-2">
           {children} {genre}
         </p>
       </div>
