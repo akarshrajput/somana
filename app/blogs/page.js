@@ -23,17 +23,17 @@ const page = () => {
         <div className="mb-6">
           <BlogsNavigation />
         </div>
-        <div className="grid grid-cols-3 gap-2 gap-x-4 my-4">
+        <div className="grid text-stone-50 grid-cols-3 gap-2 gap-x-4 my-4">
           <BlogOfTheWeek />
 
           <div className="col-span-2">
             <CommonSpecialBlogs genre="Story" />
           </div>
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex text-stone-50 flex-col gap-2">
           <TrendingBlogs />
         </div>
-        <div className="grid grid-cols-3 gap-2 gap-x-4 my-4">
+        <div className="grid text-stone-50 grid-cols-3 gap-2 gap-x-4 my-4">
           <div className="col-span-2">
             <CommonSpecialBlogs genre="Space" />
           </div>
@@ -41,12 +41,12 @@ const page = () => {
             <FlagBannerFold className="text-red-600" weight="fill" />
           </CommonTrendBlog>
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 text-stone-50">
           <CommonBlogs genre="Health">
             <Heartbeat weight="bold" />
           </CommonBlogs>
         </div>
-        <div className="grid grid-cols-3 gap-2 gap-x-4 my-4">
+        <div className="grid grid-cols-3 gap-2 text-stone-50 gap-x-4 my-4">
           <CommonTrendBlog genre="History">
             <FlagBannerFold className="text-red-600" weight="fill" />
           </CommonTrendBlog>
@@ -54,7 +54,7 @@ const page = () => {
             <CommonSpecialBlogs genre="History" />
           </div>
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex text-stone-50 flex-col gap-2">
           <CommonBlogs genre="Technology">
             <Robot weight="bold" />
           </CommonBlogs>

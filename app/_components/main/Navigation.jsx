@@ -12,23 +12,38 @@ import {
 const Navigation = () => {
   return (
     <div className="flex items-center gap-4">
-      <BaseButton href="/blogs">
+      <BaseButton
+        className="text-stone-50 ease-in duration-300 hover:scale-125  bg-stone-700"
+        href="/blogs"
+      >
         Blogs
         <Butterfly />
       </BaseButton>
-      <BaseButton href="/music">
+      <BaseButton
+        className="text-stone-50 ease-in duration-300 hover:scale-125  bg-stone-700"
+        href="/music"
+      >
         Music
         <Headphones className="size-4" />
       </BaseButton>
-      <BaseButton href="/movies">
+      <BaseButton
+        className="text-stone-50 ease-in duration-300 hover:scale-125  bg-stone-700"
+        href="/movies"
+      >
         Movies
         <Popcorn />
       </BaseButton>
-      <BaseButton href="/podcasts">
+      <BaseButton
+        className="text-stone-50 ease-in duration-300 hover:scale-125  bg-stone-700"
+        href="/podcasts"
+      >
         Podcasts
         <ApplePodcastsLogo />
       </BaseButton>
-      <BaseButton href="/news">
+      <BaseButton
+        className="text-stone-50 ease-in duration-300 hover:scale-125  bg-stone-700"
+        href="/news"
+      >
         News
         <Monitor />
       </BaseButton>

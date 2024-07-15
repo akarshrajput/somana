@@ -16,12 +16,12 @@ const BlogOfTheWeek = async () => {
   return (
     <Link href={`/blogs/${blog.slug}`} className="flex flex-col gap-1">
       <div className="flex items-center gap-2">
-        <Crown className="text-yellow-600" weight="fill" />
-        <p className="text-sm font-medium">Blog of the week</p>
+        <Crown className="text-yellow-600 size-5" weight="fill" />
+        <p className="font-medium">Blog of the week</p>
       </div>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 mt-4">
         <img className="size-5 rounded-full" src={blog.author.photo} />
-        <p className="text-sm">{blog.author.name}</p>
+        <p className="text-sm font-medium">{blog.author.name}</p>
         <p>
           {blog.author.verified ? (
             <UserCircleCheck weight="fill" className="size-4 text-rose-600" />
@@ -30,18 +30,16 @@ const BlogOfTheWeek = async () => {
           )}
         </p>
         <div className="ml-auto flex items-center gap-1">
-          <p className="bg-stone-100 text-sm border  py-0.5 px-1 rounded-md">
+          <p className="text-sm font-medium py-0.5 px-1 rounded-md">
             {blog.numberOfViews} views
           </p>
-          <p className="bg-stone-100 text-sm border  py-0.5 px-1 rounded-md">
+          <p className="text-sm font-medium py-0.5 px-1 rounded-md">
             {blog.readTime} min
           </p>
-          <p className="bg-stone-100 border text-sm  py-0.5 px-1 rounded-md">
-            June 26
-          </p>
+          <p className="text-sm font-medium py-0.5 px-1 rounded-md">June 26</p>
         </div>
       </div>
-      <p className="font-medium">{blog.heading}</p>
+      <p className="font-medium text-lg">{blog.heading}</p>
       <div className="relative rounded-md overflow-hidden flex justify-center w-full h-64">
         <img
           src={blog.featuredImage}

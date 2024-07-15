@@ -15,16 +15,18 @@ export default async function Home() {
 
   return (
     <>
-      <div className="px-4 mt-2 flex flex-col gap-4">
-        <div className="grid grid-cols-3 gap-2 gap-x-4 my-4">
+      <div className="flex flex-col gap-4">
+        <div className="grid grid-cols-3 gap-2 gap-x-4 my-4 bg-stone-950 text-stone-50 px-4 py-4">
           <div className="col-span-2">
             <CommonSpecialBlogs genre="Space" />
           </div>
           <CommonTrendBlog genre="Space">
-            <Planet className="text-stone-800" weight="fill" />
+            <Planet className="text-stone-50" weight="fill" />
           </CommonTrendBlog>
         </div>
-        <TrendingSongs hostname={hostname} />
+        <div className="bg-stone-50 p-4">
+          <TrendingSongs hostname={hostname} />
+        </div>
         {/* <HomePageNavigation /> */}
       </div>
       <Footer />

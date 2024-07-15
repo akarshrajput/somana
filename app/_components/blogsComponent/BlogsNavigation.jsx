@@ -9,7 +9,7 @@ const BlogsNavigation = () => {
   return (
     <div className="grid grid-cols-3 gap-2 items-center">
       <div>
-        <div className="ml-auto font-medium flex items-center gap-2">
+        <div className="ml-auto flex items-center gap-2">
           <SpecialButton
             className="bg-green-600 text-stone-50"
             href="/blogs/write"

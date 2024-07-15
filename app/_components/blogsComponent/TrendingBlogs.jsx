@@ -18,7 +18,7 @@ const TrendingBlogs = async () => {
   return (
     <div>
       <div>
-        <p className="text-sm font-medium mb-2 flex items-center gap-2">
+        <p className="font-medium mb-2 flex items-center gap-2">
           <TrendUp weight="bold" /> Latest
         </p>
       </div>
@@ -35,37 +35,35 @@ const BlogComponent = ({ blog }) => {
   const heading = blog.heading.substring(0, 70);
   const description = blog.description.substring(0, 100);
   return (
-    <Link href={`/blogs/${blog.slug}`} className="flex flex-col gap-1">
+    <Link href={`/blogs/${blog.slug}`} className="flex flex-col gap-2">
       <div className="flex items-center gap-1 text-sm">
         <img
           src={blog.author.photo}
           alt={`${blog.author.name} profile photo`}
           className="rounded-full aspect-square w-5"
         />
-        <p>{blog.author.name}</p>
+        <p className="font-medium">{blog.author.name}</p>
         {blog.author.verified ? (
           <UserCircleCheck className="text-rose-600" weight="fill" />
         ) : (
           ""
         )}
-        <p className="text-sm font-medium text-emerald-700 mx-1">
-          {blog.genre}
-        </p>
+        <p className="text-sm font-medium text-cyan-500 mx-1">{blog.genre}</p>
         <div className="ml-auto flex items-center gap-1">
-          <p className="bg-stone-100 text-sm border py-0.5 px-1 rounded-md">
+          <p className="text-sm font-medium py-0.5 px-1 ml-auto rounded-md">
             {blog.numberOfViews} views
           </p>
           {/* <p className="bg-stone-100 text-sm border py-0.5 px-1 rounded-md">
             {blog.readTime} min
           </p> */}
-          <p className="bg-stone-100 border text-sm py-0.5 px-1 rounded-md">
+          <p className="text-sm font-medium py-0.5 px-1 ml-auto rounded-md">
             June 26
           </p>
         </div>
       </div>
 
       <div className="leading-5 antialiased">
-        <p className="font-medium h-10 overflow-hidden text-ellipsis">
+        <p className="font-semibold h-10 overflow-hidden text-ellipsis">
           {heading}
           {heading.length < blog.heading.length ? "..." : ""}
         </p>
