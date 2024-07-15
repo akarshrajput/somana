@@ -37,8 +37,8 @@ const page = async ({ params }) => {
 
   return (
     <>
-      <div className="px-40 py-6">
-        <div className="">
+      <div className="flex justify-center py-6">
+        <div className="w-4/6">
           <p className="text-stone-50 text-xl font-bold">{blog.genre}</p>
           <div className="my-8 border-l-8 border-stone-50 pl-6 font-medium">
             <p className={`text-7xl leading-tight text-stone-50`}>
