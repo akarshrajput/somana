@@ -11,7 +11,7 @@ const BlogsNavigation = () => {
       <div>
         <div className="ml-auto flex items-center gap-2">
           <SpecialButton
-            className="bg-green-600 text-stone-50"
+            className="bg-stone-100 text-stone-800"
             href="/blogs/write"
           >
             <Pen weight="bold" />

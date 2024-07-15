@@ -6,19 +6,19 @@ import { signInAction } from "../_lib/actions";
 const page = () => {
   return (
     <div className="flex flex-col items-center">
-      <div className="flex gap-4 mt-10 flex-col items-center border p-10 bg-stone-50 rounded-md">
-        <h2 className="font-bold flex items-center gap-2">
+      <div className="flex gap-4 mt-10 flex-col items-center border border-stone-600 p-10 text-stone-50 bg-stone-800 rounded-md">
+        <h2 className="font-bold flex items-center gap-2 mb-4">
           <Lock weight="bold" className="text-emerald-600" /> Login to Somana
         </h2>
 
-        <div className="flex flex-col items-center gap-2">
+        <div className="flex flex-col items-center gap-4">
           <form action={signInAction}>
-            <button className="flex items-center gap-2 bg-stone-100 py-2 px-20 rounded-md border">
+            <button className="flex items-center font-medium gap-2 bg-stone-700 py-2 px-20 rounded-md border border-stone-600">
               <GoogleLogo weight="bold" />
               Login using Google
             </button>
           </form>
-          <button className="flex items-center gap-2 bg-stone-100 py-2 px-20 rounded-md border">
+          <button className="flex items-center font-medium gap-2 bg-stone-700 py-2 px-20 rounded-md border border-stone-600">
             <GithubLogo weight="bold" />
             Login using GitHub
           </button>
