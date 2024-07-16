@@ -26,7 +26,8 @@ const AudioPlayer = ({ audioFile }) => {
   const wavesurfer = useRef(null);
 
   const [playing, setPlaying] = useState(false);
-  const [volume, setVolume] = useState(0.5);
+  const [volume, setVolume] = useState(1);
+  const [previousVolume, setPreviousVolume] = useState(1);
   const [muted, setMuted] = useState(false);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
@@ -41,6 +42,8 @@ const AudioPlayer = ({ audioFile }) => {
 
       wavesurfer.current.on("ready", () => {
         setDuration(wavesurfer.current.getDuration());
+        wavesurfer.current.play();
+        setPlaying(true);
       });
 
       wavesurfer.current.on("audioprocess", () => {
@@ -55,7 +58,12 @@ const AudioPlayer = ({ audioFile }) => {
       wavesurfer.current.setVolume(volume);
     }
 
-    return;
+    return () => {
+      if (wavesurfer.current) {
+        wavesurfer.current.destroy();
+        wavesurfer.current = null;
+      }
+    };
   }, [audioFile]);
 
   const handlePlayPause = () => {
@@ -74,14 +82,25 @@ const AudioPlayer = ({ audioFile }) => {
   };
 
   const handleMute = () => {
-    setMuted(!muted);
     if (wavesurfer.current) {
-      wavesurfer.current.toggleMute();
+      if (muted) {
+        wavesurfer.current.setVolume(previousVolume);
+      } else {
+        setPreviousVolume(volume);
+        wavesurfer.current.setVolume(0);
+      }
+      setMuted(!muted);
     }
   };
 
+  const formatTime = (time) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+  };
+
   return (
-    <div className=" text-stone-200 rounded-lg w-full">
+    <div className="text-stone-200 rounded-lg w-full">
       <div ref={waveformRef} className="w-full" />
       <div className="flex items-center justify-between mt-4">
         <button
@@ -103,15 +122,15 @@ const AudioPlayer = ({ audioFile }) => {
           />
           <button
             onClick={handleMute}
-            className="bg-stone-800 hover:bg-stone-700  font-bold py-2 px-4 rounded"
+            className="bg-stone-800 hover:bg-stone-700 font-bold py-2 px-4 rounded"
           >
             {muted ? <SpeakerX weight="fill" /> : <SpeakerHigh weight="fill" />}
           </button>
         </div>
       </div>
       <div className="flex mt-4 text-sm">
-        <div>{currentTime.toFixed(2)}</div>
-        <div className="ml-auto">{duration.toFixed(2)}</div>
+        <div>{formatTime(currentTime)}</div>
+        <div className="ml-auto">{formatTime(duration)}</div>
       </div>
     </div>
   );
