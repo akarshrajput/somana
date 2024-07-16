@@ -1,7 +1,7 @@
 import { GithubLogo, GoogleLogo, Lock } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import React from "react";
-import { signInAction } from "../_lib/actions";
+import { signInAction, signInGithub } from "../_lib/actions";
 
 const page = () => {
   return (
@@ -18,10 +18,12 @@ const page = () => {
               Login using Google
             </button>
           </form>
-          <button className="flex items-center font-medium gap-2 bg-stone-700 py-2 px-20 rounded-md border border-stone-600">
-            <GithubLogo weight="bold" />
-            Login using GitHub
-          </button>
+          <form action={signInGithub}>
+            <button className="flex items-center font-medium gap-2 bg-stone-700 py-2 px-20 rounded-md border border-stone-600">
+              <GithubLogo weight="bold" />
+              Login using GitHub
+            </button>
+          </form>
         </div>
       </div>
     </div>
