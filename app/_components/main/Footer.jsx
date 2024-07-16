@@ -4,7 +4,7 @@ import LinkButton from "../buttons/LinkButton";
 
 const Footer = () => {
   return (
-    <div className="text-sm text-stone-50 mt-20 px-4 py-4 flex flex-col gap-2 items-center justify-center">
+    <div className="text-sm text-stone-200 mt-20 px-4 py-4 flex flex-col gap-2 items-center justify-center">
       {/* <div className="flex flex-col">
         <div>
           <img className="h-12" src="/somana.png" />
@@ -25,12 +25,12 @@ const Footer = () => {
       </div>
       <div className="flex flex-wrap items-center gap-6">
         {/* <h2>Address : Phagwara, Punjab, LPU, BH1</h2> */}
-        <p className="hover:underline hover:text-blue-500">
+        <p className="hover:underline hover:text-blue-400">
           <a href="mailto:akarshrajput.01@gmail.com">
             akarshrajput.01@gmail.com
           </a>
         </p>
-        <p className="hover:underline hover:text-blue-500">
+        <p className="hover:underline hover:text-blue-400">
           <a href="tel:+916395714331">+916395714331</a>
         </p>
       </div>

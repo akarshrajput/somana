@@ -44,12 +44,12 @@ const BlogComponent = ({ blog, index }) => {
           />
           <p className="font-medium">{blog.author.name}</p>
           {blog.author.verified ? (
-            <UserCircleCheck className="text-stone-50" weight="fill" />
+            <UserCircleCheck className="text-blue-500" weight="fill" />
           ) : (
             ""
           )}
           <div className="">
-            <p className="font-medium text-sm text-cyan-500">{blog.genre}</p>
+            <p className="font-medium text-sm text-blue-400">{blog.genre}</p>
           </div>
           <div className="text-sm font-medium py-0.5 px-1 ml-auto rounded-md">
             {blog.numberOfViews} views

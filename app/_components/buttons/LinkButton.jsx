@@ -5,7 +5,7 @@ const LinkButton = ({ href = "", children }) => {
   return (
     <Link
       href={href}
-      className="flex hover:underline hover:text-blue-600 text-sm w-fit items-center gap-1 px-2"
+      className="flex hover:underline hover:text-blue-400 text-sm w-fit items-center gap-1 px-2"
     >
       {children}
     </Link>

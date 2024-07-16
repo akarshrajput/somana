@@ -1,6 +1,6 @@
 import React from "react";
 import BaseButton from "../buttons/BaseButton";
-import { Pen, Star } from "@phosphor-icons/react/dist/ssr";
+import { Pen, Sparkle, Star } from "@phosphor-icons/react/dist/ssr";
 import SearchBlogs from "./SearchBlogs";
 import SpecialButton from "../buttons/SpecialButton";
 const hostname = process.env.HOSTNAME;
@@ -11,11 +11,15 @@ const BlogsNavigation = () => {
       <div>
         <div className="ml-auto flex items-center gap-2">
           <SpecialButton
-            className="bg-stone-100 text-stone-800"
+            className="bg-stone-200 text-stone-800"
             href="/blogs/write"
           >
             <Pen weight="bold" />
             Write Blog
+          </SpecialButton>
+          <SpecialButton className="bg-blue-600 text-stone-100" href="">
+            <Sparkle weight="bold" />
+            Somana AI
           </SpecialButton>
           {/* <SpecialButton className="bg-indigo-600 text-stone-50">
             <Star weight="fill" />

@@ -28,7 +28,7 @@ const CommonTrendBlog = async ({ children, genre }) => {
         <p className="text-sm font-medium">{blog.author.name}</p>
         <p>
           {blog.author.verified ? (
-            <UserCircleCheck weight="fill" className="size-4 text-stone-50" />
+            <UserCircleCheck weight="fill" className="size-4 text-blue-500" />
           ) : (
             ""
           )}

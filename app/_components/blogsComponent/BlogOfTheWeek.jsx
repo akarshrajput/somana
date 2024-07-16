@@ -24,7 +24,7 @@ const BlogOfTheWeek = async () => {
         <p className="text-sm font-medium">{blog.author.name}</p>
         <p>
           {blog.author.verified ? (
-            <UserCircleCheck weight="fill" className="size-4 text-rose-600" />
+            <UserCircleCheck weight="fill" className="size-4 text-blue-400" />
           ) : (
             ""
           )}
