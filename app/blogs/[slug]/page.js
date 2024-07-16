@@ -77,7 +77,7 @@ const Page = async ({ params }) => {
     <>
       <div className="flex justify-center py-6">
         <div>
-          <div className="px-10">
+          <div className="px-40">
             <p className="text-stone-200 text-xl font-bold">{blog.genre}</p>
             <div className="my-8 border-l-8 border-stone-200 pl-6 font-medium">
               <p className={`text-7xl leading-tight text-stone-200`}>
@@ -85,7 +85,7 @@ const Page = async ({ params }) => {
               </p>
             </div>
           </div>
-          <div className="flex px-10 text-stone-200 items-center gap-2">
+          <div className="flex px-40 text-stone-200 items-center gap-2">
             <img
               className="size-7 rounded-full"
               src={blog?.author?.photo}
@@ -99,7 +99,7 @@ const Page = async ({ params }) => {
                 ""
               )}
             </p>
-            <div className="ml-auto flex items-center gap-1">
+            <div className="flex items-center gap-1">
               <p className="font-medium py-0.5 px-2 rounded-md">
                 {blog.numberOfViews} views
               </p>
@@ -114,7 +114,7 @@ const Page = async ({ params }) => {
           <div className="mt-4">
             <img src={blog.featuredImage} className="w-full" />
           </div>
-          <div className="px-10">
+          <div className="px-40">
             <p className="my-4 border-l-4 border-stone-200 text-stone-200 pl-2">
               {blog.description}
             </p>

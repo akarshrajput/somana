@@ -6,8 +6,11 @@
   border-radius: 10px;
 }
 .content-custom-class a {
-  color: #06b6d4 !important;
+  color: #22c55e !important;
   background-color: transparent !important;
+}
+.content-custom-class a:hover {
+  text-decoration: underline;
 }
 body {
   background-color: #0c0a09;
