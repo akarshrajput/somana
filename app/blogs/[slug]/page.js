@@ -2,9 +2,10 @@ import Footer from "@/app/_components/main/Footer";
 import { auth } from "@/app/_lib/auth";
 import { UserCircleCheck } from "@phosphor-icons/react/dist/ssr";
 import { Roboto_Slab } from "next/font/google";
-
 import Image from "next/image";
 import React from "react";
+import { notFound } from "next/navigation";
+
 const hostname = process.env.HOSTNAME;
 
 const robotoSlab = Roboto_Slab({
@@ -12,27 +13,64 @@ const robotoSlab = Roboto_Slab({
   display: "swap",
 });
 
-const page = async ({ params }) => {
-  let session = await auth();
-  let userId;
-  if (session == null) {
-    userId = "";
-  } else {
-    userId = session.user.userId;
-  }
-  // const userId = session.user.userId;
+const fetchBlogData = async (slug, userId) => {
   const res = await fetch(
-    `${hostname}/api/v1/blogs/slug/${params.slug}?userId=${userId}`
+    `${hostname}/api/v1/blogs/slug/${slug}?userId=${userId}`
   );
+  if (!res.ok) {
+    return null;
+  }
   const data = await res.json();
-  const blog = await data.data;
-  //   console.log(blog);
+  return data.data;
+};
+
+export async function generateMetadata({ params }) {
+  const session = await auth();
+  let userId = session ? session.user.userId : "";
+
+  const blog = await fetchBlogData(params.slug, userId);
+
+  if (!blog) {
+    return {
+      title: "Not Found",
+      description: "The blog post you are looking for does not exist.",
+    };
+  }
+
+  return {
+    title: `${blog.heading} - My Blog`,
+    description: blog.description,
+    openGraph: {
+      title: blog.heading,
+      description: blog.description,
+      images: [blog.featuredImage],
+      url: `${hostname}/blog/${params.slug}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: blog.heading,
+      description: blog.description,
+      image: blog.featuredImage,
+    },
+  };
+}
+
+const Page = async ({ params }) => {
+  const session = await auth();
+  let userId = session ? session.user.userId : "";
+
+  const blog = await fetchBlogData(params.slug, userId);
+
+  if (!blog) {
+    notFound();
+  }
+
   const contentWithLineBreaks = blog.content;
 
   const dateString = blog.createdAt;
   const dateObj = new Date(dateString);
   const day = String(dateObj.getDate()).padStart(2, "0");
-  const month = String(dateObj.getMonth() + 1).padStart(2, "0"); // getMonth() is zero-based, so add 1
+  const month = String(dateObj.getMonth() + 1).padStart(2, "0");
   const year = String(dateObj.getFullYear());
 
   return (
@@ -94,4 +132,4 @@ const page = async ({ params }) => {
   );
 };
 
-export default page;
+export default Page;
