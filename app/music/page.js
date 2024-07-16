@@ -2,6 +2,7 @@ import React from "react";
 import MusicNavigation from "../_components/musicComponents/MusicNavigation";
 import TrendingSongs from "../_components/musicComponents/TrendingSongs";
 import FunkSongs from "../_components/musicComponents/FunkSongs";
+import CommonRelatedSongs from "../_components/musicComponents/CommonRelatedSongs";
 const hostname = process.env.HOSTNAME;
 const page = () => {
   return (

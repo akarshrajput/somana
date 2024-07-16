@@ -2,10 +2,13 @@ import { MusicNote } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import React from "react";
 
-const FunkSongs = async ({ hostname }) => {
-  const res = await fetch(`${hostname}/api/v1/music?limit=8&musicType=Funk`, {
-    cache: "no-store",
-  });
+const CommonRelatedSongs = async ({ hostname, musicType }) => {
+  const res = await fetch(
+    `${hostname}/api/v1/music?limit=8&musicType=${musicType}`,
+    {
+      cache: "no-store",
+    }
+  );
   const data = await res.json();
   const tracks = data.data.tracks;
 
@@ -13,7 +16,7 @@ const FunkSongs = async ({ hostname }) => {
     <div>
       <div>
         <p className="text-sm p-2  font-medium flex items-center gap-2">
-          <MusicNote weight="bold" className="size-4" /> Funk Songs
+          <MusicNote weight="bold" className="size-4" /> Related Songs
         </p>
       </div>
       <div className="grid  grid-cols-8 gap-2">
@@ -51,4 +54,4 @@ const Music = ({ track }) => {
   );
 };
 
-export default FunkSongs;
+export default CommonRelatedSongs;

@@ -26,7 +26,7 @@ const TrendingSongs = async ({ hostname }) => {
 };
 
 const Music = ({ track }) => {
-  const name = track.musicName.substring(0, 34);
+  const name = track.musicName.substring(0, 20);
   return (
     <Link href={`/music/${track._id}`}>
       <div className="border border-stone-700 bg-stone-800 flex flex-col gap-1 p-2 rounded-lg overflow-hidden">

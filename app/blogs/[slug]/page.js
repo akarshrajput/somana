@@ -39,13 +39,13 @@ const page = async ({ params }) => {
     <>
       <div className="flex justify-center py-6">
         <div className="w-4/6">
-          <p className="text-stone-50 text-xl font-bold">{blog.genre}</p>
-          <div className="my-8 border-l-8 border-stone-50 pl-6 font-medium">
-            <p className={`text-7xl leading-tight text-stone-50`}>
+          <p className="text-stone-200 text-xl font-bold">{blog.genre}</p>
+          <div className="my-8 border-l-8 border-stone-200 pl-6 font-medium">
+            <p className={`text-7xl leading-tight text-stone-200`}>
               {blog.heading}
             </p>
           </div>
-          <div className="flex text-stone-50 items-center gap-2">
+          <div className="flex text-stone-200 items-center gap-2">
             <img
               className="size-7 rounded-full"
               src={blog?.author?.photo}
@@ -75,13 +75,13 @@ const page = async ({ params }) => {
             <img src={blog.featuredImage} className="w-full rounded-md" />
           </div>
           <div>
-            <p className="my-4 border-l-4 border-stone-50 text-stone-50 pl-2">
+            <p className="my-4 border-l-4 border-stone-200 text-stone-200 pl-2">
               {blog.description}
             </p>
           </div>
           <div className="flex justify-center">
             <div
-              className={`content-custom-class w-4/6 leading-relaxed mt-10 tracking-wide text-stone-50 antialiased text-xl mb-10 `}
+              className={`content-custom-class w-4/6 leading-relaxed mt-10 tracking-wide text-stone-200 antialiased text-xl mb-10 `}
               dangerouslySetInnerHTML={{ __html: contentWithLineBreaks }}
             ></div>
           </div>
