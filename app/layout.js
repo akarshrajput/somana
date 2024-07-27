@@ -67,7 +67,7 @@ export default async function RootLayout({ children }) {
           <Toaster position="bottom-right" reverseOrder={false} />
           <div className={`${rubik.className}`}>
             {/* <div className="sticky top-0 z-10"> */}
-            <div className="sticky bg-white top-0 z-10">
+            <div className="lg:sticky bg-white top-0 z-10">
               <Header />
             </div>
             {children}

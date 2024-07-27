@@ -6,14 +6,21 @@ import Navigation from "./Navigation";
 const Header = () => {
   return (
     <div className="flex dark:bg-stone-900 flex-col px-4 py-4">
-      <div className="grid grid-cols-3">
+      <div className="grid lg:grid-cols-3 grid-cols-2">
         <div className="w-fit">
           <Logo />
         </div>
-        <div className="self-center justify-self-center ">
+        <div className="lg:block hidden self-center justify-self-center ">
           <Navigation />
         </div>
-        <HeaderNav />
+        <div className="ml-auto">
+          <HeaderNav />
+        </div>
+        <div className="col-span-2">
+          <div className="lg:hidden w-full flex justify-center mt-4">
+            <Navigation />
+          </div>
+        </div>
       </div>
     </div>
   );

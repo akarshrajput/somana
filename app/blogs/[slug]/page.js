@@ -75,35 +75,29 @@ const Page = async ({ params }) => {
 
   return (
     <>
-      <div className="flex justify-center py-6">
-        <div>
-          <div className="px-40">
+      <div className="flex justify-center py-6 px-4 lg:px-0">
+        <div className="w-full max-w-8xl">
+          <div className="lg:px-40">
             <p className="dark:text-stone-200 text-stone-500 text-xl font-bold">
               {blog.genre}
             </p>
             <div className="my-8 border-l-8 border-stone-700 dark:border-stone-200 pl-6 font-medium">
-              <p
-                className={`text-7xl leading-tight text-stone-700 dark:text-stone-200`}
-              >
+              <p className="text-4xl md:text-5xl lg:text-7xl leading-tight text-stone-700 dark:text-stone-200">
                 {blog.heading}
               </p>
             </div>
           </div>
-          <div className="flex px-40 dark:text-stone-200 text-stone-700 items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2 lg:px-40 dark:text-stone-200 text-stone-700">
             <img
-              className="size-7 rounded-full"
+              className="size-8 rounded-full"
               src={blog?.author?.photo}
-              alt={`${blog.author.name} profile image of Somana`}
+              alt={`${blog.author.name} profile image`}
             />
             <p className="font-medium">{blog.author.name}</p>
-            <p>
-              {blog.author.verified ? (
-                <UserCircleCheck weight="fill" className="size-5" />
-              ) : (
-                ""
-              )}
-            </p>
-            <div className="flex items-center gap-1">
+            {blog.author.verified && (
+              <UserCircleCheck weight="fill" className="w-5 h-5" />
+            )}
+            <div className="flex flex-wrap items-center gap-1">
               <p className="font-medium py-0.5 px-2 rounded-md">
                 {blog.numberOfViews} views
               </p>
@@ -116,24 +110,22 @@ const Page = async ({ params }) => {
             </div>
           </div>
           <div className="mt-4">
-            <img src={blog.featuredImage} className="w-full" />
+            <img src={blog.featuredImage} className="w-full rounded-lg" />
           </div>
-          <div className="px-40">
+          <div className="lg:px-40">
             <p className="my-4 border-l-4 border-stone-700 dark:border-stone-200 text-stone-700 dark:text-stone-200 pl-2">
               {blog.description}
             </p>
           </div>
           <div className="flex justify-center">
             <div
-              className={`content-custom-class w-3/6 leading-relaxed mt-10 tracking-wide text-stone-700 dark:text-stone-200 antialiased text-xl mb-10 `}
+              className="content-custom-class w-full lg:w-3/6 leading-relaxed mt-10 tracking-wide text-stone-700 dark:text-stone-200 antialiased text-xl mb-10"
               dangerouslySetInnerHTML={{ __html: contentWithLineBreaks }}
             ></div>
           </div>
         </div>
       </div>
-      <div>
-        <Footer />
-      </div>
+      <Footer />
     </>
   );
 };

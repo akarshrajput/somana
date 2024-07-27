@@ -17,28 +17,25 @@ const CommonTrendBlog = async ({ children, genre }) => {
   );
   const data = await res.json();
   const blog = data.data.blogs[0];
+
   return (
     <Link href={`/blogs/${blog.slug}`} className="flex flex-col gap-1">
       <div className="flex items-center gap-2 mb-4">
-        <div> {children}</div>
+        <div>{children}</div>
         <p className="font-medium">On {genre}</p>
       </div>
       <div className="flex items-center gap-2">
         <img className="size-5 rounded-full" src={blog.author.photo} />
         <p className="text-sm">{blog.author.name}</p>
-        <p>
-          {blog.author.verified ? (
-            <UserCircleCheck weight="fill" className="size-4 text-blue-500" />
-          ) : (
-            ""
-          )}
-        </p>
+        {blog.author.verified && (
+          <UserCircleCheck weight="fill" className="size-4 text-blue-500" />
+        )}
         <div className="ml-auto flex items-center gap-1">
           <p className="text-sm py-0.5 px-1 rounded-md">
             {blog.numberOfViews} views
           </p>
-          <p className="text-sm  py-0.5 px-1 rounded-md">{blog.readTime} min</p>
-          <p className="text-sm  py-0.5 px-1 rounded-md">June 26</p>
+          <p className="text-sm py-0.5 px-1 rounded-md">{blog.readTime} min</p>
+          <p className="text-sm py-0.5 px-1 rounded-md">June 26</p>
         </div>
       </div>
       <p className="text-lg my-1">{blog.heading}</p>

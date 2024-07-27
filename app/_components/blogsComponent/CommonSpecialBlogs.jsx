@@ -9,7 +9,7 @@ const CommonSpecialBlogs = async ({ genre }) => {
   });
   const data = await res.json();
   const blogs = data.data.blogs;
-  // console.log(blogs);
+
   return (
     <div>
       <div>
@@ -17,8 +17,7 @@ const CommonSpecialBlogs = async ({ genre }) => {
           <BookOpen weight="fill" className="size-5" /> Latest on {genre}
         </p>
       </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3  gap-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2">
         {blogs.map((blog, index) => (
           <BlogComponent index={index + 1} blog={blog} key={blog._id} />
         ))}
@@ -43,17 +42,13 @@ const BlogComponent = ({ blog, index }) => {
             className="rounded-full size-5"
           />
           <p className="">{blog.author.name}</p>
-          {blog.author.verified ? (
+          {blog.author.verified && (
             <UserCircleCheck className="text-blue-500" weight="fill" />
-          ) : (
-            ""
           )}
-          <div className="">
-            <p className=" text-sm text-blue-400">{blog.genre}</p>
-          </div>
-          <div className="text-sm  py-0.5 px-1 ml-auto rounded-md">
+          <p className="text-sm text-blue-400">{blog.genre}</p>
+          <p className="text-sm py-0.5 px-1 ml-auto rounded-md">
             {blog.numberOfViews} views
-          </div>
+          </p>
         </div>
         <div className="text-lg">{heading}.</div>
         <div className="text-sm">{description} ...</div>
