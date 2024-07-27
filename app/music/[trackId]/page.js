@@ -71,7 +71,7 @@ const Page = async ({ params }) => {
                 <p className="px-2 font-medium">Lyrics</p>
                 <textarea
                   rows={10}
-                  className="border dark:border-stone-700 dark:bg-stone-800 rounded-md p-2 flex w-full resize-none"
+                  className=" dark:bg-stone-900 rounded-md p-2 flex w-full resize-none"
                   value={track.lyrics}
                 />
               </div>
