@@ -8,6 +8,27 @@ import {
 import React, { useRef, useState, useEffect } from "react";
 
 const AudioPlayer = ({ audioFile }) => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    const darkModeClass = document.documentElement.classList.contains("dark");
+    setIsDarkMode(darkModeClass);
+
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === "class") {
+          const darkModeClass =
+            document.documentElement.classList.contains("dark");
+          setIsDarkMode(darkModeClass);
+        }
+      });
+    });
+
+    observer.observe(document.documentElement, { attributes: true });
+
+    return () => observer.disconnect();
+  }, []);
+
   const audioRef = useRef(null);
   const progressRef = useRef(null);
 
@@ -128,15 +149,9 @@ const AudioPlayer = ({ audioFile }) => {
             className="w-24"
             disabled={muted}
           />
-          <button
-            onClick={handleMute}
-            className="bg-stone-800 hover:bg-stone-700 font-bold py-2 px-4 rounded"
-          >
-            {muted ? <SpeakerX weight="fill" /> : <SpeakerHigh weight="fill" />}
-          </button>
         </div>
       </div>
-      <div className="relative w-full h-2 bg-stone-800 mt-4 rounded">
+      <div className="relative w-full h-2 bg-stone-700 mt-4 rounded">
         <input
           ref={progressRef}
           type="range"
@@ -152,9 +167,19 @@ const AudioPlayer = ({ audioFile }) => {
           style={{ width: `${(currentTime / duration) * 100}%` }}
         ></div>
       </div>
+
       <div className="flex mt-4 text-sm">
-        <div>{formatTime(currentTime)}</div>
-        <div className="ml-auto">{formatTime(duration)}</div>
+        {isDarkMode ? (
+          <>
+            <div>{formatTime(currentTime)}</div>
+            <div className="ml-auto">{formatTime(duration)}</div>
+          </>
+        ) : (
+          <>
+            <div className="text-stone-800">{formatTime(currentTime)}</div>
+            <div className="text-stone-800 ml-auto">{formatTime(duration)}</div>
+          </>
+        )}
       </div>
     </div>
   );

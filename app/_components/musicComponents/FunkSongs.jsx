@@ -29,7 +29,7 @@ const Music = ({ track }) => {
   const name = track.musicName.substring(0, 20);
   return (
     <Link href={`/music/${track._id}`}>
-      <div className="border border-stone-700 bg-stone-800 flex flex-col gap-1 p-2 rounded-lg overflow-hidden">
+      <div className="border bg-stone-100 dark:border-stone-700 dark:bg-stone-800 flex flex-col gap-1 p-2 rounded-lg overflow-hidden">
         <div className="overflow-hidden">
           <img
             className="aspect-square rounded-md object-cover"

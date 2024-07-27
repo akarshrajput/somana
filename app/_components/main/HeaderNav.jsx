@@ -20,12 +20,12 @@ const HeaderNav = async () => {
             Sign up
           </Link>
 
-          <Link
+          {/* <Link
             href=""
             className="bg-stone-100 text-sm text-stone-800 px-2 py-1.5 rounded-md"
           >
             Get Started
-          </Link>
+          </Link> */}
         </div>
       )}
       {session ? (
