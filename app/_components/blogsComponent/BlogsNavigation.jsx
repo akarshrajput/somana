@@ -11,16 +11,16 @@ const BlogsNavigation = () => {
       <div>
         <div className="ml-auto flex items-center gap-2">
           <SpecialButton
-            className="bg-stone-200 text-stone-800"
+            className="dark:text-stone-50 ease-in duration-300 bg-stone-200  dark:bg-stone-700"
             href="/blogs/write"
           >
             <Pen weight="bold" />
             Write Blog
           </SpecialButton>
-          <SpecialButton className="bg-blue-600 text-stone-100" href="">
+          {/* <SpecialButton className="bg-lime-600 text-stone-100" href="">
             <Sparkle weight="bold" />
             Somana AI
-          </SpecialButton>
+          </SpecialButton> */}
           {/* <SpecialButton className="bg-indigo-600 text-stone-50">
             <Star weight="fill" />
             Use Minder AI

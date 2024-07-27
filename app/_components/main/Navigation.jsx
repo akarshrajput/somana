@@ -13,35 +13,35 @@ const Navigation = () => {
   return (
     <div className="flex items-center gap-4">
       <BaseButton
-        className="text-stone-50 ease-in duration-300 hover:scale-125  bg-stone-700"
+        className="dark:text-stone-50 ease-in duration-300 hover:scale-125 bg-stone-200  dark:bg-stone-700"
         href="/blogs"
       >
         Blogs
         <Butterfly />
       </BaseButton>
       <BaseButton
-        className="text-stone-50 ease-in duration-300 hover:scale-125  bg-stone-700"
+        className="dark:text-stone-50 ease-in duration-300 hover:scale-125 bg-stone-200  dark:bg-stone-700"
         href="/music"
       >
         Music
         <Headphones className="size-4" />
       </BaseButton>
       <BaseButton
-        className="text-stone-50 ease-in duration-300 hover:scale-125  bg-stone-700"
+        className="dark:text-stone-50 ease-in duration-300 hover:scale-125 bg-stone-200  dark:bg-stone-700"
         href="/movies"
       >
         Movies
         <Popcorn />
       </BaseButton>
       <BaseButton
-        className="text-stone-50 ease-in duration-300 hover:scale-125  bg-stone-700"
+        className="dark:text-stone-50 ease-in duration-300 hover:scale-125 bg-stone-200  dark:bg-stone-700"
         href="/podcasts"
       >
         Podcasts
         <ApplePodcastsLogo />
       </BaseButton>
       <BaseButton
-        className="text-stone-50 ease-in duration-300 hover:scale-125  bg-stone-700"
+        className="dark:text-stone-50 ease-in duration-300 hover:scale-125 bg-stone-200  dark:bg-stone-700"
         href="/news"
       >
         News

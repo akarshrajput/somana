@@ -5,7 +5,7 @@ import Navigation from "./Navigation";
 
 const Header = () => {
   return (
-    <div className="flex bg-stone-950 flex-col px-4 py-4">
+    <div className="flex dark:bg-stone-900 flex-col px-4 py-4">
       <div className="grid grid-cols-3">
         <div className="w-fit">
           <Logo />

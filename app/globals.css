@@ -12,9 +12,7 @@
 .content-custom-class a:hover {
   text-decoration: underline;
 }
-body {
-  background-color: #0c0a09;
-}
+
 /* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;

@@ -2,11 +2,13 @@ import { auth } from "@/app/_lib/auth";
 import { Lock } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import React from "react";
+import DarkModeButton from "../buttons/DarkModeButton";
 
 const HeaderNav = async () => {
   const session = await auth();
   return (
     <div className="flex text-stone-50 items-center gap-2 ml-auto">
+      <DarkModeButton />
       {session ? (
         ""
       ) : (

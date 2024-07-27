@@ -51,10 +51,10 @@ const SearchBlogs = ({ hostname }) => {
 
   return (
     <div className="flex z-5 flex-col relative">
-      <div className="flex text-stone-50 items-center gap-1 rounded-lg  px-1  bg-stone-800 w-80  border border-stone-700 pl-2">
+      <div className="flex dark:text-stone-50 items-center gap-1 rounded-lg  px-1  dark:bg-stone-800 bg-stone-50 w-80  border dark:border-stone-700 pl-2">
         {/* <MagnifyingGlass weight="bold" className="size-5 text-stone-50" /> */}
         <input
-          className="py-2 px-2   placeholder-stone-500 w-full  bg-stone-800  outline-none"
+          className="py-2 px-2   placeholder-stone-500 w-full bg-stone-50  dark:bg-stone-800  outline-none"
           placeholder="Search"
           onFocus={() => setShowSearchContent(true)}
           value={input}
@@ -85,7 +85,7 @@ const SearchContent = React.forwardRef(
       <div
         onClick={handleClick}
         ref={ref}
-        className="absolute text-sm text-stone-50 overflow-scroll max-h-80 top-full left-0 w-80  bg-stone-800 p-1 mt-1 border  border-stone-700 rounded-md shadow-md"
+        className="absolute text-sm dark:text-stone-50  overflow-scroll max-h-80 top-full left-0 w-80  dark:bg-stone-800 bg-stone-50 p-1 mt-1 border  dark:border-stone-700 rounded-md shadow-md"
       >
         {loading ? (
           <LoaderSmall />
@@ -121,11 +121,13 @@ const SearchItem = ({ minder }) => {
   const heading = minder.heading.substring(0, 50);
   return (
     <Link
-      className="gap-1 text-stone-50 items-center bg-stone-800 hover:bg-stone-700 py-1 px-2 rounded-md"
+      className="gap-1 dark:text-stone-50 items-center dark:bg-stone-800 dark:hover:bg-stone-700 hover:bg-stone-100 py-1 px-2 rounded-md"
       href={`/blogs/${minder.slug}`}
     >
-      <mark className="bg-transparent text-stone-50">{heading} ... by </mark>{" "}
-      <mark className="text-sm text-cyan-500 bg-transparent  px-2 rounded-md">
+      <mark className="bg-transparent dark:text-stone-50">
+        {heading} ... by{" "}
+      </mark>{" "}
+      <mark className="text-sm text-lime-600 bg-transparent  px-2 rounded-md">
         {minder.author.name}
       </mark>
     </Link>

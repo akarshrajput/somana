@@ -4,13 +4,13 @@ import LinkButton from "../buttons/LinkButton";
 
 const Footer = () => {
   return (
-    <div className="text-sm text-stone-200 mt-20 px-4 py-4 flex flex-col gap-2 items-center justify-center">
+    <div className="text-sm dark:text-stone-200 mt-20 px-4 py-4 flex flex-col gap-2 items-center justify-center">
       {/* <div className="flex flex-col">
         <div>
           <img className="h-12" src="/somana.png" />
         </div>
       </div> */}
-      <div className="flex border-t border-stone-600 pt-6 flex-wrap items-center gap-2">
+      <div className="flex pt-6 flex-wrap items-center gap-2">
         <LinkButton>Blog</LinkButton>
         <LinkButton>Music</LinkButton>
         <LinkButton>Movies</LinkButton>

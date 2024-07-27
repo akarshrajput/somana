@@ -21,7 +21,7 @@ const BlogOfTheWeek = async () => {
       </div>
       <div className="flex items-center gap-2 mt-4">
         <img className="size-5 rounded-full" src={blog.author.photo} />
-        <p className="text-sm font-medium">{blog.author.name}</p>
+        <p className="text-sm">{blog.author.name}</p>
         <p>
           {blog.author.verified ? (
             <UserCircleCheck weight="fill" className="size-4 text-blue-400" />
@@ -39,14 +39,14 @@ const BlogOfTheWeek = async () => {
           <p className="text-sm font-medium py-0.5 px-1 rounded-md">June 26</p>
         </div>
       </div>
-      <p className="font-medium text-lg">{blog.heading}</p>
+      <p className="text-lg">{blog.heading}</p>
       <div className="relative rounded-md overflow-hidden flex justify-center w-full h-64">
         <img
           src={blog.featuredImage}
           className="rounded-md w-full object-cover"
           alt="Featured Image"
         />
-        <div className="absolute top-0 left-0 bg-black bg-opacity-50 text-white p-2">
+        <div className="absolute text-sm top-0 left-0 bg-black bg-opacity-50 text-white p-2">
           <p>{blog.description}</p>
         </div>
       </div>

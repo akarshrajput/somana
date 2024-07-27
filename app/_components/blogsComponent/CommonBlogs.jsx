@@ -58,7 +58,7 @@ const BlogComponent = ({ blog }) => {
       </div>
 
       <div className="leading-5 antialiased">
-        <p className="font-medium h-10 overflow-hidden text-ellipsis">
+        <p className="text-lg h-14 overflow-hidden text-ellipsis">
           {heading}
           {heading.length < blog.heading.length ? "..." : ""}
         </p>

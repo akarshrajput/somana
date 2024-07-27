@@ -18,7 +18,7 @@ const CommonSpecialBlogs = async ({ genre }) => {
         </p>
       </div>
 
-      <div className="grid grid-cols-3  gap-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3  gap-2">
         {blogs.map((blog, index) => (
           <BlogComponent index={index + 1} blog={blog} key={blog._id} />
         ))}
@@ -31,7 +31,7 @@ const BlogComponent = ({ blog, index }) => {
   const heading = blog.heading.substring(0, 100);
   const description = blog.description.substring(0, 100);
   return (
-    <Link href={`/blogs/${blog.slug}`} className="p-2 flex gap-4 items-center">
+    <Link href={`/blogs/${blog.slug}`} className="p-2 flex gap-4">
       <div>
         <p className="text-4xl font-bold text-stone-300">{index}</p>
       </div>
@@ -42,20 +42,20 @@ const BlogComponent = ({ blog, index }) => {
             alt={`${blog.author.name} profile photo`}
             className="rounded-full size-5"
           />
-          <p className="font-medium">{blog.author.name}</p>
+          <p className="">{blog.author.name}</p>
           {blog.author.verified ? (
             <UserCircleCheck className="text-blue-500" weight="fill" />
           ) : (
             ""
           )}
           <div className="">
-            <p className="font-medium text-sm text-blue-400">{blog.genre}</p>
+            <p className=" text-sm text-blue-400">{blog.genre}</p>
           </div>
-          <div className="text-sm font-medium py-0.5 px-1 ml-auto rounded-md">
+          <div className="text-sm  py-0.5 px-1 ml-auto rounded-md">
             {blog.numberOfViews} views
           </div>
         </div>
-        <div className="font-medium text-lg">{heading}.</div>
+        <div className="text-lg">{heading}.</div>
         <div className="text-sm">{description} ...</div>
       </div>
     </Link>
