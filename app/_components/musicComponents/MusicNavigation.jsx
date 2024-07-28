@@ -6,19 +6,17 @@ import SearchMusic from "./SearchMusic";
 
 const MusicNavigation = ({ hostname }) => {
   return (
-    <div className="grid grid-cols-3 gap-2 items-center">
-      <div className="flex items-center gap-2">
-        <SpecialButton
-          className="bg-stone-800 text-stone-50"
-          href="/music/upload"
-        >
-          <Upload />
-          Upload music
-        </SpecialButton>
-        <SpecialButton className="bg-violet-700 text-stone-50">
-          <Star weight="fill" />
-          Use Minder AI
-        </SpecialButton>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 items-center">
+      <div className="justify-self-center md:justify-self-start">
+        <div className="ml-auto flex items-center gap-2">
+          <SpecialButton
+            className="dark:text-stone-50 ease-in duration-300 bg-stone-200  dark:bg-stone-700"
+            href="/music/upload"
+          >
+            <Upload weight="bold" />
+            Upload
+          </SpecialButton>
+        </div>
       </div>
       <div className="flex flex-col items-center">
         <SearchMusic hostname={hostname} />

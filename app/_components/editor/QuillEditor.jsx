@@ -8,7 +8,11 @@ const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 const QuillEditor = ({ value, onChange }) => {
   return (
     <div>
-      <ReactQuill className="bg-stone-100" value={value} onChange={onChange} />
+      <ReactQuill
+        className="bg-stone-100 text-stone-800 rounded-lg overflow-hidden"
+        value={value}
+        onChange={onChange}
+      />
     </div>
   );
 };

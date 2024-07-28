@@ -33,11 +33,10 @@ const SearchMusic = ({ hostname }) => {
         setLoading(true);
         try {
           const res = await fetch(
-            `${hostname}/api/v1/music?musicName=${input}`
+            `${hostname}/api/v1/blogs?heading=${input}&limit=10`
           );
           const data = await res.json();
-          setMinders(data?.data?.tracks || []);
-          //   console.log(data);
+          setMinders(data?.data?.blogs || []);
         } catch (error) {
           console.error("Error fetching minders:");
         } finally {
@@ -52,10 +51,10 @@ const SearchMusic = ({ hostname }) => {
 
   return (
     <div className="flex z-5 flex-col relative">
-      <div className="flex items-center gap-1 rounded-lg  bg-stone-100 w-80  border  pl-2">
-        <MagnifyingGlass weight="bold" className="size-5 text-stone-500" />
+      <div className="flex dark:text-stone-50 items-center gap-1 rounded-lg  px-1  dark:bg-stone-800 bg-stone-50 w-80  border dark:border-stone-700 pl-2">
+        {/* <MagnifyingGlass weight="bold" className="size-5 text-stone-50" /> */}
         <input
-          className="py-2 px-2   placeholder-stone-500 w-full  bg-stone-100  outline-none"
+          className="py-2 px-2   placeholder-stone-500 w-full bg-stone-50  dark:bg-stone-800  outline-none"
           placeholder="Search"
           onFocus={() => setShowSearchContent(true)}
           value={input}
@@ -86,7 +85,7 @@ const SearchContent = React.forwardRef(
       <div
         onClick={handleClick}
         ref={ref}
-        className="absolute text-sm text-stone-600 overflow-scroll max-h-80 top-full left-0 w-80  bg-stone-50 p-1 mt-1 border  border-gray-300 rounded-md shadow-md"
+        className="absolute text-sm dark:text-stone-50  overflow-scroll max-h-80 top-full left-0 w-80  dark:bg-stone-800 bg-stone-50 p-1 mt-1 border  dark:border-stone-700 rounded-md shadow-md"
       >
         {loading ? (
           <LoaderSmall />
@@ -100,11 +99,11 @@ const SearchContent = React.forwardRef(
               ""
             )}
             {/* <Link
-              className="flex gap-1  items-center bg-indigo-400 py-1 px-2 rounded-md text-white"
+              className="flex gap-1 items-center bg-indigo-400 py-1 px-2 rounded-md text-white"
               href="/subscription"
             >
               <Sparkle weight="fill" />
-              <li className="font-normal">Explore more on Somana.</li>
+              <li>Explore more on Somana.</li>
             </Link> */}
 
             {Array.isArray(minders) &&
@@ -119,27 +118,18 @@ const SearchContent = React.forwardRef(
 );
 
 const SearchItem = ({ minder }) => {
-  //   const heading = minder.heading.substring(0, 50);
+  const heading = minder.heading.substring(0, 50);
   return (
     <Link
-      className="flex gap-2 items-center bg-gray-100   hover:bg-gray-200 py-1 px-2 rounded-md"
-      href={`/music/${minder._id}`}
+      className="gap-1 dark:text-stone-50 items-center dark:bg-stone-800 dark:hover:bg-stone-700 hover:bg-stone-100 py-1 px-2 rounded-md"
+      href={`/blogs/${minder.slug}`}
     >
-      <div className="w-10 h-10">
-        <img
-          src={minder.featuredImage}
-          className="w-full h-full aspect-square object-cover rounded-md"
-        />
-      </div>
-      <div>
-        <mark className="bg-transparent font-semibold ">
-          {minder.musicName}
-        </mark>
-        {" - "}
-        <mark className="bg-transparent font-semibold ">
-          {minder.musicType}
-        </mark>
-      </div>
+      <mark className="bg-transparent dark:text-stone-50">
+        {heading} ... by{" "}
+      </mark>{" "}
+      <mark className="text-sm text-lime-600 bg-transparent  px-2 rounded-md">
+        {minder.author.name}
+      </mark>
     </Link>
   );
 };

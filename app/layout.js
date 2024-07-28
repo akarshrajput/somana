@@ -64,7 +64,18 @@ export default async function RootLayout({ children }) {
     <html lang="en">
       <body className={`dark:bg-stone-900 ${inter.className}`}>
         <ThemeProvider enableSystem={true} attribute="class">
-          <Toaster position="bottom-right" reverseOrder={false} />
+          <Toaster
+            position="bottom-right"
+            reverseOrder={false}
+            toastOptions={{
+              className:
+                "dark:bg-stone-800 dark:text-white rounded-lg shadow-lg",
+              duration: 5000,
+              style: {
+                // Additional custom styles if needed
+              },
+            }}
+          />
           <div className={`${rubik.className}`}>
             {/* <div className="sticky top-0 z-10"> */}
             <div className="lg:sticky bg-white top-0 z-10">

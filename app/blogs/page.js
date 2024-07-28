@@ -19,7 +19,7 @@ import Footer from "../_components/main/Footer";
 const page = () => {
   return (
     <>
-      <div className="px-4 mt-4">
+      <div className="px-4 mt-2">
         <div className="mb-2">
           <BlogsNavigation />
         </div>

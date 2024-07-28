@@ -8,11 +8,11 @@ const CurrentUserNavigation = () => {
     <div className="grid grid-cols-3 gap-2 items-center">
       <div className="flex items-center gap-2">
         <form action={signOutAction}>
-          <button className="bg-stone-700 border text-stone-50  py-1 px-2 rounded-md">
+          <button className="flex w-fit items-center gap-1 py-1 px-2 rounded-md dark:text-stone-50 ease-in duration-300 bg-stone-200  dark:bg-stone-700">
             Sign Out
           </button>
         </form>
-        <SpecialButton className="bg-violet-700 text-stone-50">
+        <SpecialButton className="dark:text-stone-50 ease-in duration-300 bg-stone-200  dark:bg-stone-700">
           <Star weight="fill" />
           Use Minder AI
         </SpecialButton>

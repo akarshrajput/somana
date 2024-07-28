@@ -102,23 +102,41 @@ const UploadMusic = ({ supabaseURL, session, hostname }) => {
     <div>
       <form
         onSubmit={handleSubmit}
-        className="rounded-md flex flex-col gap-4 p-4 overflow-hidden border-2 bg-stone-100 border-stone-300"
+        className="rounded-md flex flex-col gap-4 p-4  overflow-hidden border-2 dark:bg-stone-800 dark:border-stone-700 bg-stone-100 border-stone-300"
       >
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
+          <div className="flex flex-col items-start gap-1">
+            <label>Music file : </label>
+            <input
+              onChange={(e) => setAudioLink(e.target.files[0])}
+              className="border border-stone-300 dark:placeholder:text-stone-200 dark:bg-stone-700 bg-stone-200 dark:border-stone-600 placeholder-stone-600 outline-none py-1 px-2 w-64 rounded-md"
+              type="file"
+            />
+          </div>
+          <div className="flex flex-col items-start gap-1">
+            <label>Featured Image : </label>
+            <input
+              onChange={(e) => setFeaturedImage(e.target.files[0])}
+              className="border border-stone-300 dark:placeholder:text-stone-200 dark:bg-stone-700 bg-stone-200 dark:border-stone-600 placeholder-stone-600 outline-none py-1 px-2 w-64 rounded-md"
+              type="file"
+            />
+          </div>
+        </div>
+        <div className="flex items-center flex-wrap gap-4">
           <div className="flex items-center gap-1">
-            <label>Song name :</label>
+            {/* <label>Song name </label> */}
             <input
               value={musicName}
               onChange={(e) => setMusicName(e.target.value)}
               placeholder="Song name"
-              className="border border-stone-300 bg-stone-200 placeholder-stone-600 outline-none py-1 px-2 w-64 rounded-md"
+              className="border border-stone-300 dark:placeholder:text-stone-200 dark:bg-stone-700 bg-stone-200 dark:border-stone-600 placeholder-stone-600 outline-none py-1 px-2 w-64 rounded-md"
             />
           </div>
           <div className="flex items-center gap-1">
-            <label>Type :</label>
+            {/* <label>Type :</label> */}
             <div>
               <select
-                className="border border-stone-300 bg-stone-200 placeholder-stone-600 outline-none py-1 px-2 w-64 rounded-md"
+                className="border border-stone-300 dark:placeholder:text-stone-200 dark:bg-stone-700 bg-stone-200 dark:border-stone-600 placeholder-stone-600 outline-none py-1 px-2 w-64 rounded-md"
                 value={musicType}
                 onChange={(e) => setMusicType(e.target.value)}
               >
@@ -131,48 +149,33 @@ const UploadMusic = ({ supabaseURL, session, hostname }) => {
             </div>
           </div>
           <div className="flex items-center gap-1">
-            <label>Release Date :</label>
+            {/* <label>Release Date - </label> */}
             <input
               value={releaseDate}
               onChange={(e) => setReleaseDate(e.target.value)}
-              className="border border-stone-300 bg-stone-200 placeholder-stone-600 outline-none py-1 px-2 w-64 rounded-md"
+              className="border border-stone-300 dark:placeholder:text-stone-200 dark:bg-stone-700 bg-stone-200 dark:border-stone-600 placeholder-stone-600 outline-none py-1 px-2 w-64 rounded-md"
               type="date"
             />
           </div>
         </div>
+
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-1">
-            <label>Add music file :</label>
-            <input
-              onChange={(e) => setAudioLink(e.target.files[0])}
-              className="border border-stone-300 bg-stone-200 placeholder-stone-600 outline-none py-1 px-2 w-64 rounded-md"
-              type="file"
-            />
-          </div>
-          <div className="flex items-center gap-1">
-            <label>Featured Image : </label>
-            <input
-              onChange={(e) => setFeaturedImage(e.target.files[0])}
-              className="border border-stone-300 bg-stone-200 placeholder-stone-600 outline-none py-1 px-2 w-64 rounded-md"
-              type="file"
-            />
-          </div>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="flex items-center gap-1">
-            <label>Credits (artist names) : </label>
+            {/* <label>Credits (artist names) : </label> */}
             <input
               value={credits}
               onChange={(e) => setCredits(e.target.value)}
-              className="border border-stone-300 bg-stone-200 placeholder-stone-600 outline-none py-1 px-2 w-96 rounded-md"
+              className="border border-stone-300 dark:placeholder:text-stone-200 dark:bg-stone-700 bg-stone-200 dark:border-stone-600 placeholder-stone-600 outline-none py-1 px-2 w-64 rounded-md"
+              placeholder="Credits/Artist names"
             />
           </div>
           <div className="flex items-center gap-1">
-            <label>Album :</label>
+            {/* <label>Album :</label> */}
             <input
               value={album}
               onChange={(e) => setAlbum(e.target.value)}
-              className="border border-stone-300 bg-stone-200 placeholder-stone-600 outline-none py-1 px-2 w-64 rounded-md"
+              className="border border-stone-300 dark:placeholder:text-stone-200 dark:bg-stone-700 bg-stone-200 dark:border-stone-600 placeholder-stone-600 outline-none py-1 px-2 w-64 rounded-md"
+              placeholder="Album name"
             />
           </div>
         </div>
@@ -183,7 +186,7 @@ const UploadMusic = ({ supabaseURL, session, hostname }) => {
               value={lyrics}
               onChange={(e) => setLyrics(e.target.value)}
               rows={10}
-              className="border border-stone-300 w-full resize-none bg-stone-200 placeholder-stone-600 outline-none py-1 px-2 rounded-md"
+              className="border w-full resize-none border-stone-300 dark:placeholder:text-stone-200 dark:bg-stone-700 bg-stone-200 dark:border-stone-600 placeholder-stone-600 outline-none py-1 px-2 rounded-md"
             />
           </div>
         </div>
@@ -203,7 +206,7 @@ const UploadMusic = ({ supabaseURL, session, hostname }) => {
             <LoaderSmall />
           ) : (
             <div className="flex items-center gap-1">
-              <p>Post</p>
+              <p>Upload</p>
               <Upload className="size-4" weight="bold" />
             </div>
           )}

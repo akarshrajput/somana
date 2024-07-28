@@ -7,18 +7,21 @@ import DarkModeButton from "../buttons/DarkModeButton";
 const HeaderNav = async () => {
   const session = await auth();
   return (
-    <div className="flex text-stone-50 items-center gap-2 ml-auto">
+    <div className="flex dark:text-stone-50 items-center gap-2 ml-auto">
       <DarkModeButton />
       {session ? (
         ""
       ) : (
         <div className="flex items-center gap-2 ml-auto">
-          <Link href="/login" className="text-sm px-2 py-1.5 rounded-md">
+          <Link
+            href="/login"
+            className="text-sm px-2 py-1.5 rounded-md font-medium"
+          >
             Login
           </Link>
-          <Link href="" className="text-sm px-2 py-1.5 rounded-md">
+          {/* <Link href="" className="text-sm px-2 py-1.5 rounded-md">
             Sign up
-          </Link>
+          </Link> */}
 
           {/* <Link
             href=""

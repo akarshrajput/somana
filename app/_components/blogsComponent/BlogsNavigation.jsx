@@ -17,14 +17,6 @@ const BlogsNavigation = () => {
             <Pen weight="bold" />
             Write Blog
           </SpecialButton>
-          {/* <SpecialButton className="bg-lime-600 text-stone-100" href="">
-            <Sparkle weight="bold" />
-            Somana AI
-          </SpecialButton> */}
-          {/* <SpecialButton className="bg-indigo-600 text-stone-50">
-            <Star weight="fill" />
-            Use Minder AI
-          </SpecialButton> */}
         </div>
       </div>
       <div className="flex flex-col items-center">

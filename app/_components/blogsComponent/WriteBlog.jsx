@@ -114,28 +114,28 @@ const WriteBlog = ({ supabaseURL, session, hostname }) => {
   return (
     <div>
       <form
-        className="rounded-md p-4 overflow-hidden border-2 bg-stone-100 border-stone-300 flex flex-col gap-4"
+        className="rounded-md p-4 overflow-hidden border-2 bg-stone-100 dark:bg-stone-800 dark:border-stone-700 border-stone-300 flex flex-col gap-4"
         onSubmit={handleSubmit}
       >
-        <div className="flex items-center gap-2 px-2 py-1">
-          <label>Heading:</label>
+        <div className="flex items-center gap-2  py-1">
+          {/* <label>Heading:</label> */}
           <input
             value={heading}
             onChange={handleHeadingChange}
             placeholder="Write heading"
-            className="border border-stone-300  bg-stone-200 placeholder-stone-600 py-1 px-2 outline-none rounded-md w-full"
+            className="border border-stone-300 dark:border-stone-600 dark:bg-stone-700 dark:placeholder:text-stone-200  bg-stone-200 placeholder-stone-600 py-1 px-2 outline-none rounded-md w-full"
           />
         </div>
-        <div className="flex items-center gap-2 px-2 py-1">
-          <label>Description:</label>
+        <div className="flex items-center gap-2  py-1">
+          {/* <label>Description:</label> */}
           <input
             value={description}
             onChange={handleDescriptionChange}
             placeholder="Write description"
-            className="border border-stone-300  bg-stone-200 placeholder-stone-600 py-1 px-2 outline-none rounded-md w-full"
+            className="border border-stone-300 dark:border-stone-600 dark:bg-stone-700 dark:placeholder:text-stone-200  bg-stone-200 placeholder-stone-600 py-1 px-2 outline-none rounded-md w-full"
           />
         </div>
-        <div className="flex items-center gap-4 px-2 py-1">
+        <div className="flex items-center gap-4 py-1">
           <div className="flex items-center gap-2">
             <label>Description photo: </label>
             <input
@@ -149,13 +149,13 @@ const WriteBlog = ({ supabaseURL, session, hostname }) => {
               value={tags}
               onChange={handleTagsChange}
               placeholder="Write heading"
-              className="border border-stone-300  bg-stone-200 placeholder-stone-600  py-1 px-2 outline-none rounded-md"
+              className="border border-stone-300 dark:border-stone-600 dark:bg-stone-700 dark:placeholder:text-stone-200  bg-stone-200 placeholder-stone-600 py-1 px-2 outline-none rounded-md w-full"
             />
           </div>
           <div className="flex items-center gap-2">
             <label>Genre: </label>
             <select
-              className="border border-stone-300 bg-stone-200 placeholder-stone-600 outline-none py-1 px-2 w-64 rounded-md"
+              className="border border-stone-300 dark:border-stone-600 dark:bg-stone-700 dark:placeholder:text-stone-200  bg-stone-200 placeholder-stone-600 py-1 px-2 outline-none rounded-md w-full"
               value={genre}
               onChange={(e) => setGenre(e.target.value)}
             >
@@ -215,7 +215,7 @@ const WriteBlog = ({ supabaseURL, session, hostname }) => {
             </select>
           </div>
         </div>
-        <p className="py-0.5 px-2">Write Blog content:</p>
+        <p className="py-0.5">Write Blog content:</p>
         <QuillEditor value={content} onChange={handleContentChange} />
 
         <div className="py-1">

@@ -1,6 +1,7 @@
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 import GitHub from "next-auth/providers/github";
+import Facebook from "next-auth/providers/facebook";
 import { createUser, getUser } from "./services";
 
 const authConfig = {
@@ -12,6 +13,10 @@ const authConfig = {
     GitHub({
       clientId: process.env.AUTH_GITHUB_ID,
       clientSecret: process.env.AUTH_GITHUB_SECRET,
+    }),
+    Facebook({
+      clientId: process.env.AUTH_FACEBOOK_ID,
+      clientSecret: process.env.AUTH_FACEBOOK_SECRET,
     }),
   ],
   // callback run before the signup process

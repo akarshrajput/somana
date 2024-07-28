@@ -3,20 +3,30 @@ import MusicNavigation from "../_components/musicComponents/MusicNavigation";
 import TrendingSongs from "../_components/musicComponents/TrendingSongs";
 import FunkSongs from "../_components/musicComponents/FunkSongs";
 import CommonRelatedSongs from "../_components/musicComponents/CommonRelatedSongs";
+import Footer from "../_components/main/Footer";
+import CommonSongs from "../_components/musicComponents/CommonSongs";
 const hostname = process.env.HOSTNAME;
 const page = () => {
   return (
-    <div>
-      <div className="px-4 mt-2 dark:text-stone-200">
-        <div className="mb-6">
-          <MusicNavigation hostname={hostname} />
-        </div>
-        <div className="flex flex-col gap-4">
-          <TrendingSongs hostname={hostname} />
-          <FunkSongs hostname={hostname} />
+    <>
+      <div>
+        <div className="px-4 mt-2 dark:text-stone-200">
+          <div className="mb-6">
+            <MusicNavigation hostname={hostname} />
+          </div>
+          <div className="flex flex-col gap-4">
+            <TrendingSongs hostname={hostname} />
+            <FunkSongs hostname={hostname} />
+            <CommonSongs
+              hostname={hostname}
+              musicType="Rap"
+              description="Rap Music"
+            />
+          </div>
         </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 

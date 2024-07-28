@@ -1,5 +1,6 @@
 import CommonRelatedSongs from "@/app/_components/musicComponents/CommonRelatedSongs";
 import AudioPlayer from "@/app/_components/player/AudioPlayer";
+import { Star, UserCircleCheck } from "@phosphor-icons/react/dist/ssr";
 import React from "react";
 
 const hostname = process.env.HOSTNAME; // Ensure you are using NEXT_PUBLIC_ for environment variables
@@ -51,8 +52,20 @@ const Page = async ({ params }) => {
                     src={track.author.photo}
                     alt={track.author.name}
                   />
-                  <div>
+                  <div className="flex items-center gap-2">
                     <p className="">{track.author.name}</p>
+                    {track.author.verified ? (
+                      <UserCircleCheck
+                        weight="fill"
+                        className="size-4 dark:text-stone-200"
+                      />
+                    ) : (
+                      ""
+                    )}
+                    <Star
+                      weight="fill"
+                      className="size-4 dark:text-stone-200"
+                    />
                   </div>
                 </div>
               </div>
@@ -64,7 +77,7 @@ const Page = async ({ params }) => {
                 <p className="px-2 font-medium">Lyrics</p>
                 <textarea
                   rows={10}
-                  className=" dark:bg-stone-900 rounded-md p-2 flex w-full resize-none"
+                  className="outline-none dark:bg-stone-900 rounded-md p-2 flex w-full resize-none"
                   value={track.lyrics}
                 />
               </div>
