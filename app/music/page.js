@@ -1,7 +1,6 @@
 import React from "react";
 import MusicNavigation from "../_components/musicComponents/MusicNavigation";
 import TrendingSongs from "../_components/musicComponents/TrendingSongs";
-import FunkSongs from "../_components/musicComponents/FunkSongs";
 import CommonRelatedSongs from "../_components/musicComponents/CommonRelatedSongs";
 import Footer from "../_components/main/Footer";
 import CommonSongs from "../_components/musicComponents/CommonSongs";
@@ -16,7 +15,11 @@ const page = () => {
           </div>
           <div className="flex flex-col gap-4">
             <TrendingSongs hostname={hostname} />
-            <FunkSongs hostname={hostname} />
+            <CommonSongs
+              hostname={hostname}
+              musicType="Funk"
+              description="Funk Music"
+            />
             <CommonSongs
               hostname={hostname}
               musicType="Rap"

@@ -32,14 +32,14 @@ const Music = ({ track }) => {
   const name = track.musicName.substring(0, 20);
   return (
     <Link href={`/music/${track._id}`}>
-      <div className="border bg-stone-100 dark:border-stone-700 dark:bg-stone-800 flex flex-col gap-1 p-1 md:p-2 rounded-lg overflow-hidden">
+      <div className="border bg-stone-100 dark:border-stone-700 dark:bg-stone-800 flex flex-col gap-1 rounded-lg overflow-hidden">
         <div className="overflow-hidden">
           <img
-            className="aspect-square rounded-md object-cover"
+            className="aspect-square rounded-lg object-cover"
             src={track.featuredImage}
           />
         </div>
-        <div className="px-1">
+        <div className="px-2 py-1 pb-2">
           <p className="font-bold text-sm md:text-base text-nowrap">
             {name} {name.length < track.musicName.length ? "..." : ""}
           </p>
@@ -48,7 +48,7 @@ const Music = ({ track }) => {
           <p className="text-nowrap font-bold text-sm text-stone-500">
             {track.credits}
           </p>
-          <p className="text-nowrap font-medium text-sm">{track.musicType}</p>
+          {/* <p className="text-nowrap font-medium text-sm">{track.musicType}</p> */}
 
           {/* </div> */}
         </div>

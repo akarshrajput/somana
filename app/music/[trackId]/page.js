@@ -25,10 +25,10 @@ const Page = async ({ params }) => {
         {/* <div className="dark:text-stone-200 overflow-hidden"> */}
         <div className="grid lg:grid-cols-2 grid-cols-1">
           <div className="grid sm:grid-cols-2 grid-cols-1 w-fit items-center justify-center">
-            <div className="flex sm:w-full w-fit bg-stone-100 justify-center border p-2 rounded-lg h-72 overflow-hidden">
+            <div className="flex sm:w-full w-fit bg-stone-100 dark:bg-stone-800 dark:border-stone-700 justify-center border p-2 rounded-lg h-72 overflow-hidden">
               <img
                 src={track?.featuredImage}
-                className="aspect-square w-72 rounded-md object-cover"
+                className="aspect-square w-72 rounded-lg object-cover"
                 alt="Featured Image"
               />
             </div>
