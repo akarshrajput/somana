@@ -34,8 +34,8 @@ const BlogComponent = ({ blog, index }) => {
       <div>
         <p className="text-4xl font-bold text-stone-300">{index}</p>
       </div>
-      <div className="flex flex-col gap-1">
-        <div className="flex items-center gap-2 text-sm">
+      <div className="flex  flex-col gap-1">
+        <div className="flex font-medium items-center gap-2 text-sm">
           <img
             src={blog.author.photo}
             alt={`${blog.author.name} profile photo`}
@@ -43,14 +43,14 @@ const BlogComponent = ({ blog, index }) => {
           />
           <p className="">{blog.author.name}</p>
           {blog.author.verified && (
-            <UserCircleCheck className="text-blue-500" weight="fill" />
+            <UserCircleCheck className="dark:text-stone-200" weight="fill" />
           )}
           <p className="text-sm text-blue-400">{blog.genre}</p>
           <p className="text-sm py-0.5 px-1 ml-auto rounded-md">
             {blog.numberOfViews} views
           </p>
         </div>
-        <div className="text-lg">{heading}.</div>
+        <div className=" font-medium">{heading}.</div>
         <div className="text-sm">{description} ...</div>
       </div>
     </Link>

@@ -36,7 +36,7 @@ const BlogComponent = ({ blog }) => {
   const description = blog.description.substring(0, 100);
   return (
     <Link href={`/blogs/${blog.slug}`} className="flex flex-col gap-2">
-      <div className="flex items-center gap-1 text-sm">
+      <div className="flex text-nowrap items-center gap-1 text-sm">
         <img
           src={blog.author.photo}
           alt={`${blog.author.name} profile photo`}
@@ -44,11 +44,11 @@ const BlogComponent = ({ blog }) => {
         />
         <p className="font-medium">{blog.author.name}</p>
         {blog.author.verified ? (
-          <UserCircleCheck className="text-blue-500" weight="fill" />
+          <UserCircleCheck className="dark:text-stone-200" weight="fill" />
         ) : (
           ""
         )}
-        <p className="text-sm font-medium text-blue-400 mx-1">{blog.genre}</p>
+        <p className="text-sm font-medium  text-blue-400 mx-1">{blog.genre}</p>
         <div className="ml-auto flex items-center gap-1">
           <p className="text-sm font-medium py-0.5 px-1 ml-auto rounded-md">
             {blog.numberOfViews} views
@@ -56,9 +56,9 @@ const BlogComponent = ({ blog }) => {
           {/* <p className="bg-stone-100 text-sm border py-0.5 px-1 rounded-md">
             {blog.readTime} min
           </p> */}
-          <p className="text-sm font-medium py-0.5 px-1 ml-auto rounded-md">
+          {/* <p className="text-sm font-medium py-0.5 px-1 ml-auto rounded-md">
             June 26
-          </p>
+          </p> */}
         </div>
       </div>
 

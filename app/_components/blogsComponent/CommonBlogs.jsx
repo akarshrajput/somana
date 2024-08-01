@@ -34,7 +34,7 @@ const BlogComponent = ({ blog }) => {
   const description = blog.description.substring(0, 100);
   return (
     <Link href={`/blogs/${blog.slug}`} className="flex flex-col gap-1">
-      <div className="flex items-center gap-1 text-sm">
+      <div className="flex  items-center gap-1 text-sm">
         <img
           src={blog.author.photo}
           alt={`${blog.author.name} profile photo`}
@@ -42,7 +42,7 @@ const BlogComponent = ({ blog }) => {
         />
         <p className="font-medium">{blog.author.name}</p>
         {blog.author.verified ? (
-          <UserCircleCheck className="text-blue-500" weight="fill" />
+          <UserCircleCheck className="dark:text-stone-200" weight="fill" />
         ) : (
           ""
         )}
@@ -58,7 +58,7 @@ const BlogComponent = ({ blog }) => {
       </div>
 
       <div className="leading-5 antialiased">
-        <p className="text-lg h-14 overflow-hidden text-ellipsis">
+        <p className="font-medium h-14 overflow-hidden text-ellipsis">
           {heading}
           {heading.length < blog.heading.length ? "..." : ""}
         </p>

@@ -17,13 +17,13 @@ export default async function Home() {
     <>
       <div className="flex flex-col gap-2">
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-2 gap-x-4 my-4 dark:bg-stone-900 dark:text-stone-200 px-4 py-4">
-          <div className="col-span-1 xl:col-span-2">
-            <CommonSpecialBlogs genre="Space" />
-          </div>
           <div className="col-span-1">
             <CommonTrendBlog genre="Space">
               <Planet weight="fill" />
             </CommonTrendBlog>
+          </div>
+          <div className="col-span-1 xl:col-span-2">
+            <CommonSpecialBlogs genre="Space" />
           </div>
         </div>
         <div className="dark:bg-stone-900 dark:text-stone-200 px-4">
