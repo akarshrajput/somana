@@ -57,14 +57,18 @@ export const metadata = {
     shortcut: "/favicon-16x16.png",
     apple: "/apple-touch-icon.png",
   },
-  adsense: {
-    account: "ca-pub-3750195818284635",
-  },
 };
 
 export default async function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3750195818284635"
+          crossorigin="anonymous"
+        ></script>
+      </head>
       <body className={`dark:bg-stone-900 ${inter.className}`}>
         <ThemeProvider enableSystem={true} attribute="class">
           <Toaster
