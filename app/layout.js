@@ -57,6 +57,9 @@ export const metadata = {
     shortcut: "/favicon-16x16.png",
     apple: "/apple-touch-icon.png",
   },
+  adsense: {
+    account: "ca-pub-3750195818284635",
+  },
 };
 
 export default async function RootLayout({ children }) {
