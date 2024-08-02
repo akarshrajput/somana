@@ -25,6 +25,66 @@ const userSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    dob: {
+      type: Date,
+      default: null,
+    },
+    city: {
+      type: String,
+      default: "",
+    },
+    state: {
+      type: String,
+      default: "",
+    },
+    country: {
+      type: String,
+      default: "",
+    },
+    bio: {
+      type: "String",
+      default: "",
+    },
+    status: {
+      type: String,
+      default: "",
+    },
+    subscription: {
+      type: Boolean,
+      default: false,
+    },
+    gender: {
+      type: String,
+      default: "",
+    },
+    occupation: {
+      type: String,
+      default: "",
+    },
+    company: {
+      type: String,
+      default: "",
+    },
+    maritalStatus: {
+      type: String,
+      default: "",
+    },
+    nickname: {
+      type: String,
+      default: "",
+    },
+    studiedFrom: {
+      type: String,
+      default: "",
+    },
+    qualification: {
+      type: String,
+      default: "",
+    },
+    mobileNumber: {
+      type: String,
+      default: "",
+    },
   },
   {
     toJSON: { virtuals: true },

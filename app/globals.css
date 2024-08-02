@@ -13,6 +13,16 @@
   text-decoration: underline;
 }
 
+.customised-input input {
+  outline: none;
+}
+.customised-input textarea {
+  outline: none;
+}
+.customised-input select {
+  outline: none;
+}
+
 /* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
