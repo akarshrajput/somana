@@ -87,3 +87,29 @@ export async function DELETE(request) {
     );
   }
 }
+
+export async function PATCH(request) {
+  try {
+    const minderId = request.url.split("blogs/")[1];
+    await connectMongoDB();
+    const updateData = await request.json();
+    const updatedBlog = await Blog.findByIdAndUpdate(minderId, updateData, {
+      new: true,
+    });
+    return NextResponse.json(
+      {
+        status: "success",
+        message: "Minder updated Successfully",
+        data: {
+          updatedBlog: updatedBlog,
+        },
+      },
+      { status: 200 }
+    );
+  } catch (err) {
+    return NextResponse.json(
+      { statusText: "error", message: "Internal Server Error" },
+      { status: 500 }
+    );
+  }
+}

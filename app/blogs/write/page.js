@@ -8,12 +8,14 @@ const page = async () => {
   const hostname = process.env.HOSTNAME;
 
   return (
-    <div className="px-40 mt-10">
-      <WriteBlog
-        session={session}
-        supabaseURL={supabaseURL}
-        hostname={hostname}
-      />
+    <div className="px-2 my-10 flex justify-center">
+      <div className="w-6/6 md:w-5/6">
+        <WriteBlog
+          session={session}
+          supabaseURL={supabaseURL}
+          hostname={hostname}
+        />
+      </div>
     </div>
   );
 };

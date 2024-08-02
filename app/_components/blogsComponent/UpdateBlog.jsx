@@ -1,79 +1,94 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import QuillEditor from "../editor/QuillEditor";
-import supabase from "@/app/_lib/supabase";
 import axios from "axios";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Info, PaperPlaneRight } from "@phosphor-icons/react/dist/ssr";
 import LoaderSmall from "../main/LoaderSmall";
 import toast from "react-hot-toast";
 
-const WriteBlog = ({ supabaseURL, session, hostname }) => {
+const UpdateBlog = ({ session, hostname }) => {
   const [heading, setHeading] = useState("");
   const [description, setDescription] = useState("");
   const [content, setContent] = useState("");
   const [tags, setTags] = useState("");
   const [genre, setGenre] = useState("Blog");
-  const [featuredImage, setFeaturedImage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [initialBlog, setInitialBlog] = useState(null);
 
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const blogId = searchParams.get("blogId");
+  const userId = session?.user?.userId;
+
+  useEffect(() => {
+    const fetchBlogData = async () => {
+      if (blogId) {
+        try {
+          const response = await axios.get(`/api/v1/blogs/${blogId}`);
+          const blogData = response.data.data;
+          setHeading(blogData.heading);
+          setDescription(blogData.description);
+          setContent(blogData.content);
+          setTags(blogData.tags);
+          setGenre(blogData.genre);
+          setInitialBlog(blogData);
+        } catch (error) {
+          toast.error("Error fetching blog data");
+          console.log(error);
+        }
+      }
+    };
+
+    fetchBlogData();
+  }, [blogId]);
+
+  if (userId != initialBlog?.author?._id) {
+    return <p>You do not have permission to update blog.</p>;
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (
-      !heading ||
-      !content ||
-      !description ||
-      !featuredImage ||
-      !tags ||
-      !genre
-    ) {
+    if (!heading || !content || !description || !tags || !genre) {
       toast.error("Please fill all fields");
-      return;
-    }
-
-    if (featuredImage.type.split("/")[0] !== "image") {
-      toast.error("Only image files are allowed");
       return;
     }
 
     try {
       setIsLoading(true);
-      const imageName = `${Math.random()}-${Date.now()}-${featuredImage?.name}`;
-      const imagePath = `${supabaseURL}/storage/v1/object/public/blog-featured-images/${imageName}`;
       const blogData = {
         heading: heading,
         description: description,
         content: content,
         tags: tags,
         genre: genre,
-        author: session.user.userId,
-        featuredImage: imagePath,
       };
 
-      const response = await axios.post(`/api/v1/blogs`, blogData, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      // console.log(response);
+      let response;
 
-      const avatarFile = featuredImage;
-      await supabase.storage
-        .from("blog-featured-images")
-        .upload(imageName, avatarFile);
+      if (initialBlog?._id) {
+        // Update existing blog
+        response = await axios.patch(
+          `/api/v1/blogs/${initialBlog._id}`,
+          blogData,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        toast.success("Blog updated! Please refresh page");
+      }
 
-      const slug = response?.data?.data?.newBlog?.slug;
-      toast.success("Blog posted!");
+      const slug = response?.data?.data?.updatedBlog?.slug;
       router.push(`/blogs/${slug}`);
 
       setHeading("");
       setDescription("");
       setContent("");
-      setFeaturedImage("");
       setTags("");
+      setGenre("");
     } catch (error) {
       toast.error("Error posting Blog, Server Error");
       console.log(error);
@@ -99,6 +114,7 @@ const WriteBlog = ({ supabaseURL, session, hostname }) => {
       setContent(value);
     }
   };
+
   const handleTagsChange = (e) => {
     if (e.target.value.length <= 15) {
       setTags(e.target.value);
@@ -136,13 +152,6 @@ const WriteBlog = ({ supabaseURL, session, hostname }) => {
           />
         </div>
         <div className="flex flex-wrap items-center gap-4 py-1">
-          <div className="flex items-center gap-2">
-            <label>Description photo: </label>
-            <input
-              onChange={(e) => setFeaturedImage(e.target.files[0])}
-              type="file"
-            />
-          </div>
           <div className="flex items-center gap-2">
             <label>Tags: </label>
             <input
@@ -235,7 +244,7 @@ const WriteBlog = ({ supabaseURL, session, hostname }) => {
               <LoaderSmall />
             ) : (
               <div className="flex items-center gap-1">
-                <p>Post</p>
+                <p>Update</p>
                 <PaperPlaneRight className="size-4" weight="bold" />
               </div>
             )}
@@ -246,4 +255,4 @@ const WriteBlog = ({ supabaseURL, session, hostname }) => {
   );
 };
 
-export default WriteBlog;
+export default UpdateBlog;

@@ -41,14 +41,14 @@ const DeleteButton = ({ blogId, onDeleteSuccess }) => {
     <button
       disabled={isLoading}
       onClick={handleDelete}
-      className="bg-red-600 text-stone-50 flex items-center gap-1 py-1 px-2 rounded-md"
+      className="bg-red-600 text-sm text-stone-50 flex items-center gap-1 py-1 px-2 rounded-md"
     >
       {isLoading ? (
         <LoaderSmall />
       ) : (
         <div className="flex items-center gap-1">
           <p>Delete</p>
-          <Trash className="size-4" weight="bold" />
+          <Trash weight="bold" />
         </div>
       )}
     </button>

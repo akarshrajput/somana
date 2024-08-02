@@ -6,6 +6,7 @@ import Image from "next/image";
 import React from "react";
 import { notFound } from "next/navigation";
 import DeleteButton from "@/app/_components/buttons/DeleteBlog";
+import UpdateBlogButton from "@/app/_components/buttons/UpdateBlogButton";
 
 const hostname = process.env.HOSTNAME;
 
@@ -16,15 +17,16 @@ const robotoSlab = Roboto_Slab({
 
 const fetchBlogData = async (slug, userId) => {
   const res = await fetch(
-    `${hostname}/api/v1/blogs/slug/${slug}?userId=${userId}`
+    `${hostname}/api/v1/blogs/slug/${slug}?userId=${userId}`,
+    {
+      cache: "no-store",
+    }
   );
   if (!res.ok) {
     return null;
   }
   const data = await res.json();
-  // if (data.status === "error") {
-  //   return <p>No Blog Found</p>;
-  // }
+
   return data.data;
 };
 
@@ -112,7 +114,12 @@ const Page = async ({ params }) => {
                 {day}-{month}-{year}
               </p>
             </div>
-            <div className="ml-auto">
+            <div className="ml-auto flex items-center gap-2">
+              {userId === blog.author._id ? (
+                <UpdateBlogButton blog={blog} />
+              ) : (
+                ""
+              )}
               {userId === blog.author._id ? (
                 <DeleteButton blogId={blog._id} />
               ) : (
