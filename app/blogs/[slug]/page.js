@@ -114,7 +114,7 @@ const Page = async ({ params }) => {
                 {day}-{month}-{year}
               </p>
             </div>
-            <div className="ml-auto flex items-center gap-2">
+            <div className="md:ml-auto flex items-center gap-2">
               {userId === blog.author._id ? (
                 <UpdateBlogButton blog={blog} />
               ) : (
@@ -128,7 +128,7 @@ const Page = async ({ params }) => {
             </div>
           </div>
           <div className="mt-4">
-            <img src={blog.featuredImage} className="w-full rounded-lg" />
+            <img src={blog.featuredImage} className="w-full rounded-xl" />
           </div>
           <div className="lg:px-40">
             <p className="my-4 border-l-4 border-stone-700 dark:border-stone-200 text-stone-700 dark:text-stone-200 pl-2">
