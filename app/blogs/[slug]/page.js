@@ -5,6 +5,7 @@ import { Roboto_Slab } from "next/font/google";
 import Image from "next/image";
 import React from "react";
 import { notFound } from "next/navigation";
+import DeleteButton from "@/app/_components/buttons/DeleteBlog";
 
 const hostname = process.env.HOSTNAME;
 
@@ -21,6 +22,9 @@ const fetchBlogData = async (slug, userId) => {
     return null;
   }
   const data = await res.json();
+  // if (data.status === "error") {
+  //   return <p>No Blog Found</p>;
+  // }
   return data.data;
 };
 
@@ -107,6 +111,13 @@ const Page = async ({ params }) => {
               <p className="font-medium py-0.5 px-2 rounded-md">
                 {day}-{month}-{year}
               </p>
+            </div>
+            <div className="ml-auto">
+              {userId === blog.author._id ? (
+                <DeleteButton blogId={blog._id} />
+              ) : (
+                ""
+              )}
             </div>
           </div>
           <div className="mt-4">
