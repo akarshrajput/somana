@@ -9,6 +9,7 @@ import CommonSpecialBlogs from "./_components/blogsComponent/CommonSpecialBlogs"
 import CommonTrendBlog from "./_components/blogsComponent/CommonTrendBlog";
 import { FlagBannerFold, Planet } from "@phosphor-icons/react/dist/ssr";
 import Footer from "./_components/main/Footer";
+import TrendingBlogs from "./_components/blogsComponent/TrendingBlogs";
 const hostname = process.env.HOSTNAME;
 export default async function Home() {
   const session = await auth();
@@ -16,7 +17,7 @@ export default async function Home() {
   return (
     <>
       <div className="flex flex-col gap-2">
-        <div className="grid grid-cols-1 xl:grid-cols-3 gap-2 gap-x-4 my-4 dark:bg-stone-900 dark:text-stone-200 px-4 py-4">
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-2 gap-x-4 my-4 dark:bg-stone-900 dark:text-stone-200 px-4">
           <div className="col-span-1">
             <CommonTrendBlog genre="Space">
               <Planet weight="fill" />
@@ -29,7 +30,9 @@ export default async function Home() {
         <div className="dark:bg-stone-900 dark:text-stone-200 px-4">
           <TrendingSongs hostname={hostname} />
         </div>
-        {/* <HomePageNavigation /> */}
+        <div className="px-4 mt-4">
+          <TrendingBlogs />
+        </div>
       </div>
       <Footer />
     </>
