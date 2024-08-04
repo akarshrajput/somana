@@ -1,4 +1,5 @@
 import {
+  Building,
   Crown,
   TextColumns,
   UserCircleCheck,
@@ -20,7 +21,20 @@ const BlogOfTheWeek = async () => {
         <p className="font-medium">Blog of the week</p>
       </div>
       <div className="flex font-medium items-center gap-2 mt-4">
-        <img className="size-5 rounded-full" src={blog.author.photo} />
+        <div className="flex">
+          <img
+            className="size-6 z-10 rounded-full border border-stone-50 dark:border-stone-500"
+            src={blog.author.photo}
+          />
+          {blog.author.accountType === "Organization" ? (
+            <img
+              className="size-6 z-4 -ml-2 rounded-full border border-stone-50 dark:border-stone-500"
+              src={blog.featuredImage}
+            />
+          ) : (
+            ""
+          )}
+        </div>
         <p className="text-sm">{blog.author.name}</p>
         <p>
           {blog.author.verified ? (
@@ -32,6 +46,9 @@ const BlogOfTheWeek = async () => {
             ""
           )}
         </p>
+        {blog.author.accountType === "Organization" && (
+          <Building weight="bold" className="size-4 dark:text-stone-200" />
+        )}
         <div className="ml-auto flex items-center gap-1">
           <p className="text-sm font-medium py-0.5 px-1 rounded-md">
             {blog.numberOfViews} views

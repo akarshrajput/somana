@@ -25,7 +25,7 @@ const Logo = () => {
     return () => observer.disconnect();
   }, []);
   return (
-    <div>
+    <div className="z-40">
       <Link href="/">
         {isDarkMode ? (
           <img src="/somana-dark.png" className="h-10 brightness-125" />

@@ -36,11 +36,20 @@ const BlogComponent = ({ blog, index }) => {
       </div>
       <div className="flex  flex-col gap-1">
         <div className="flex font-medium items-center gap-2 text-sm">
-          <img
-            src={blog.author.photo}
-            alt={`${blog.author.name} profile photo`}
-            className="rounded-full size-5"
-          />
+          <div className="flex">
+            <img
+              className="size-6 z-10 rounded-full border border-stone-50 dark:border-stone-500"
+              src={blog.author.photo}
+            />
+            {blog.author.accountType === "Organization" ? (
+              <img
+                className="size-6 z-4 -ml-2 rounded-full border border-stone-50 dark:border-stone-500"
+                src={blog.featuredImage}
+              />
+            ) : (
+              ""
+            )}
+          </div>
           <p className="">{blog.author.name}</p>
           {blog.author.verified && (
             <UserCircleCheck className="dark:text-stone-200" weight="fill" />

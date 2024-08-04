@@ -26,6 +26,7 @@ const CurrentUserProfile = ({ session }) => {
     company: "",
     subscription: false,
     dob: "",
+    accountType: "",
   });
 
   const [loading, setLoading] = useState(true);
@@ -38,6 +39,7 @@ const CurrentUserProfile = ({ session }) => {
           const response = await axios.get(`/api/v1/users/${userId}`);
           const userData = response.data.data;
           setUser({
+            accountType: userData.accountType,
             name: userData.name,
             email: userData.email,
             photo: userData.photo,
@@ -297,6 +299,25 @@ const CurrentUserProfile = ({ session }) => {
                 onChange={handleInputChange}
                 className="bg-stone-100 dark:border-stone-600 dark:bg-stone-700 antialiased px-2 py-1 border rounded-md"
               />
+            </label>
+            <label className="flex flex-col gap-1">
+              <span className="text-gray-700 dark:text-gray-300">
+                Account Type
+              </span>
+              <select
+                type="text"
+                name="accountType"
+                value={user.accountType}
+                onChange={handleInputChange}
+                className="bg-stone-100 dark:border-stone-600 dark:bg-stone-700
+                antialiased px-2 py-1 border rounded-md"
+              >
+                <option value="" disabled>
+                  Select
+                </option>
+                <option value="Personal">Personal</option>
+                <option value="Organization">Organization</option>
+              </select>
             </label>
           </div>
         </div>

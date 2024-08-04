@@ -76,7 +76,7 @@ const blogSchema = new mongoose.Schema(
 blogSchema.pre(/^find/, function (next) {
   this.populate({
     path: "author",
-    select: "name email photo verified",
+    select: "name email photo verified accountType",
   });
   next();
 });

@@ -1,5 +1,7 @@
 import {
+  Building,
   Crown,
+  Factory,
   TextColumns,
   UserCircleCheck,
 } from "@phosphor-icons/react/dist/ssr";
@@ -25,13 +27,29 @@ const CommonTrendBlog = async ({ children, genre }) => {
         <p className="font-medium">On {genre}</p>
       </div>
       <div className="flex font-medium items-center gap-2">
-        <img className="size-5 rounded-full" src={blog.author.photo} />
+        <div className="flex">
+          <img
+            className="size-6 z-10 rounded-full border border-stone-50 dark:border-stone-500"
+            src={blog.author.photo}
+          />
+          {blog.author.accountType === "Organization" ? (
+            <img
+              className="size-6 z-4 -ml-2 rounded-full border border-stone-50 dark:border-stone-500"
+              src={blog.featuredImage}
+            />
+          ) : (
+            ""
+          )}
+        </div>
         <p className="text-sm">{blog.author.name}</p>
         {blog.author.verified && (
           <UserCircleCheck
             weight="fill"
             className="size-4 dark:text-stone-200"
           />
+        )}
+        {blog.author.accountType === "Organization" && (
+          <Building weight="bold" className="size-4 dark:text-stone-200" />
         )}
         <div className="ml-auto flex items-center gap-1">
           <p className="text-sm py-0.5 px-1 rounded-md">

@@ -85,7 +85,7 @@ export default async function RootLayout({ children }) {
           />
           <div className={`${rubik.className}`}>
             {/* <div className="sticky top-0 z-10"> */}
-            <div className="lg:sticky bg-white top-0 z-10">
+            <div className="lg:sticky bg-white top-0 z-20">
               <Header />
             </div>
             {children}
