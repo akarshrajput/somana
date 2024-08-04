@@ -8,6 +8,7 @@ import { notFound } from "next/navigation";
 import DeleteButton from "@/app/_components/buttons/DeleteBlog";
 import UpdateBlogButton from "@/app/_components/buttons/UpdateBlogButton";
 import LikeButton from "@/app/_components/blogsComponent/LikeButton";
+import RelatedBlogs from "@/app/_components/blogsComponent/RelatedBlogs";
 
 const hostname = process.env.HOSTNAME;
 
@@ -147,6 +148,11 @@ const Page = async ({ params }) => {
               dangerouslySetInnerHTML={{ __html: contentWithLineBreaks }}
             ></div>
           </div>
+        </div>
+      </div>
+      <div className="flex mt-20 justify-center">
+        <div className="w-3/6 pt-10">
+          <RelatedBlogs genre={blog.genre} />
         </div>
       </div>
       <Footer />
