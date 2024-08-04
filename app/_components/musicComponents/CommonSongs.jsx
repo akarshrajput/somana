@@ -4,7 +4,7 @@ import React from "react";
 
 const CommonSongs = async ({ hostname, musicType, description = "Songs" }) => {
   const res = await fetch(
-    `${hostname}/api/v1/music?limit=8&musicType=${musicType}`,
+    `${hostname}/api/v1/music?limit=10&musicType=${musicType}`,
     {
       cache: "no-store",
     }
@@ -19,7 +19,7 @@ const CommonSongs = async ({ hostname, musicType, description = "Songs" }) => {
           <MusicNote weight="bold" className="size-4" /> {description}
         </p>
       </div>
-      <div className="grid xl:grid-cols-8 lg:grid-cols-6 md:grid-cols-4 text-sm md:text-base grid-cols-4 gap-2">
+      <div className="grid xl:grid-cols-12 lg:grid-cols-6 md:grid-cols-4 text-sm md:text-base grid-cols-4 gap-2">
         {tracks.map((track) => (
           <Music track={track} key={track._id} />
         ))}

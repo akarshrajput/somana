@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 
 const TrendingSongs = async ({ hostname }) => {
-  const res = await fetch(`${hostname}/api/v1/music?limit=8`, {
+  const res = await fetch(`${hostname}/api/v1/music?limit=12`, {
     cache: "no-store",
   });
   const data = await res.json();
@@ -16,7 +16,7 @@ const TrendingSongs = async ({ hostname }) => {
           <TrendUp weight="bold" /> Trending music
         </p>
       </div>
-      <div className="grid xl:grid-cols-8 lg:grid-cols-6 md:grid-cols-4 text-sm md:text-base grid-cols-4 gap-2">
+      <div className="grid xl:grid-cols-12 lg:grid-cols-6 md:grid-cols-4 text-sm md:text-base grid-cols-4 gap-2">
         {tracks.map((track) => (
           <Music track={track} key={track._id} />
         ))}
@@ -36,18 +36,11 @@ const Music = ({ track }) => {
             src={track.featuredImage}
           />
         </div>
-        <div className="px-1 pb-2">
-          <p className="font-medium text-nowrap">
+        <div className="px-1 pb-1 overflow-hidden">
+          <p className="font-medium text-sm text-nowrap">
             {name} {name.length < track.musicName.length ? "..." : ""}
           </p>
-
-          {/* <div className="flex items-center gap-1"> */}
-          <p className="font-medium text-nowrap text-sm text-stone-500">
-            {track.credits}
-          </p>
-          {/* <p className="font-medium text-nowrap text-sm">{track.musicType}</p> */}
-
-          {/* </div> */}
+          <p className="text-nowrap text-sm">{track.credits}</p>
         </div>
       </div>
     </Link>

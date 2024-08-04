@@ -32,8 +32,8 @@ const TrendingBlogs = async () => {
 };
 
 const BlogComponent = ({ blog }) => {
-  const heading = blog.heading.substring(0, 70);
-  const description = blog.description.substring(0, 100);
+  const heading = blog.heading.substring(0, 36);
+  const description = blog.description.substring(0, 70);
   return (
     <Link href={`/blogs/${blog.slug}`} className="flex flex-col gap-2">
       <div className="flex text-nowrap items-center gap-1 text-sm">
@@ -59,9 +59,9 @@ const BlogComponent = ({ blog }) => {
         )}
         <p className="text-sm font-medium  text-blue-400 mx-1">{blog.genre}</p>
         <div className="ml-auto flex items-center gap-1">
-          <p className="text-sm font-medium py-0.5 px-1 ml-auto rounded-md">
+          {/* <p className="text-sm font-medium py-0.5 px-1 ml-auto rounded-md">
             {blog.numberOfViews} views
-          </p>
+          </p> */}
           {/* <p className="bg-stone-100 text-sm border py-0.5 px-1 rounded-md">
             {blog.readTime} min
           </p> */}
@@ -72,21 +72,23 @@ const BlogComponent = ({ blog }) => {
       </div>
 
       <div className="leading-5 antialiased">
-        <p className="font-semibold h-10 overflow-hidden text-ellipsis">
+        <p className="font-medium overflow-hidden text-ellipsis">
           {heading}
           {heading.length < blog.heading.length ? "..." : ""}
         </p>
       </div>
-
-      <div className="flex justify-center w-full overflow-hidden h-48">
+      <div>
+        <p className="text-sm antialiased">
+          {description}{" "}
+          {description.length < blog.description.length ? "..." : ""}
+        </p>
+      </div>
+      <div className="flex justify-center w-full overflow-hidden h-40">
         <img
           src={blog?.featuredImage}
           className="rounded-md w-full object-cover"
           alt="Featured Image"
         />
-      </div>
-      <div>
-        <p className="text-sm antialiased">{description} ...</p>
       </div>
     </Link>
   );

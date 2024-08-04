@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import QuillEditor from "../editor/QuillEditor";
 import axios from "axios";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Info, PaperPlaneRight } from "@phosphor-icons/react/dist/ssr";
+import { Info, PaperPlaneRight, Warning } from "@phosphor-icons/react/dist/ssr";
 import LoaderSmall from "../main/LoaderSmall";
 import toast from "react-hot-toast";
 
@@ -133,15 +133,19 @@ const UpdateBlog = ({ session, hostname }) => {
         className="rounded-md p-4 overflow-hidden border-2 bg-stone-100 dark:bg-stone-800 dark:border-stone-700 border-stone-300 flex flex-col gap-4"
         onSubmit={handleSubmit}
       >
-        <div className="flex items-center gap-2  py-1">
+        <p className="flex items-center gap-2">
+          <Warning weight="fill" className="text-yellow-600" />
+          You canot change heading of blog because it will affect article link.
+        </p>
+        {/* <div className="flex items-center gap-2  py-1">
           {/* <label>Heading:</label> */}
-          <input
+        {/* <input
             value={heading}
             onChange={handleHeadingChange}
             placeholder="Write heading"
             className="border border-stone-300 dark:border-stone-600 dark:bg-stone-700 dark:placeholder:text-stone-200  bg-stone-200 placeholder-stone-600 py-1 px-2 outline-none rounded-md w-full"
-          />
-        </div>
+          /> */}
+        {/* </div> */}
         <div className="flex items-center gap-2  py-1">
           {/* <label>Description:</label> */}
           <input
@@ -169,15 +173,15 @@ const UpdateBlog = ({ session, hostname }) => {
               onChange={(e) => setGenre(e.target.value)}
             >
               <option value="Blog">Blog</option>
-              <option value="Art & Design">Art & Design</option>
               <option value="Automotive">Automotive</option>
               <option value="Beauty">Beauty</option>
-              <option value="Books & Literature">Books & Literature</option>
+              <option value="Books">Books</option>
               <option value="Business">Business</option>
               <option value="Career">Career</option>
               <option value="Cryptocurrency">Cryptocurrency</option>
               <option value="Culture">Culture</option>
-              <option value="DIY & Crafts">DIY & Crafts</option>
+              <option value="Crafts">Crafts</option>
+              <option value="Design">Design</option>
               <option value="Education">Education</option>
               <option value="Entertainment">Entertainment</option>
               <option value="Environmental">Environmental</option>
@@ -189,35 +193,34 @@ const UpdateBlog = ({ session, hostname }) => {
               <option value="Gardening">Gardening</option>
               <option value="Health">Health</option>
               <option value="History">History</option>
-              <option value="Hobbies & Interests">Hobbies & Interests</option>
-              <option value="Home Improvement">Home Improvement</option>
+              <option value="Home">Home</option>
               <option value="Humor">Humor</option>
+              <option value="Interests">Interests</option>
               <option value="Investing">Investing</option>
               <option value="Legal">Legal</option>
               <option value="Lifestyle">Lifestyle</option>
               <option value="Luxury">Luxury</option>
               <option value="Marketing">Marketing</option>
-              <option value="Mental Health">Mental Health</option>
               <option value="Movies">Movies</option>
               <option value="Music">Music</option>
-              <option value="News">News & Current Events</option>
+              <option value="News">News</option>
               <option value="Nonprofit">Nonprofit</option>
               <option value="Parenting">Parenting</option>
-              <option value="Personal Development">Personal Development</option>
               <option value="Pets">Pets</option>
               <option value="Photography">Photography</option>
               <option value="Politics">Politics</option>
-              <option value="Real Estate">Real Estate</option>
+              <option value="Estate">Estate</option>
               <option value="Relationships">Relationships</option>
               <option value="Science">Science</option>
               <option value="Shopping">Shopping</option>
-              <option value="Social Media">Social Media</option>
+              <option value="Social">Social</option>
               <option value="Space">Space</option>
               <option value="Spirituality">Spirituality</option>
               <option value="Sports">Sports</option>
               <option value="Startups">Startups</option>
               <option value="Story">Story</option>
               <option value="Technology">Technology</option>
+              <option value="Tips">Tips</option>
               <option value="Travel">Travel</option>
               <option value="Volunteer">Volunteer</option>
               <option value="Writing">Writing</option>

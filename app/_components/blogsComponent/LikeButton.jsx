@@ -31,11 +31,17 @@ const LikeButton = ({ blogId, initialLikes, userId }) => {
       className={`like-button flex items-center gap-1 ${liked ? "liked" : ""}`}
     >
       {liked ? (
-        <ThumbsUp className="size-5 text-sky-600" weight="fill" />
+        <ThumbsUp
+          className="size-6 hover:scale-150 ease-in duration-300  text-sky-600"
+          weight="fill"
+        />
       ) : (
-        <ThumbsUp className="size-5 text-sky-600" weight="bold" />
+        <ThumbsUp
+          className="size-6 hover:scale-150 hover:-rotate-6 ease-in duration-300  text-sky-600"
+          weight="bold"
+        />
       )}{" "}
-      {likes.length}
+      <p className="ml-2">{likes.length} likes</p>
     </button>
   );
 };
