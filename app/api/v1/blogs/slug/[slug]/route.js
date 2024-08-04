@@ -30,12 +30,6 @@ export async function GET(request) {
           blog.likes.push(userId);
         }
         await blog.save();
-      } else if (userId) {
-        // If it's not a like action, handle views
-        if (!blog.views.includes(userId)) {
-          blog.views.push(userId);
-          await blog.save();
-        }
       }
 
       return NextResponse.json(
