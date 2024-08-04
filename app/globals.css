@@ -6,11 +6,15 @@
   border-radius: 10px;
 }
 .content-custom-class a {
-  color: #22c55e !important;
+  color: #dc2626 !important;
   background-color: transparent !important;
+  font-weight: 500;
 }
 .content-custom-class a:hover {
   text-decoration: underline;
+}
+.content-custom-class ul {
+  margin-left: 20px;
 }
 
 .customised-input input {
