@@ -8,11 +8,30 @@ export async function GET(request) {
     const url = new URL(request.url);
     const slug = url.pathname.split("blogs/slug/")[1];
     const userId = url.searchParams.get("userId");
+    const action = url.searchParams.get("action");
 
     const blog = await Blog.findOne({ slug: slug });
     if (blog) {
       // Check if the user ID is already in the views array
       if (userId) {
+        if (!blog.views.includes(userId)) {
+          blog.views.push(userId);
+          await blog.save();
+        }
+      }
+
+      if (action === "like" && userId) {
+        // Handle the like action
+        if (blog.likes.includes(userId)) {
+          // If the user already liked the blog, remove the like
+          blog.likes.pull(userId);
+        } else {
+          // Otherwise, add the like
+          blog.likes.push(userId);
+        }
+        await blog.save();
+      } else if (userId) {
+        // If it's not a like action, handle views
         if (!blog.views.includes(userId)) {
           blog.views.push(userId);
           await blog.save();

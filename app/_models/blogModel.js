@@ -60,6 +60,12 @@ const blogSchema = new mongoose.Schema(
         ref: "User",
       },
     ],
+    likes: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: "User",
+      },
+    ],
     author: {
       type: mongoose.Schema.ObjectId,
       ref: "User",
@@ -99,6 +105,10 @@ blogSchema.virtual("readTime").get(function () {
 
 blogSchema.virtual("numberOfViews").get(function () {
   return this.views.length;
+});
+
+blogSchema.virtual("numberOfLikes").get(function () {
+  return this.likes.length;
 });
 
 const Blog = mongoose.models.Blog || mongoose.model("Blog", blogSchema);

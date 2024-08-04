@@ -7,6 +7,7 @@ import React from "react";
 import { notFound } from "next/navigation";
 import DeleteButton from "@/app/_components/buttons/DeleteBlog";
 import UpdateBlogButton from "@/app/_components/buttons/UpdateBlogButton";
+import LikeButton from "@/app/_components/blogsComponent/LikeButton";
 
 const hostname = process.env.HOSTNAME;
 
@@ -113,6 +114,11 @@ const Page = async ({ params }) => {
               <p className="font-medium py-0.5 px-2 rounded-md">
                 {day}-{month}-{year}
               </p>
+              <LikeButton
+                blogId={params.slug}
+                initialLikes={blog.likes}
+                userId={userId}
+              />
             </div>
             <div className="md:ml-auto flex items-center gap-2">
               {userId === blog.author._id ? (
