@@ -9,6 +9,8 @@ import DeleteButton from "@/app/_components/buttons/DeleteBlog";
 import UpdateBlogButton from "@/app/_components/buttons/UpdateBlogButton";
 import LikeButton from "@/app/_components/blogsComponent/LikeButton";
 import RelatedBlogs from "@/app/_components/blogsComponent/RelatedBlogs";
+import BlogComments from "@/app/_components/blogsComponent/BlogComments";
+import AddComment from "@/app/_components/blogsComponent/AddComment";
 
 const hostname = process.env.HOSTNAME;
 
@@ -151,10 +153,17 @@ const Page = async ({ params }) => {
         </div>
       </div>
       <div className="flex mt-20 justify-center">
+        <div className="w-3/6 pt-10 flex flex-col gap-4">
+          <AddComment hostname={hostname} blogId={blog._id} authorId={userId} />
+          <BlogComments hostname={hostname} blogId={blog._id} />
+        </div>
+      </div>
+      <div className="flex mt-20 justify-center">
         <div className="w-3/6 pt-10">
           <RelatedBlogs genre={blog.genre} />
         </div>
       </div>
+
       <Footer />
     </>
   );
