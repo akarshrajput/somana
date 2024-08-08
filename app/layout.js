@@ -5,6 +5,8 @@ import { Rubik } from "next/font/google";
 import Header from "./_components/main/Header";
 import { Toaster } from "react-hot-toast";
 import { ThemeProvider } from "next-themes";
+import { MusicPlayerProvider } from "./_context/MusicPlayerContext";
+import MusicPlayer from "./_components/musicComponents/MusicPlayer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -71,25 +73,30 @@ export default async function RootLayout({ children }) {
       </head>
       <body className={`dark:bg-stone-900 ${inter.className}`}>
         <ThemeProvider enableSystem={true} attribute="class">
-          <Toaster
-            position="bottom-right"
-            reverseOrder={false}
-            toastOptions={{
-              className:
-                "dark:bg-stone-800 dark:text-white rounded-lg shadow-lg",
-              duration: 5000,
-              style: {
-                // Additional custom styles if needed
-              },
-            }}
-          />
-          <div className={`${rubik.className}`}>
-            {/* <div className="sticky top-0 z-10"> */}
-            <div className="lg:sticky bg-white top-0 z-20">
-              <Header />
+          <MusicPlayerProvider>
+            <Toaster
+              position="bottom-right"
+              reverseOrder={false}
+              toastOptions={{
+                className:
+                  "dark:bg-stone-800 dark:text-white rounded-lg shadow-lg",
+                duration: 5000,
+                style: {
+                  // Additional custom styles if needed
+                },
+              }}
+            />
+            <div className={`${rubik.className}`}>
+              {/* <div className="sticky top-0 z-10"> */}
+              <div className="lg:sticky bg-white top-0 z-20">
+                <Header />
+              </div>
+              {children}
             </div>
-            {children}
-          </div>
+            <div className="fixed bottom-0 w-full z-50">
+              <MusicPlayer />
+            </div>
+          </MusicPlayerProvider>
         </ThemeProvider>
       </body>
     </html>

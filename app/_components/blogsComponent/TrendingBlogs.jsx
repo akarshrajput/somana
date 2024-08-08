@@ -32,7 +32,6 @@ const TrendingBlogs = async () => {
 };
 
 const BlogComponent = ({ blog }) => {
-  const heading = blog.heading.substring(0, 36);
   const description = blog.description.substring(0, 70);
   return (
     <Link href={`/blogs/${blog.slug}`} className="flex flex-col gap-2">
@@ -72,9 +71,8 @@ const BlogComponent = ({ blog }) => {
       </div>
 
       <div className="leading-5 antialiased">
-        <p className="font-medium overflow-hidden text-ellipsis">
-          {heading}
-          {heading.length < blog.heading.length ? "..." : ""}
+        <p className="font-medium text-nowrap overflow-hidden text-ellipsis">
+          {blog.heading}
         </p>
       </div>
       <div>
@@ -83,7 +81,7 @@ const BlogComponent = ({ blog }) => {
           {description.length < blog.description.length ? "..." : ""}
         </p>
       </div>
-      <div className="flex justify-center w-full overflow-hidden h-40">
+      <div className="flex justify-center w-full overflow-hidden h-56">
         <img
           src={blog?.featuredImage}
           className="rounded-md w-full object-cover"

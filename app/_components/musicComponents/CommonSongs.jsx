@@ -1,6 +1,7 @@
 import { MusicNote } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import React from "react";
+import MusicInfo from "./MusicInfo";
 
 const CommonSongs = async ({ hostname, musicType, description = "Songs" }) => {
   const res = await fetch(
@@ -13,15 +14,15 @@ const CommonSongs = async ({ hostname, musicType, description = "Songs" }) => {
   const tracks = data.data.tracks;
 
   return (
-    <div>
+    <div className="py-6">
       <div>
-        <p className="text-sm p-2  font-medium flex items-center gap-2">
-          <MusicNote weight="bold" className="size-4" /> {description}
+        <p className="mb-1  font-medium flex items-center gap-2">
+          <MusicNote weight="bold" /> {description}
         </p>
       </div>
       <div className="grid xl:grid-cols-12 lg:grid-cols-6 md:grid-cols-4 text-sm md:text-base grid-cols-4 gap-2">
         {tracks.map((track) => (
-          <Music track={track} key={track._id} />
+          <MusicInfo track={track} key={track._id} />
         ))}
       </div>
     </div>

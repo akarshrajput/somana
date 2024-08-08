@@ -129,56 +129,51 @@ const AudioPlayer = ({ audioFile }) => {
   };
 
   return (
-    <div className="text-stone-200 rounded-lg w-full">
+    <div className="text-stone-200 text-[12px] rounded-lg w-full">
       <audio ref={audioRef} preload="auto" />
-      <div className="flex items-center justify-between mt-4">
-        <button
-          onClick={handlePlayPause}
-          className="bg-stone-800 hover:bg-stone-700 font-bold py-2 px-4 rounded"
-        >
-          {playing ? <Stop weight="fill" /> : <Play weight="fill" />}
-        </button>
-        <div className="flex items-center space-x-4">
-          <input
-            type="range"
-            min="0"
-            max="1"
-            step="0.01"
-            value={volume}
-            onChange={handleVolumeChange}
-            className="w-24"
-            disabled={muted}
-          />
-        </div>
-      </div>
-      <div className="relative w-full h-2 bg-stone-700 mt-4 rounded">
-        <input
-          ref={progressRef}
-          type="range"
-          min="0"
-          max="100"
-          step="0.1"
-          defaultValue="0"
-          onClick={handleProgressClick}
-          className="absolute top-0 left-0 w-full h-2 opacity-0 cursor-pointer"
-        />
-        <div
-          className="absolute top-0 left-0 h-2 bg-blue-500 rounded"
-          style={{ width: `${(currentTime / duration) * 100}%` }}
-        ></div>
-      </div>
 
-      <div className="flex mt-4 text-sm">
+      <div className="flex items-center gap-2">
         {isDarkMode ? (
           <>
-            <div>{formatTime(currentTime)}</div>
-            <div className="ml-auto">{formatTime(duration)}</div>
+            <button
+              onClick={handlePlayPause}
+              className="font-bold py-2 px-4 rounded text-stone-200 text-base"
+            >
+              {playing ? <Stop weight="fill" /> : <Play weight="fill" />}
+            </button>
+            <div className="text-stone-200">{formatTime(currentTime)}</div>
           </>
         ) : (
           <>
+            <button
+              onClick={handlePlayPause}
+              className="font-bold py-2 px-4 rounded text-stone-600 text-base"
+            >
+              {playing ? <Stop weight="fill" /> : <Play weight="fill" />}
+            </button>
             <div className="text-stone-800">{formatTime(currentTime)}</div>
-            <div className="text-stone-800 ml-auto">{formatTime(duration)}</div>
           </>
+        )}
+        <div className="relative w-full h-1 bg-stone-700 mt-4 rounded">
+          <input
+            ref={progressRef}
+            type="range"
+            min="0"
+            max="100"
+            step="0.1"
+            defaultValue="0"
+            onClick={handleProgressClick}
+            className="absolute top-0 left-0 h-1 w-full opacity-0 cursor-pointer"
+          />
+          <div
+            className="absolute top-0 left-0 h-1 bg-blue-500 rounded"
+            style={{ width: `${(currentTime / duration) * 100}%` }}
+          ></div>
+        </div>
+        {isDarkMode ? (
+          <div className="text-stone-200 ml-auto">{formatTime(duration)}</div>
+        ) : (
+          <div className="text-stone-800 ml-auto">{formatTime(duration)}</div>
         )}
       </div>
     </div>

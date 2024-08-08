@@ -10,6 +10,7 @@ import CommonTrendBlog from "./_components/blogsComponent/CommonTrendBlog";
 import { FlagBannerFold, Planet } from "@phosphor-icons/react/dist/ssr";
 import Footer from "./_components/main/Footer";
 import TrendingBlogs from "./_components/blogsComponent/TrendingBlogs";
+import CommonSongs from "./_components/musicComponents/CommonSongs";
 const hostname = process.env.HOSTNAME;
 export default async function Home() {
   const session = await auth();
@@ -32,6 +33,13 @@ export default async function Home() {
         </div>
         <div className="px-4 mt-4">
           <TrendingBlogs />
+        </div>
+        <div className="dark:bg-stone-900 dark:text-stone-200 px-4">
+          <CommonSongs
+            musicType="Funk"
+            description="Funk Music"
+            hostname={hostname}
+          />
         </div>
       </div>
       <Footer />

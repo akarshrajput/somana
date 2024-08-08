@@ -23,7 +23,7 @@ const page = () => {
         <div className="mb-2">
           <BlogsNavigation />
         </div>
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-4">
           <div className="grid dark:text-stone-200 grid-cols-3 gap-2 gap-x-4 my-4">
             <BlogOfTheWeek />
 

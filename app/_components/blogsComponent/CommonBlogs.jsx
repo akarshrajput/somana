@@ -30,11 +30,10 @@ const CommonBlogs = async ({ children, genre }) => {
 };
 
 const BlogComponent = ({ blog }) => {
-  const heading = blog.heading.substring(0, 70);
   const description = blog.description.substring(0, 100);
   return (
-    <Link href={`/blogs/${blog.slug}`} className="flex flex-col gap-1">
-      <div className="flex  items-center gap-1 text-sm">
+    <Link href={`/blogs/${blog.slug}`} className="flex flex-col gap-2">
+      <div className="flex text-nowrap items-center gap-1 text-sm">
         <div className="flex">
           <img
             className="size-6 z-10 rounded-full border border-stone-50 dark:border-stone-500"
@@ -55,33 +54,37 @@ const BlogComponent = ({ blog }) => {
         ) : (
           ""
         )}
-        <p className="text-sm font-medium text-blue-400 mx-1">{blog.genre}</p>
+        <p className="text-sm font-medium  text-blue-400 mx-1">{blog.genre}</p>
         <div className="ml-auto flex items-center gap-1">
-          <p className="text-sm font-medium py-0.5 px-1 ml-auto rounded-md">
+          {/* <p className="text-sm font-medium py-0.5 px-1 ml-auto rounded-md">
+            {blog.numberOfViews} views
+          </p> */}
+          {/* <p className="bg-stone-100 text-sm border py-0.5 px-1 rounded-md">
             {blog.readTime} min
-          </p>
-          <p className="text-sm font-medium py-0.5 px-1 ml-auto rounded-md">
+          </p> */}
+          {/* <p className="text-sm font-medium py-0.5 px-1 ml-auto rounded-md">
             June 26
-          </p>
+          </p> */}
         </div>
       </div>
 
       <div className="leading-5 antialiased">
-        <p className="font-medium h-14 overflow-hidden text-ellipsis">
-          {heading}
-          {heading.length < blog.heading.length ? "..." : ""}
+        <p className="font-medium text-nowrap overflow-hidden text-ellipsis">
+          {blog.heading}
         </p>
       </div>
-
-      <div className="flex justify-center w-full overflow-hidden h-48">
+      <div>
+        <p className="text-sm antialiased">
+          {description}{" "}
+          {description.length < blog.description.length ? "..." : ""}
+        </p>
+      </div>
+      <div className="flex justify-center w-full overflow-hidden h-56">
         <img
           src={blog?.featuredImage}
           className="rounded-md w-full object-cover"
           alt="Featured Image"
         />
-      </div>
-      <div>
-        <p className="text-sm antialiased">{description} ...</p>
       </div>
     </Link>
   );
