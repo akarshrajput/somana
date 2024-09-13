@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* .content-custom-class img {
+  width: 100%;
+  border-radius: 10px;
+} */
+.content-custom-class a {
+  color: #0ea5e9 !important;
+  background-color: transparent !important;
+  font-weight: 500;
+}
+.content-custom-class a:hover {
+  text-decoration: underline;
+}
+
+.customised-input input {
+  outline: none;
+}
+.customised-input textarea {
+  outline: none;
+}
+.customised-input select {
+  outline: none;
+}
+.content-custom-class::after {
+  content: "";
+  @apply absolute bottom-0 left-0 right-0 h-16; /* Tailwind for positioning */
+  background: linear-gradient(transparent, white); /* Fading effect */
+  pointer-events: none; /* Allow clicks through the faded area */
+}
+/* :root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+} */
+
+/* Base styles */
+/* body {
+  font-size: 16px;
+  line-height: 1.5;
+} */
+
+/* Responsive styles for small devices @media (max-width: 768px) {
+  body {
+    font-size: 14px; /* Decrease font size */
+/* line-height: 1.4; */
+/* } */
+
+/* Adjust other elements similarly */
+/* } */
+
+/* Even smaller devices like very small mobile screens */
+/* @media (max-width: 480px) {
+  body {
+    font-size: 12px;
+    line-height: 1.3;
+  }
+}
+
+@media (max-width: 450px) {
+  body {
+    font-size: 10px;
+    line-height: 1.3;
+  }
+} */
+
+/* Add this in your global CSS file */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.custom-privacy-page li {
+  margin-left: 20px;
+}
+.custom-privacy-page ul {
+  list-style: square;
+}
+.custom-privacy-page h2 {
+  font-weight: bold;
+}
