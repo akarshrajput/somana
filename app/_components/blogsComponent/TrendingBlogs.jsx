@@ -22,7 +22,7 @@ export default async function CommonSpecialBlogs() {
         </div> */}
         <div className="mx-auto mt-10 flex flex-col max-w-2xl gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none">
           {blogs.map((post) => (
-            <div className="flex items-center gap-4">
+            <div key={post._id} className="flex items-center gap-4">
               <div className="flex justify-center overflow-hidden size-52 rounded-lg border">
                 <img
                   src={post?.featuredImage}
@@ -30,10 +30,7 @@ export default async function CommonSpecialBlogs() {
                   alt="Featured Image"
                 />
               </div>
-              <article
-                key={post._id}
-                className="flex max-w-xl flex-col items-start justify-between"
-              >
+              <article className="flex max-w-xl flex-col items-start justify-between">
                 <div className="relative flex items-center gap-x-4">
                   <img
                     alt=""
