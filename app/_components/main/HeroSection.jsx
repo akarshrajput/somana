@@ -2,6 +2,8 @@
 // import { Roboto_Slab } from "next/font/google";
 // import Link from "next/link";
 
+import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
+
 // const robotoSlab = Roboto_Slab({
 //   subsets: ["latin"],
 //   display: "swap",
@@ -55,13 +57,15 @@ export default function Example() {
           </svg>
           <div className="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
             <h2 className="text-3xl font-bold tracking-tight text-black sm:text-4xl">
-              Boost your productivity.
-              <br />
-              Start using our app today.
+              <p className="flex items-center gap-2">
+                Somana <ArrowRight weight="bold" />
+              </p>
+              {/* <br /> */}
+              Beyond Boundaries
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-700">
-              Ac euismod vel sit maecenas id pellentesque eu sed consectetur.
-              Malesuada adipiscing sagittis vel nulla.
+              Stories, Music, Videos, News, Podcasts and more more around the
+              world is here.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
               <a

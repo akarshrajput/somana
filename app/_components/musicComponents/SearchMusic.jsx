@@ -51,10 +51,10 @@ const SearchMusic = ({ hostname }) => {
 
   return (
     <div className="flex z-5 flex-col relative">
-      <div className="flex text-stone-50 items-center gap-1 rounded-lg  px-1  bg-stone-800  w-80  border border-stone-700 pl-2">
+      <div className="flex  items-center gap-1 bg-stone-50 w-44 sm:w-80 rounded-full">
         {/* <MagnifyingGlass weight="bold" className="size-5 text-stone-50" /> */}
         <input
-          className="py-1 px-2 placeholder-stone-200 w-full  bg-stone-800  outline-none"
+          className="py-1 px-2 text-sm placeholder-stone-500 w-full bg-stone-50 outline-none"
           placeholder="Search music, tracks ..."
           onFocus={() => setShowSearchContent(true)}
           value={input}
@@ -85,14 +85,14 @@ const SearchContent = React.forwardRef(
       <div
         onClick={handleClick}
         ref={ref}
-        className="absolute text-sm dark:text-stone-50  overflow-scroll max-h-80 top-full left-0 w-80  dark:bg-stone-800 border-stone-950 bg-stone-800 p-1 mt-1 border  dark:border-stone-700 rounded-md shadow-md"
+        className="absolute text-sm border mt-2 rounded-lg overflow-scroll scrollbar-hide max-h-80 top-full left-0 w-44 sm:w-80 dark:bg-stone-800 bg-stone-100 p-1 dark:border-stone-700 shadow-md"
       >
         {loading ? (
-          <LoaderSmall className="text-stone-50" />
+          <LoaderSmall />
         ) : (
           <ul className="flex flex-col">
             {minders.length > 0 ? (
-              <p className="flex gap-1 items-center bg-gray-0 py-1 text-stone-100 px-2">
+              <p className="flex gap-1 items-center bg-gray-0 py-1 px-2">
                 Results {minders.length}
               </p>
             ) : (
@@ -111,6 +111,8 @@ const SearchContent = React.forwardRef(
 );
 
 const SearchItem = ({ minder }) => {
+  const musicName = minder.musicName.substring(0, 20);
+  const credits = minder.credits.substring(0, 20);
   const { setTrack } = useMusicPlayer(); // Call the hook to get the context values
 
   function handlePlay() {
@@ -120,16 +122,16 @@ const SearchItem = ({ minder }) => {
     <>
       <div
         onClick={handlePlay}
-        className="flex items-center gap-2 cursor-pointer p-1 text-sm text-stone-300"
+        className="flex items-center gap-2 cursor-pointer p-1 text-sm"
       >
         <img src={`${minder.featuredImage}`} className="size-8 rounded-sm" />
         <div className="flex flex-col">
-          <p className="font-medium">{minder.musicName}</p>
-          <p>{minder.credits}</p>
+          <p className="font-medium text-sm">{musicName}</p>
+          <p>{credits}</p>
         </div>
       </div>
 
-      <p className="border border-stone-950"></p>
+      <p className="border border-stone-200"></p>
     </>
   );
 };

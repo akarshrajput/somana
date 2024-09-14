@@ -3,7 +3,7 @@
 import { useState } from "react";
 import SearchBlogs from "../blogsComponent/SearchBlogs";
 import SearchMusic from "../musicComponents/SearchMusic";
-import { CaretCircleUp } from "@phosphor-icons/react/dist/ssr";
+import { CaretCircleUp, CaretUp } from "@phosphor-icons/react/dist/ssr";
 
 const GlobalSearch = () => {
   const [selectedService, setSelectedService] = useState("blogs");
@@ -26,17 +26,17 @@ const GlobalSearch = () => {
   };
 
   return (
-    <div className="bg-stone-50 border border-stone-200 text-sm flex items-center py-1 rounded-lg">
+    <div className="bg-stone-50 border text-sm flex items-center rounded-lg">
       <div className="relative">
         <button
           aria-haspopup="true"
           aria-expanded={dropdownOpen}
-          className="bg-stone-50 px-1.5 flex items-center outline-none p-1 w-20 rounded-md"
+          className="bg-green-600 text-stone-50 px-1 pl-2 py-2 flex items-center outline-none p-1 w-20 rounded-l-md"
           onClick={() => setDropdownOpen(!dropdownOpen)}
         >
           {selectedService.charAt(0).toUpperCase() + selectedService.slice(1)}
-          <CaretCircleUp
-            weight="bold"
+          <CaretUp
+            weight="fill"
             className={`ml-auto duration-150 ${
               dropdownOpen ? "" : "rotate-180"
             }`}

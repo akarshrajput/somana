@@ -174,13 +174,13 @@ const Page = async ({ params }) => {
           <div className="flex justify-center">
             {session?.user ? (
               <div
-                className={`${robotoSlab.className} w-5/6  hyphens-auto  text-sm md:text-lg overflow-hidden leading-loose mt-10 tracking-wider text-stone-700 dark:text-stone-200 antialiased mb-10`}
+                className={`w-5/6  hyphens-auto  text-sm md:text-lg overflow-hidden leading-loose mt-10 tracking-wider text-stone-700 dark:text-stone-200 antialiased mb-10`}
                 dangerouslySetInnerHTML={{ __html: contentWithLineBreaks }}
               ></div>
             ) : (
               <div className="flex flex-col items-center">
                 <div
-                  className={`${robotoSlab.className} w-5/6 hyphens-auto text-sm md:text-lg overflow-hidden relative content-custom-class leading-loose mt-10 tracking-wider text-stone-700 dark:text-stone-200 antialiased mb-10`}
+                  className={`w-5/6 hyphens-auto text-sm md:text-lg overflow-hidden relative content-custom-class leading-loose mt-10 tracking-wider text-stone-700 dark:text-stone-200 antialiased mb-10`}
                   dangerouslySetInnerHTML={{ __html: oneThirdContent }}
                 ></div>
                 <UserLoginError>

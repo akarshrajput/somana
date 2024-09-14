@@ -25,23 +25,12 @@ export default async function Home() {
             <div>
               <HeroSection />
             </div>
-            <div className="my-4">
+            {/* <div className="my-4">
               <Navigation />
-            </div>
+            </div> */}
             <div>
               <CommonSpecialBlogs genre="Space" />
             </div>
-
-            {/* <div className="my-2">
-              <p className="mb-2 bg-stone-50 p-1 px-2 w-fit rounded-md font-medium flex items-center gap-2">
-                <Mountains weight="bold" />
-                Advertisement
-              </p>
-              <div
-                className="border border-dashed p-1 my-1 rounded-md bg-stone-100"
-                id="container-2a23f44d708874fffe31b49e3f5cd5d5"
-              ></div>
-            </div> */}
           </div>
           <div className="grid grid-cols-3 mx-auto lg:max-w-[90rem]">
             <div className="col-span-2">
