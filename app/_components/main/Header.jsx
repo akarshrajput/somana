@@ -22,7 +22,8 @@ import Logo from "./Logo";
 import GlobalSearch from "./GlobalSearch";
 import Link from "next/link";
 import LoginButton from "../buttons/LoginButton";
-import { Pen, Upload } from "@phosphor-icons/react/dist/ssr";
+import { MusicNote, Pen, Upload } from "@phosphor-icons/react/dist/ssr";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function Example({ session }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -49,9 +50,11 @@ export default function Example({ session }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [prevScrollPos]);
 
+  const pathName = usePathname().split("/");
+
   return (
     <header
-      className={`bg-white fixed top-0 w-full z-50 transition-transform duration-300 ${
+      className={`bg-transparent fixed top-0 w-full z-50 transition-transform duration-300 ${
         visible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
@@ -81,12 +84,20 @@ export default function Example({ session }) {
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <div className="flex items-center gap-2">
             <Link
+              href="/music/playlist"
+              className="flex items-center gap-1 text-sm bg-pink-600 text-stone-50 px-4 py-1.5 rounded-full"
+            >
+              <MusicNote weight="bold" />
+              Playlists
+            </Link>
+            <Link
               href="upload"
               className="flex items-center gap-1 text-sm bg-green-600 text-stone-50 px-4 py-1.5 rounded-full"
             >
               <Upload weight="bold" />
               Upload
             </Link>
+
             {session ? (
               <Link href="/me" className="flex items-center gap-2">
                 <img

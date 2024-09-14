@@ -3,7 +3,12 @@
 import { useState } from "react";
 import SearchBlogs from "../blogsComponent/SearchBlogs";
 import SearchMusic from "../musicComponents/SearchMusic";
-import { CaretCircleUp, CaretUp } from "@phosphor-icons/react/dist/ssr";
+import {
+  CaretCircleDown,
+  CaretCircleUp,
+  CaretUp,
+} from "@phosphor-icons/react/dist/ssr";
+import { CaretCircleDoubleDown } from "@phosphor-icons/react";
 
 const GlobalSearch = () => {
   const [selectedService, setSelectedService] = useState("blogs");
@@ -35,7 +40,7 @@ const GlobalSearch = () => {
           onClick={() => setDropdownOpen(!dropdownOpen)}
         >
           {selectedService.charAt(0).toUpperCase() + selectedService.slice(1)}
-          <CaretUp
+          <CaretCircleUp
             weight="fill"
             className={`ml-auto duration-150 ${
               dropdownOpen ? "" : "rotate-180"
