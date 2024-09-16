@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { ArrowRight } from "@phosphor-icons/react";
+import BlogDate from "./BlogDate";
+import LoaderSmall from "../main/LoaderSmall";
 
 const BlogComments = ({ hostname, blogId }) => {
   const [comments, setComments] = useState([]);
@@ -28,14 +30,19 @@ const BlogComments = ({ hostname, blogId }) => {
     fetchBlogComments();
   }, [blogId]);
 
-  if (loading) return <div>Loading comments...</div>;
+  if (loading)
+    return (
+      <div>
+        <LoaderSmall />
+      </div>
+    );
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div className="w-full max-w-3xl mx-auto p-4 bg-white dark:bg-stone-800 rounded-md shadow-sm">
-      <h2 className="flex items-center gap-2 font-medium mb-4 text-md text-stone-700 dark:text-stone-200">
+    <div className="w-full max-w-3xl mx-auto p-2 bg-white dark:bg-stone-800 rounded-md">
+      {/* <h2 className="flex items-center gap-2 font-medium mb-4 text-md text-stone-700 dark:text-stone-200">
         Comments <ArrowRight />
-      </h2>
+      </h2> */}
       <div className="flex flex-col gap-4">
         {comments.length > 0 ? (
           comments.map((comment) => (
@@ -53,18 +60,23 @@ const BlogComments = ({ hostname, blogId }) => {
 
 const Comment = ({ comment }) => {
   return (
-    <div className="flex gap-4 p-2 bg-stone-50 dark:bg-stone-700 rounded-md">
-      <div>
+    <div className="flex gap-4 p-2 dark:bg-stone-700 rounded-md">
+      <div className="h-10 w-10 flex-shrink-0">
         <img
           src={comment.author.photo}
-          className="size-10 rounded-full object-cover"
+          className="h-full w-full rounded-full object-cover"
           alt={`${comment.author.name}'s profile`}
         />
       </div>
       <div className="flex flex-col">
-        <p className="text-sm font-medium text-stone-800 dark:text-stone-200">
-          {comment.author.name}
-        </p>
+        <div className="flex items-center gap-2">
+          <p className="text-sm font-medium text-stone-800 dark:text-stone-200">
+            {comment.author.name}
+          </p>
+          <div className="text-sm text-stone-500">
+            <BlogDate blogDate={comment.createdAt}></BlogDate>
+          </div>
+        </div>
         <p className="text-sm text-stone-600 dark:text-stone-300 mt-1">
           {comment.content}
         </p>

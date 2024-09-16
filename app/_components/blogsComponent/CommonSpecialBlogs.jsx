@@ -107,7 +107,7 @@ export default async function CommonSpecialBlogs({ genre }) {
   const data = await res.json();
   const blogs = data.data.blogs;
   return (
-    <div className="bg-white py-8">
+    <div className="bg-white py-4">
       <div className="mx-auto lg:max-w-[90rem] px-6 lg:px-8">
         {/* <div className="mx-auto max-w-2xl lg:mx-0">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">

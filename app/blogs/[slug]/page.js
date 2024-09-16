@@ -208,6 +208,7 @@ const Page = async ({ params }) => {
         <div className="w-full max-w-3xl pt-10 flex flex-col gap-4">
           {session?.user ? (
             <AddComment
+              session={session}
               hostname={hostname}
               blogId={blog._id}
               authorId={userId}

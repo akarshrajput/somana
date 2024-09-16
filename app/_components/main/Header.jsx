@@ -10,7 +10,6 @@ import {
   Popover,
   PopoverButton,
   PopoverGroup,
-  PopoverPanel,
 } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import {
@@ -29,8 +28,9 @@ export default function Example({ session }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
+  const [isAtTop, setIsAtTop] = useState(true);
 
-  // This effect checks the scroll position and updates the header visibility
+  // This effect checks the scroll position and updates the header visibility and background color
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPos = window.pageYOffset;
@@ -41,6 +41,9 @@ export default function Example({ session }) {
       } else {
         setVisible(false); // If scrolling down, hide the header
       }
+
+      // Update background based on scroll position
+      setIsAtTop(currentScrollPos < 10);
 
       setPrevScrollPos(currentScrollPos);
     };
@@ -54,9 +57,9 @@ export default function Example({ session }) {
 
   return (
     <header
-      className={`bg-transparent fixed top-0 w-full z-50 transition-transform duration-300 ${
+      className={`fixed top-0 w-full z-50 transition-transform duration-300 ${
         visible ? "translate-y-0" : "-translate-y-full"
-      }`}
+      } ${isAtTop ? "bg-transparent" : "bg-white border-b"}`}
     >
       <nav
         aria-label="Global"
@@ -91,7 +94,7 @@ export default function Example({ session }) {
               Playlists
             </Link>
             <Link
-              href="upload"
+              href="/upload"
               className="flex items-center gap-1 text-sm bg-green-600 text-stone-50 px-4 py-1.5 rounded-full"
             >
               <Upload weight="bold" />
