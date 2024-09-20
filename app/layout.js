@@ -7,6 +7,7 @@ import {
   Work_Sans,
 } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/react";
 
 import Header from "./_components/main/Header";
 import { Toaster } from "react-hot-toast";
@@ -159,6 +160,7 @@ export default async function RootLayout({ children }) {
             </LocationInfoProvider>
           </MusicPlayerProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
