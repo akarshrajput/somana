@@ -15,7 +15,6 @@ import { MusicPlayerProvider } from "./_context/MusicPlayerContext";
 import MusicPlayer from "./_components/musicComponents/MusicPlayer";
 import { LocationInfoProvider } from "./_context/LocationContext";
 import { auth } from "./_lib/auth";
-import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -76,17 +75,17 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <Script
+        <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3750195818284635"
           crossorigin="anonymous"
-        />
+        ></script>
 
-        <Script
+        <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-SDEHSMHGK5"
-        />
-        <Script
+        ></script>
+        <script
           dangerouslySetInnerHTML={{
             __html: `
         window.dataLayer = window.dataLayer || [];
@@ -104,23 +103,26 @@ export default async function RootLayout({ children }) {
 
         {/* ADSTERRA ADS */}
         {/* 1 Banner */}
-        <Script
+        <script
+          async
           type="text/javascript"
           src="//www.topcreativeformat.com/bcc1400ed4c6e1019b60916e7171eb70/invoke.js"
-        />
+        ></script>
 
         {/* 2 Popunder */}
-        <Script
+        <script
+          async
           type="text/javascript"
           src="//pl24108613.cpmrevenuegate.com/5e/01/19/5e011983bc3dd426495a69571c73ae5c.js"
-        />
+        ></script>
 
         {/* 3 Direct link */}
         {/* Social Bar */}
-        <Script
+        <script
+          async
           type="text/javascript"
           src="//pl24108933.cpmrevenuegate.com/6d/f8/17/6df8171da1018fd7c9114e8a5b55b7ba.js"
-        />
+        ></script>
       </head>
       <body className={`dark:bg-stone-900 ${inter.className}`}>
         <ThemeProvider
