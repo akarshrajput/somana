@@ -100,6 +100,26 @@ export default async function RootLayout({ children }) {
           name="ezoic-site-verification"
           content="qBxP0NlmfzjagfosOUBFH4DZEC3h2G"
         />
+
+        {/* ADSTERRA ADS */}
+        {/* 1 Banner */}
+        <script
+          type="text/javascript"
+          src="//www.topcreativeformat.com/bcc1400ed4c6e1019b60916e7171eb70/invoke.js"
+        ></script>
+
+        {/* 2 Popunder */}
+        <script
+          type="text/javascript"
+          src="//pl24108613.cpmrevenuegate.com/5e/01/19/5e011983bc3dd426495a69571c73ae5c.js"
+        ></script>
+
+        {/* 3 Direct link */}
+        {/* Social Bar */}
+        <script
+          type="text/javascript"
+          src="//pl24108933.cpmrevenuegate.com/6d/f8/17/6df8171da1018fd7c9114e8a5b55b7ba.js"
+        ></script>
       </head>
       <body className={`dark:bg-stone-900 ${inter.className}`}>
         <ThemeProvider
