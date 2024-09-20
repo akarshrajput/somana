@@ -33,7 +33,7 @@ import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 // export default HeroSection;
 export default function Example() {
   return (
-    <div className="bg-white mx-auto lg:max-w-[90rem]">
+    <div className="bg-white z-0 mx-auto lg:max-w-[90rem]">
       <div className="relative isolate px-6 lg:px-8">
         <div
           aria-hidden="true"

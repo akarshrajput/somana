@@ -21,13 +21,13 @@ export default async function Home() {
             {/* <div className="mt-2">
               <ServicesNav />
             </div> */}
-
-            <div>
-              <HeroSection />
-            </div>
-            {/* <div className="my-4">
+            <div className="my-4">
               <Navigation />
+            </div>
+            {/* <div>
+              <HeroSection />
             </div> */}
+
             <div>
               <CommonSpecialBlogs genre="Space" />
             </div>
