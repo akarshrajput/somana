@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import CurrentUserProfile from "./CurrentUserProfile";
 import CurrentUserSettings from "./CurrentUserSettings";
+import CurrentUserBlogSmall from "./CurrentUserBlogsSmall";
 
 const ProfileSwitcher = ({ session }) => {
   const [activeTab, setActiveTab] = useState("profile");
@@ -14,6 +15,12 @@ const ProfileSwitcher = ({ session }) => {
         return <CurrentUserSettings session={session} />;
       case "details":
         return <div>Details</div>;
+      case "data":
+        return (
+          <div>
+            <CurrentUserBlogSmall />
+          </div>
+        );
       default:
         return <CurrentUserProfile session={session} />;
     }
@@ -47,6 +54,14 @@ const ProfileSwitcher = ({ session }) => {
           onClick={() => setActiveTab("details")}
         >
           Details
+        </button>
+        <button
+          className={`px-4 py-2 ${
+            activeTab === "data" ? "bg-green-400" : "bg-stone-100"
+          } hover:bg-green-400`}
+          onClick={() => setActiveTab("data")}
+        >
+          Data
         </button>
       </div>
       <div className="mt-4">{renderContent()}</div>

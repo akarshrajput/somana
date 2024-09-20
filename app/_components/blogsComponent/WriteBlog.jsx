@@ -4,9 +4,15 @@ import QuillEditor from "../editor/QuillEditor";
 import supabase from "@/app/_lib/supabase";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { Info, PaperPlaneRight } from "@phosphor-icons/react/dist/ssr";
+import {
+  Info,
+  PaperPlaneRight,
+  Pen,
+  Sparkle,
+} from "@phosphor-icons/react/dist/ssr";
 import LoaderSmall from "../main/LoaderSmall";
 import toast from "react-hot-toast";
+import { Share } from "@phosphor-icons/react";
 
 const WriteBlog = ({ supabaseURL, session, hostname }) => {
   const [heading, setHeading] = useState("");
@@ -16,6 +22,42 @@ const WriteBlog = ({ supabaseURL, session, hostname }) => {
   const [genre, setGenre] = useState("Blog");
   const [featuredImage, setFeaturedImage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [useAI, setUseAI] = useState(false);
+  const [question, setQuestion] = useState("");
+  const [aiLoading, setAiLoading] = useState("");
+
+  const handleUseAI = () => {
+    setUseAI(true);
+  };
+
+  const handleNotUseAI = () => {
+    setUseAI(false);
+    setContent("");
+  };
+
+  const handleAISubmit = async (e) => {
+    e.preventDefault();
+    setAiLoading(true);
+
+    try {
+      const response = await fetch("/api/v1/ai/ask", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ question }),
+      });
+
+      const aiResponseData = await response.json();
+      console.log(aiResponseData);
+      setContent(aiResponseData.answer);
+    } catch (err) {
+      console.log("AI Error");
+    } finally {
+      setAiLoading(false);
+      // setQuestion(""); // Clear the input field after submission
+    }
+  };
 
   const router = useRouter();
 
@@ -49,6 +91,7 @@ const WriteBlog = ({ supabaseURL, session, hostname }) => {
         content: content,
         tags: tags,
         genre: genre,
+        usedAI: useAI,
         author: session.user.userId,
         featuredImage: imagePath,
       };
@@ -113,8 +156,34 @@ const WriteBlog = ({ supabaseURL, session, hostname }) => {
 
   return (
     <div>
+      <div className="px-4 flex items-center gap-2">
+        {!useAI ? (
+          <button
+            onClick={handleUseAI}
+            className="text-sm text-stone-100 bg-stone-800 rounded-full py-2 px-4 flex items-center gap-1"
+          >
+            <Sparkle weight="fill" />
+            Use AI for Blog
+          </button>
+        ) : (
+          <div className="flex items-center gap-2">
+            <button
+              onClick={handleNotUseAI}
+              className="text-sm text-stone-100 bg-rose-600 rounded-full py-2 px-4 flex items-center gap-1"
+            >
+              <Pen weight="fill" />
+              Write without AI
+            </button>
+            <p className="text-sm text-pink-800  w-fit bg-pink-100 rounded-full py-2 px-4 flex items-center gap-1">
+              <Info weight="bold" />
+              Others will know that you have used AI <Sparkle weight="fill" />{" "}
+              for writing article.
+            </p>
+          </div>
+        )}
+      </div>
       <form
-        className="rounded-md p-4 overflow-hidden border-2 bg-stone-100 dark:bg-stone-800 dark:border-stone-700 border-stone-300 flex flex-col gap-4"
+        className="rounded-md p-4 overflow-hidden flex flex-col gap-4"
         onSubmit={handleSubmit}
       >
         <div className="flex items-center gap-2  py-1">
@@ -123,7 +192,7 @@ const WriteBlog = ({ supabaseURL, session, hostname }) => {
             value={heading}
             onChange={handleHeadingChange}
             placeholder="Write heading"
-            className="border border-stone-300 dark:border-stone-600 dark:bg-stone-700 dark:placeholder:text-stone-200  bg-stone-200 placeholder-stone-600 py-1 px-2 outline-none rounded-md w-full"
+            className="border border-stone-200  dark:placeholder:text-stone-200  bg-stone-50 placeholder-stone-600 py-2 px-2 outline-none rounded-md w-full"
           />
         </div>
         <div className="flex items-center gap-2  py-1">
@@ -132,7 +201,7 @@ const WriteBlog = ({ supabaseURL, session, hostname }) => {
             value={description}
             onChange={handleDescriptionChange}
             placeholder="Write description"
-            className="border border-stone-300 dark:border-stone-600 dark:bg-stone-700 dark:placeholder:text-stone-200  bg-stone-200 placeholder-stone-600 py-1 px-2 outline-none rounded-md w-full"
+            className="border border-stone-200  dark:placeholder:text-stone-200  bg-stone-50 placeholder-stone-600 py-2 px-2 outline-none rounded-md w-full"
           />
         </div>
         <div className="flex flex-wrap items-center gap-4 py-1">
@@ -149,13 +218,13 @@ const WriteBlog = ({ supabaseURL, session, hostname }) => {
               value={tags}
               onChange={handleTagsChange}
               placeholder="Write heading"
-              className="border border-stone-300 dark:border-stone-600 dark:bg-stone-700 dark:placeholder:text-stone-200  bg-stone-200 placeholder-stone-600 py-1 px-2 outline-none rounded-md w-full"
+              className="border border-stone-200  dark:placeholder:text-stone-200  bg-stone-50 placeholder-stone-600 py-2 px-2 outline-none rounded-md w-full"
             />
           </div>
           <div className="flex items-center gap-2">
             <label>Genre: </label>
             <select
-              className="border border-stone-300 dark:border-stone-600 dark:bg-stone-700 dark:placeholder:text-stone-200  bg-stone-200 placeholder-stone-600 py-1 px-2 outline-none rounded-md w-full"
+              className="border border-stone-200  dark:placeholder:text-stone-200  bg-stone-50 placeholder-stone-600 py-2 px-2 outline-none rounded-md w-full"
               value={genre}
               onChange={(e) => setGenre(e.target.value)}
             >
@@ -214,8 +283,44 @@ const WriteBlog = ({ supabaseURL, session, hostname }) => {
             </select>
           </div>
         </div>
+        {useAI ? (
+          <div className="flex flex-col gap-2  py-1">
+            <p className="text-sm text-pink-800  w-fit bg-pink-100 rounded-full py-1 px-4 flex items-center gap-1">
+              <Info weight="bold" />
+              You are using Somana AI <Sparkle weight="fill" />
+            </p>
+            {/* <label>Description:</label> */}
+            <textarea
+              value={question}
+              onChange={(e) => setQuestion(e.target.value)}
+              rows={3}
+              placeholder="Write prompt"
+              className="border border-stone-200 resize-none  dark:placeholder:text-stone-200  bg-stone-50 placeholder-stone-600 py-2 px-2 outline-none rounded-md w-full"
+            />
+
+            <p
+              onClick={handleAISubmit}
+              className="ml-auto  text-sm cursor-pointer w-fit text-stone-100 bg-stone-800 rounded-md py-1 px-2 flex items-center gap-1"
+            >
+              {aiLoading ? (
+                <p className="ml-auto text-sm cursor-pointer w-fit text-stone-100 bg-stone-800 rounded-md py-1 px-2 flex items-center gap-1">
+                  Generating... Please wait!
+                  <LoaderSmall />
+                </p>
+              ) : (
+                <p className="ml-auto  text-sm cursor-pointer w-fit text-stone-100 bg-stone-800 rounded-md py-1 px-2 flex items-center gap-1">
+                  Generate <PaperPlaneRight weight="fill" />
+                </p>
+              )}
+            </p>
+          </div>
+        ) : (
+          ""
+        )}
         <p className="py-0.5">Write Blog content:</p>
-        <QuillEditor value={content} onChange={handleContentChange} />
+        <div className="border border-stone-400 rounded-lg overflow-hidden">
+          <QuillEditor value={content} onChange={handleContentChange} />
+        </div>
 
         <div className="py-1">
           {isLoading ? (

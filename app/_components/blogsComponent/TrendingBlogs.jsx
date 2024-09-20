@@ -1,5 +1,6 @@
 import Link from "next/link";
 import BlogDate from "./BlogDate";
+import { Sparkle } from "@phosphor-icons/react/dist/ssr";
 
 const hostname = process.env.HOSTNAME;
 
@@ -58,6 +59,11 @@ export default async function CommonSpecialBlogs() {
                   >
                     {post.genre}
                   </Link>
+                  {post.usedAI ? (
+                    <Sparkle className="text-rose-600 size-4" weight="fill" />
+                  ) : (
+                    ""
+                  )}
                 </div>
                 <div className="group relative">
                   <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">

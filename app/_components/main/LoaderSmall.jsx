@@ -5,7 +5,7 @@ const LoaderSmall = ({ className }) => {
   return (
     <div>
       <div className={`${className} flex justify-center items-center`}>
-        <Spinner className="size-6 animate-spin" />
+        <Spinner className="size-5 animate-spin" />
       </div>
     </div>
   );
