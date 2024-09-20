@@ -15,6 +15,7 @@
 
 import Link from "next/link";
 import BlogDate from "./BlogDate";
+import { Sparkle } from "@phosphor-icons/react/dist/ssr";
 
 // const CommonSpecialBlogs = async ({ genre }) => {
 //   const res = await fetch(`${hostname}/api/v1/blogs?limit=8&genre=${genre}`, {
