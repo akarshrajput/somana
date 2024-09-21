@@ -23,6 +23,7 @@ import Link from "next/link";
 import LoginButton from "../buttons/LoginButton";
 import { MusicNote, Pen, Upload } from "@phosphor-icons/react/dist/ssr";
 import { usePathname, useRouter } from "next/navigation";
+import CurrentWeatherPopUp from "../weather/CurrentWeatherPopUp";
 
 export default function Example({ session }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -66,10 +67,9 @@ export default function Example({ session }) {
         className="mx-auto flex items-center justify-between p-2 lg:px-8"
       >
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
+          <Link href="/" className="-m-1.5 p-1.5">
             <Logo />
-          </a>
+          </Link>
         </div>
         <div className="flex lg:hidden">
           <button
@@ -100,6 +100,7 @@ export default function Example({ session }) {
               <Upload weight="bold" />
               Upload
             </Link>
+            <CurrentWeatherPopUp />
 
             {session ? (
               <Link href="/me" className="flex items-center gap-2">

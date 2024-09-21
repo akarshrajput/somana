@@ -9,7 +9,12 @@ export const useLocationInfo = () => useContext(LocationContext);
 
 export const LocationInfoProvider = ({ children }) => {
   const [ip, setIP] = useState("");
-  const [location, setLocation] = useState({});
+  const [location, setLocation] = useState("");
+  const [region, setRegion] = useState("");
+  const [country, setCountry] = useState("");
+  const [org, setOrg] = useState("");
+  const [postal, setPostal] = useState("");
+  const [timezone, setTimezone] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -21,8 +26,13 @@ export const LocationInfoProvider = ({ children }) => {
       try {
         const response = await axios.get(`/api/v1/geo`); // Assuming this is the correct API route
         if (response?.data) {
-          setIP(response.data.ip || "IP not found");
-          setLocation(response.data.location || {});
+          setIP(response.data.data.ip || "IP not found");
+          setLocation(response.data.data.loc || "Cooordinates not found");
+          setRegion(response.data.data.region || "Region not found");
+          setCountry(response.data.data.country || "Country not found");
+          setOrg(response.data.data.org || "Service not found");
+          setPostal(response.data.data.postal || "Postal not found");
+          setTimezone(response.data.data.timezone || "Timezone not found");
           //   console.log("IP:", response.data.ip);
         } else {
           throw new Error("Invalid response structure");

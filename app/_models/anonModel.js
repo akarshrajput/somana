@@ -22,8 +22,14 @@ const anonSchema = new mongoose.Schema(
     ip: {
       type: String,
     },
+    region: {
+      type: String,
+    },
+    country: {
+      type: String,
+    },
     location: {
-      type: Object,
+      type: String,
     },
     anonId: {
       type: String,

@@ -8,7 +8,7 @@ import LoaderSmall from "../main/LoaderSmall";
 import { SubmitFormData } from "@/app/_services/apiAnon";
 
 const InputAnonFile = ({ hostname }) => {
-  const { ip, location, isLoading } = useLocationInfo();
+  const { ip, location, region, country, isLoading } = useLocationInfo();
   const [file, setFile] = useState(null);
   const [pin, setPin] = useState("");
   const [timeLimit, setTimeLimit] = useState("");
@@ -37,6 +37,8 @@ const InputAnonFile = ({ hostname }) => {
       timeLimit: timeLimit,
       ip: ip,
       location: location,
+      region: region,
+      country: country,
     };
 
     try {

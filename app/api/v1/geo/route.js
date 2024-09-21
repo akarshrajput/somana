@@ -2,13 +2,18 @@ import axios from "axios";
 import { NextResponse } from "next/server";
 
 // Function to get the location based on IP address
-const getLocationFromIP = async (ip) => {
+const getLocationFromIP = async () => {
   try {
     // Make a request to an IP geolocation API
-    const response = await axios.get(`http://ip-api.com/json/${ip}`);
-    // Extract relevant location information from the response
-    const { country, city, latitude, longitude } = response.data;
-    return { country, city, latitude, longitude };
+    const response = await axios.get(
+      `https://ipinfo.io/json?token=7ba5dd09527cf4`
+    );
+
+    // Extract only the relevant location information
+    const { ip, city, region, country, loc, org, postal, timezone } =
+      response.data;
+
+    return { ip, city, region, country, loc, org, postal, timezone };
   } catch (error) {
     console.error("Error fetching location:", error);
     return null; // Return null if there's an error fetching the location
@@ -18,23 +23,13 @@ const getLocationFromIP = async (ip) => {
 // Handler for the GET request
 export async function GET(request) {
   try {
-    // Get the IP address from the client's request headers
-    let clientIP =
-      request.headers.get("x-forwarded-for") || request.headers.get("host");
+    const data = await getLocationFromIP();
 
-    if (clientIP && clientIP.includes(",")) {
-      clientIP = clientIP.split(",")[0];
-    }
-
-    const location = await getLocationFromIP(clientIP);
-
-    if (location) {
-      return NextResponse.json({ ip: clientIP, location }, { status: 200 });
+    if (data) {
+      // Return only the extracted data as JSON
+      return NextResponse.json({ data }, { status: 200 });
     } else {
-      return NextResponse.json(
-        { ip: clientIP, location: "Location unavailable" },
-        { status: 200 }
-      );
+      return NextResponse.json({ data: "Data unavailable" }, { status: 200 });
     }
   } catch (error) {
     console.error("Error getting geolocation:", error);
