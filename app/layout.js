@@ -16,6 +16,7 @@ import { MusicPlayerProvider } from "./_context/MusicPlayerContext";
 import MusicPlayer from "./_components/musicComponents/MusicPlayer";
 import { LocationInfoProvider } from "./_context/LocationContext";
 import { auth } from "./_lib/auth";
+import ChatBot from "./_components/chatbot/ChatBot";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -156,6 +157,9 @@ export default async function RootLayout({ children }) {
               </div>
               <div className="fixed bottom-0 w-full z-50">
                 <MusicPlayer />
+              </div>
+              <div className="fixed bottom-2 left-4">
+                <ChatBot />
               </div>
             </LocationInfoProvider>
           </MusicPlayerProvider>

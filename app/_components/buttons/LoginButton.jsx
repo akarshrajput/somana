@@ -22,7 +22,9 @@ const LoginButton = () => {
           <div className="modal-action">
             <form method="dialog">
               {/* if there is a button in form, it will close the modal */}
-              <button className="btn">Close</button>
+              <button className="py-2 px-4 font-medium bg-stone-200 hover:bg-stone-100 rounded-lg text-sm">
+                Close
+              </button>
             </form>
           </div>
         </div>
